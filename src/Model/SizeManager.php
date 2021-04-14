@@ -24,7 +24,7 @@ class SizeManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
- 
+
     /**
      * @param array $size
      * @return int

@@ -18,14 +18,6 @@ use App\Model\SizeManager;
  */
 class SizeController extends AbstractController
 {
-    /**
-     * Display size listing
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
     public function index()
     {
         $sizeManager = new SizeManager();
