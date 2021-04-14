@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\CategoryManager;
 
 class AdminController extends AbstractController
 {
@@ -10,23 +11,23 @@ class AdminController extends AbstractController
     public function products()
     {
         $productManager = new ProductManager();
-        // $categoryManager = new CategoryManager();
+        $categoryManager = new CategoryManager();
         // $sizeManager = new SizeManager();
 
         $products = $productManager->selectAll();
-        // $categories = $categoryManager->selectAll();
+        $categories = $categoryManager->selectAll();
         // $sizes = $sizeManager->selectAll();
 
         return $this->twig->render('Admin/products.html.twig', [
             'products' => $products,
-            // 'categories' => $categories,
+            'categories' => $categories,
         ]);
     }
 
     // page ADMIN add products
     public function add()
     {
-        // $categoryManager = new CategoryManager();
+        $categoryManager = new CategoryManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
             $product = [
@@ -42,8 +43,9 @@ class AdminController extends AbstractController
             $productManager->insert($product);
             header('Location:/admin/products');
         }
-            return $this->twig->render('Admin/Products/add.html.twig');
-            // 'categories' => $categoryManager->selectAll(),
+            return $this->twig->render('Admin/Products/add.html.twig', [
+            'categories' => $categoryManager->selectAll(),
+            ]);
     }
 
     // page ADMIN edit products

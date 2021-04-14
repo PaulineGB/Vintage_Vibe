@@ -12,6 +12,7 @@
             <th scope="col">#</th>
             <th scope="col">picture</th>
             <th scope="col">title</th>
+            <th scope="col">artist</th>
             <th scope="col">category</th>
             <th scope="col">size</th>
             <th scope="col">price</th>
@@ -23,8 +24,9 @@
             {% for product in products %}
           <tr>
             <th scope="row">{{ product.id }}</th>
-            <td>{{ product.picture }}</td>
+            <td><img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture"></td>
             <td>{{ product.title }}</td>
+            <td>{{ product.artist }}</td>
             <td>{{ product.category_id }} - {{ product.category_name }} </td>
             <td>{{ product.size_id }} - {{ product.size_name }} </td>
             <td>{{ product.price }}</td>
