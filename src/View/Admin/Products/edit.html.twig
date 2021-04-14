@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Edit your product{% endblock %}
+
+{% block content %}
+    <h1>Edit {{ product.title }}</h1>
+    {% include 'Admin/Products/_form.html.twig' %}
+    <a href="/admin/products">Back</a>
+{% endblock %}

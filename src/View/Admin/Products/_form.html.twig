@@ -1,47 +1,57 @@
 <form method="post">
     <div class="mb-3">
         <label for="title" class="form-label">TITLE</label>
-        <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title" value="{{ product.title }}">
     </div>
     <div class="mb-3">
         <label for="artist" class="form-label">ARTIST</label>
-        <input type="text" class="form-control" id="artist" name="artist">
+        <input type="text" class="form-control" id="artist" name="artist" value="{{ product.artist }}">
     </div>
     <div class="mb-3">
         <label for="category" class="form-label">CATEGORY</label>
         <select class="form-select">
-            {# boucle {% for category in categories %} #}
+            {% if product is defined %}
+            <option value="{{product.category_id}}">{{product.category_id}}</option>
+            {% else %}
             <option selected>--</option>
+            {% endif %}
+            {# boucle {% for category in categories %} #}
             <option value="1">Vinyl</option>
             <option value="2">Bazar</option>
             {# <option value={{ category.id }}>{{ category.name }}</option> #}
+            {# {% endfor %} #}
         </select>
     </div>
     <div class="mb-3">
         <label for="size" class="form-label">SIZE</label>
         <select class="form-select">
-            {# boucle {% for size in sizes %} #}
+            {# {% if product is defined %}
+            <option value="{{product.size_id}}">{{product.size_id}}</option>
+            {% else %}
             <option selected>--</option>
+            {% endif %} #}
+            {# boucle {% for size in sizes %} #}
             <option value="1">Vinyl 33</option>
             <option value="2">Vinyl 45</option>
             {# <option value={{ size.id }}>{{ size.name }}</option> #}
+            {# {% endfor %} #}
         </select>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">DESCRIPTION</label>
-        <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+        <textarea class="form-control" id="description" rows="3" name="description" value="{{ product.description }}"></textarea>
     </div>
     <div class="mb-3">
         <label for="picture" class="form-label">PICTURE</label>
-        <input type="text" class="form-control" id="picture" name="picture">
+        <input type="text" class="form-control" id="picture" name="picture" value="{{ product.picture }}">
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">PRICE</label>
-        <input type="text" class="form-control" id="price" name="price">
+        <input type="text" class="form-control" id="price" name="price" value="{{ product.price }}">
     </div>
     <div class="mb-3">
         <label for="quantity" class="form-label">QUANTITY</label>
-        <input type="text" class="form-control" id="quantity" name="quantity">
+        <input type="text" class="form-control" id="quantity" name="quantity" value="{{ product.quantity }}">
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-outline-secondary">VALIDATE</button>
