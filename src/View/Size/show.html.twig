@@ -1,0 +1,6 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<h1>Zise {{ size.title }}</h1>
+<p>{{ size.id }}. {{ size.title }}</p>
+<a href="/size/edit/{{ size.id }}">Edit</a>
+<a href="/size/delete/{{size.id}}">Supprimer</a>
+<a href="/size/index">Back</a> {% endblock %}
