@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} Users {% endblock %}
+
 {% block content %}
         <div class="text-center">
             <h1>USERS</h1>
@@ -20,10 +22,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
                     {% for user in users %}
-                        <th scope="row">{{ user.id }}</th><td>{{ user.firstname }}</td><td>{{ user.lastname }}</td>
-                        <td>{{ user.address }}</td><td>{{ user.email }}</td><td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                        <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></tr>
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.firstname }}</td><td>{{ user.lastname }}</td>
+                            <td>{{ user.address }}</td><td>{{ user.email }}</td>
+                            <td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                            <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                        </tr>
                     {% else %}
                         <p>No one has registered on the site. Nothing to display</p>
                     {% endfor %}

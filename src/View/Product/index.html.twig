@@ -3,9 +3,12 @@
 {% block title %} All products{% endblock %}
 
 {% block content %}
-<section id="products">
+<section id="products" class="text-center">
     <h1>PRODUCTS</h1>
-    <a href="/product/add">Ajouter</a>
+    <br>
+    <a href="/product/add" class="btn btn-secondary">ADD A PRODUCT</a>
+    <br>
+    <br>
     <table class="table">
         <thead>
           <tr>
@@ -18,6 +21,7 @@
             <th scope="col">price</th>
             <th scope="col">quantity</th>
             <th scope="col">action</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -31,10 +35,8 @@
             <td>{{ product.size_id }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
-            <td>
-                <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
-            </td>
+            <td><a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+            <td><a href="/product/delete/{{ product.id }}" class="btn btn-outline-dark">DELETE</a></td>
           </tr>
             {% endfor %}
         </tbody>

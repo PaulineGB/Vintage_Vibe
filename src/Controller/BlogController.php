@@ -98,7 +98,7 @@ class BlogController extends AbstractController
                 'picture' => $_POST['picture'],
             ];
             $id = $blogManager->insert($blog);
-            header('Location:/blog/show/' . $id);
+            header('Location:/blog/index/' . $id);
         }
 
         return $this->twig->render('Blog/add.html.twig');

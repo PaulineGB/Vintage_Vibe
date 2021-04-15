@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Home Admin {% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <section class="adminmenu">
+            <p class="fs-3 lh-1"><a href="/product/index/" class="text-reset">PRODUCTS</a><br>▼▼</p>
+            <br>
+            <p class="fs-3 lh-1"><a href="/category/index/" class="text-reset">CATEGORIES</a><br>▼▼</p>
+            <br>
+            <p class="fs-3 lh-1"><a href="/size/index/" class="text-reset">SIZE</a><br>▼▼</p>
+            <br>
+            <p class="fs-3 lh-1"><a href="/user/index/" class="text-reset">USERS</a><br>▼▼</p>
+        </section>
+    </div>
+{% endblock %}

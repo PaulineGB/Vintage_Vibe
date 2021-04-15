@@ -3,7 +3,12 @@
 {% block title %} Edit your product{% endblock %}
 
 {% block content %}
-    <h1>Edit {{ product.title }}</h1>
-    {% include 'Product/_form.html.twig' %}
-    <a href="/product/index">Back</a>
+    <div class="text-center">
+        <h1>EDIT PRODUCT</h1>
+        <br>
+        <br>
+        {% include 'Product/_form.html.twig' %}
+        <br>
+        <a href="/product/index">Back</a>
+    </div>
 {% endblock %}

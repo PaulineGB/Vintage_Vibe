@@ -85,7 +85,7 @@ class SizeController extends AbstractController
                 'name' => $_POST['name'],
             ];
             $id = $sizeManager->insert($size);
-            header('Location:/size/show/' . $id);
+            header('Location:/size/index/' . $id);
         }
 
         return $this->twig->render('Size/add.html.twig');

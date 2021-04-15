@@ -1,15 +1,35 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Articles</h1>
-    <ul>
-        {% for blog in blogs %}
-            <li><a href="/blog/show/{{ blog.id }}">{{ blog.id }}. {{ blog.title }} {{ blog.description }} {{ blog.picture }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
-    <a href="/blog/add">Add</a>
+    <div class="text-center">
+        <h1>BLOG ARTICLES</h1>
+        <br>
+        <a href="/blog/add" class="btn btn-secondary">ADD A NEW ARTICLE</a>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">picture</th>
+                    <th scope="col">title</th>
+                    <th scope="col">action</th>
+                    <th scope="col"></th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for blog in blogs %}
+                    <tr>
+                        <th scope="row">{{ blog.id }}</th>
+                        <td><img src="{{ blog.picture }}" width="100px" height="70px" alt="Blog picture"></td>
+                        <td>{{ blog.title }}</td>
+                        <td><a href="/blog/edit/{{ blog.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/blog/delete/{{ blog.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
 
 
