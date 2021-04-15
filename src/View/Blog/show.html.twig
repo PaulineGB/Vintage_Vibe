@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Article : {{ blog.title }}</h1>
+    <p>{{ blog.description }} </p>
+    <p>{{ blog.picture }} </p>
+    <a href="/blog/edit/{{ blog.id }}">Edit</a>
+    <a href="/blog/delete/{{ blog.id }}">Delete</a>
+    <a href="/blog/index">Back</a>
+{% endblock %}

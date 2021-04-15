@@ -1,7 +1,0 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1>Category "{{ category.name }}" edited </h1>
-    {% include 'Category/_form.html.twig' %}
-    <a href="/category/show/{{ category.id }}">Back</a>
-{% endblock %}
