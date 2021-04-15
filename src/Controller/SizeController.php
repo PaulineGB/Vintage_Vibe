@@ -13,7 +13,7 @@ namespace App\Controller;
 use App\Model\SizeManager;
 
 /**
- * Class sizeController
+ * Class SizeController
  *
  */
 class SizeController extends AbstractController
