@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<h1>Size</h1>
+<ul>
+    {% for size in sizes %}
+    <li><a href="/size/show/{{ size.id }}">{{ size.id }}. {{ size.name }}</a></li>
+    {% else %}
+    <li>Nothing to display</li>
+    {% endfor %}
+</ul>
+<a href="/size/add">Ajouter</a> {% endblock %}
