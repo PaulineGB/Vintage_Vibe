@@ -3,16 +3,7 @@
 {% block content %}
     <div class="container text-center">
         <h1>EDIT A USER</h1>
-        <div class="form-check form-check-inline">
-			<input class="form-check-input" type="checkbox" id="newsletter" value="true"name="check_admin"> 
-			<label class="form-check-label" for="check_admin">Is admin</label>
-		</div>        
-        <br>
-        <br>
-        <div> 
         {% include 'User/_form.html.twig' %}
-        </div>
-        <br>
         <a href="/User/index">Back</a>
     </div>
 {% endblock %}

@@ -106,7 +106,8 @@ class UserController extends AbstractController
                 $email = trim($_POST['email']);
                 $address = trim($_POST['address']);
                 $password = trim($_POST['password']);
-                $isAdmin = false;
+                // $isAdmin = false;
+                $isAdmin = $_POST['is_admin'];
                 $user = [
                     'firstname' => $firstname,
                     'lastname' => $lastname,
@@ -119,8 +120,8 @@ class UserController extends AbstractController
                 $errors[] = "All fields are required.";
             }
 
-            $id = $userManager->insert($user);
-            header('Location:/User/index/' . $id);
+            $userManager->insert($user);
+            header('Location:/User/index/');
         }
 
         return $this->twig->render('User/add.html.twig');
