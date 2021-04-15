@@ -1,0 +1,14 @@
+
+{% extends 'layout_user.html.twig' %}
+{% block title %} USER REGISTER {% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="register">
+		<h1 class="">Register</h1>
+        <div class="formregister">
+        {% include 'Admin/User/_form.html.twig' %}  
+        </div>
+	</div>
+</div>
+{% endblock %}
