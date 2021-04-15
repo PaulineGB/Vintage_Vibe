@@ -31,7 +31,7 @@ class CategoryController extends AbstractController
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
 
-        return $this->twig->render('Admin/Category/index.html.twig', ['categories' => $categories]);
+        return $this->twig->render('Category/index.html.twig', ['categories' => $categories]);
     }
 
 
@@ -49,7 +49,7 @@ class CategoryController extends AbstractController
         $categoryManager = new CategoryManager();
         $category = $categoryManager->selectOneById($id);
 
-        return $this->twig->render('Admin/Category/show.html.twig', ['category' => $category]);
+        return $this->twig->render('Category/show.html.twig', ['category' => $category]);
     }
 
 
@@ -72,7 +72,7 @@ class CategoryController extends AbstractController
             $categoryManager->update($category);
         }
 
-        return $this->twig->render('Admin/Category/edit.html.twig', ['category' => $category]);
+        return $this->twig->render('Category/edit.html.twig', ['category' => $category]);
     }
 
 
@@ -96,7 +96,7 @@ class CategoryController extends AbstractController
             header('Location:/category/show/' . $id);
         }
 
-        return $this->twig->render('Admin/Category/add.html.twig');
+        return $this->twig->render('Category/add.html.twig');
     }
 
 
@@ -109,6 +109,6 @@ class CategoryController extends AbstractController
     {
         $categoryManager = new CategoryManager();
         $categoryManager->delete($id);
-        header('Location:/admin/category/index');
+        header('Location:/category/index');
     }
 }

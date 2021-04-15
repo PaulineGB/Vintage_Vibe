@@ -19,7 +19,7 @@ class ProductManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        " SET (`title`, `artist`, `category_id`, `size_id`, `description`, `picture`, `price`, `quantity`)
+        " (`title`, `artist`, `category_id`, `size_id`, `description`, `picture`, `price`, `quantity`)
         VALUES (:title, :artist, :category_id, :size_id, :description, :picture, :price, :quantity)");
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('artist', $product['artist'], \PDO::PARAM_STR);
@@ -55,8 +55,9 @@ class ProductManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " (`title`, `artist`, `category_id`, `size_id`, `description`, `picture`, `price`, `quantity`)
-        VALUES (:title, :artist, :category_id, :size_id, :description, :picture, :price, :quantity)");
+        " SET `title` = :title, `artist` = :artist, `category_id` = :category_id, `size_id` = :size_id,
+        `description` = :description, `picture` = :picture, `price` = :price, `quantity` = :quantity
+        WHERE id=:id");
         $statement->bindValue('id', $product['id'], \PDO::PARAM_INT);
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
         $statement->bindValue('artist', $product['artist'], \PDO::PARAM_STR);

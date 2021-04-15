@@ -3,9 +3,8 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
-
-// use App\Model\CategoryManager;
-// use App\Model\SizeManager;
+use App\Model\CategoryManager;
+use App\Model\SizeManager;
 
 class ProductController extends AbstractController
 {
@@ -21,9 +20,17 @@ class ProductController extends AbstractController
     public function index()
     {
         $productManager = new ProductManager();
+        $categoryManager = new CategoryManager();
+        $sizeManager = new SizeManager();
         $products = $productManager->selectAll();
+        $categories = $categoryManager->selectAll();
+        $sizes = $sizeManager->selectAll();
 
-        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
+        return $this->twig->render('Product/index.html.twig', [
+            'products' => $products,
+            'categories' => $categories,
+            'sizes' => $sizes
+            ]);
     }
 
     // page ADMIN add products
@@ -37,8 +44,15 @@ class ProductController extends AbstractController
      */
     public function add()
     {
+        $categoryManager = new CategoryManager();
+        $sizeManager = new SizeManager();
+
+        $categories = $categoryManager->selectAll();
+        $sizes = $sizeManager->selectAll();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
+
             $product = [
                 'title' => $_POST['title'],
                 'artist' => $_POST['artist'],
@@ -52,7 +66,10 @@ class ProductController extends AbstractController
             $productManager->insert($product);
             header('Location:/product/index');
         }
-            return $this->twig->render('Product/add.html.twig');
+            return $this->twig->render('Product/add.html.twig', [
+                'categories' => $categories,
+                'sizes' => $sizes
+            ]);
     }
 
     // page ADMIN edit products
@@ -68,7 +85,12 @@ class ProductController extends AbstractController
     public function edit(int $id): string
     {
         $productManager = new ProductManager();
+        $categoryManager = new CategoryManager();
+        $sizeManager = new SizeManager();
+
         $product = $productManager->selectOneById($id);
+        $categories = $categoryManager->selectAll();
+        $sizes = $sizeManager->selectAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product['title'] = $_POST['title'];
@@ -82,7 +104,11 @@ class ProductController extends AbstractController
             $productManager->update($product);
         }
 
-        return $this->twig->render('Product/edit.html.twig', ['product' => $product]);
+        return $this->twig->render('Product/edit.html.twig', [
+            'product' => $product,
+            'categories' => $categories,
+            'sizes' => $sizes
+            ]);
     }
 
     // page ADMIN delete products
