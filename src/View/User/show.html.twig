@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>USER {{ user.firstname }}</h1>
+    <p>{{ user.id }}. {{ user.firstname }}. {{ user.lastname }}. {{ user.address }}. {{ user.email }}</p>
+    <a href="/User/edit/{{ user.id }}">EDIT</a>
+    <a href="/User/delete/{{ user.id }}">DELETE</a>
+    <a href="/User/index.html.twig">Back</a>
+{% endblock %}
