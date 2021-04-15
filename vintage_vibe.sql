@@ -20,11 +20,6 @@ SET time_zone = "+00:00";
 -- Base de données : `vintage_vibe`
 --
 
--- --------------------------------------------------------
-CREATE DATABASE vintage_vibe;
-
-USE vintage_base;
-
 --
 -- Structure de la table `blog`
 --
