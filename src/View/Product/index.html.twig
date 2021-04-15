@@ -4,8 +4,8 @@
 
 {% block content %}
 <section id="products">
-    <h1>Products</h1>
-    <a href="/admin/products/add">Ajouter</a>
+    <h1>PRODUCTS</h1>
+    <a href="/product/add">Ajouter</a>
     <table class="table">
         <thead>
           <tr>
@@ -32,8 +32,8 @@
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
             <td>
-                <a href="/admin/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-                <a href="/admin/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
+                <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
             </td>
           </tr>
             {% endfor %}

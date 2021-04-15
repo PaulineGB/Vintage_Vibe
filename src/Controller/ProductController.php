@@ -3,31 +3,40 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
-use App\Model\CategoryManager;
 
-class AdminController extends AbstractController
+// use App\Model\CategoryManager;
+// use App\Model\SizeManager;
+
+class ProductController extends AbstractController
 {
-    // page ADMIN products
-    public function products()
+    // page ADMIN all products
+    /**
+     * Display item listing
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function index()
     {
         $productManager = new ProductManager();
-        $categoryManager = new CategoryManager();
-        // $sizeManager = new SizeManager();
-
         $products = $productManager->selectAll();
-        $categories = $categoryManager->selectAll();
-        // $sizes = $sizeManager->selectAll();
 
-        return $this->twig->render('Admin/products.html.twig', [
-            'products' => $products,
-            'categories' => $categories,
-        ]);
+        return $this->twig->render('Product/index.html.twig', ['products' => $products]);
     }
 
     // page ADMIN add products
+    /**
+     * Display item creation page
+     *
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function add()
     {
-        $categoryManager = new CategoryManager();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
             $product = [
@@ -41,18 +50,23 @@ class AdminController extends AbstractController
                 'quantity' => $_POST['quantity']
             ];
             $productManager->insert($product);
-            header('Location:/admin/products');
+            header('Location:/product/index');
         }
-            return $this->twig->render('Admin/Products/add.html.twig', [
-            'categories' => $categoryManager->selectAll(),
-            ]);
+            return $this->twig->render('Product/add.html.twig');
     }
 
     // page ADMIN edit products
+    /**
+     * Display item edition page specified by $id
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
     public function edit(int $id): string
     {
-        // $categoryManager = new CategoryManager();
-        // $sizeManager = new SizeManager();
         $productManager = new ProductManager();
         $product = $productManager->selectOneById($id);
 
@@ -68,16 +82,20 @@ class AdminController extends AbstractController
             $productManager->update($product);
         }
 
-        return $this->twig->render('Admin/Products/edit.html.twig', ['product' => $product]);
-        // 'categories' => $categoryManager->selectAll(),
-        // 'size' => $sizeManager->selectAll(),
+        return $this->twig->render('Product/edit.html.twig', ['product' => $product]);
     }
 
     // page ADMIN delete products
+
+      /**
+     * Handle item deletion
+     *
+     * @param int $id
+     */
     public function delete(int $id)
     {
         $productManager = new ProductManager();
         $productManager->delete($id);
-        header('Location:/admin/products');
+        header('Location:/product/index');
     }
 }

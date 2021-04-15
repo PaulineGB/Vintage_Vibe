@@ -15,11 +15,9 @@
             {% else %}
             <option selected>--</option>
             {% endif %}
-            {# boucle {% for category in categories %} #}
-            <option value="1">Vinyl</option>
-            <option value="2">Bazar</option>
-            {# <option value={{ category.id }}>{{ category.name }}</option> #}
-            {# {% endfor %} #}
+            {% for category in categories %}
+            <option value={{ category.id }}>{{ category.name }}</option>
+            {% endfor %}
         </select>
     </div>
     <div class="mb-3">
@@ -30,11 +28,9 @@
             {% else %}
             <option selected>--</option>
             {% endif %} #}
-            {# boucle {% for size in sizes %} #}
-            <option value="1">Vinyl 33</option>
-            <option value="2">Vinyl 45</option>
-            {# <option value={{ size.id }}>{{ size.name }}</option> #}
-            {# {% endfor %} #}
+            {% for size in sizes %}
+            <option value={{ size.id }}>{{ size.name }}</option>
+            {% endfor %}
         </select>
     </div>
     <div class="mb-3">

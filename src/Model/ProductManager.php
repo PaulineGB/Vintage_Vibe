@@ -55,7 +55,7 @@ class ProductManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-        " (`title`, `artist`, `category_id`, `size_id`, `description`, `picture`, `price`, `quantity`) 
+        " (`title`, `artist`, `category_id`, `size_id`, `description`, `picture`, `price`, `quantity`)
         VALUES (:title, :artist, :category_id, :size_id, :description, :picture, :price, :quantity)");
         $statement->bindValue('id', $product['id'], \PDO::PARAM_INT);
         $statement->bindValue('title', $product['title'], \PDO::PARAM_STR);
