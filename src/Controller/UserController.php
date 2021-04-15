@@ -49,7 +49,7 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
 
-        return $this->twig->render('User/index.html.twig', ['user' => $user]);
+        return $this->twig->render('User/show.html.twig', ['user' => $user]);
     }
 
 
@@ -66,43 +66,14 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
-        $errors=[];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['password'])) {
-                $firstname = trim($_POST['firstname']);
-                $lastname = trim($_POST['lastname']);
-                $email = trim($_POST['email']);
-                $address = trim($_POST['address']);
-                $password = trim($_POST['password']);
-                $is_admin = false;
-            }
-
-            if (empty($_POST['firstname']) && empty($_POST['lastname']) && empty($_POST['email'])
-            && empty($_POST['address']) && empty($_POST['password'])) {
-                $errors[] = "All fields are required.";
-            }
-
-            if (empty($_POST['firstname'])) {
-                $errors[] = "Firstname is required.";
-            }
-
-            if (empty($_POST['lastname'])) {
-                $errors[] = "Lastname is required.";
-            }
-
-            if (empty($_POST['email'])) {
-                $errors[] = "Email is required.";
-            }
-
-            if (empty($_POST['address'])) {
-                $errors[] = "Address is required.";
-            }
-
-            if (empty($_POST['password'])) {
-                $errors[] = "Password is required.";
-            }
+            $user['firstname'] = $_POST['firstname'];
+            $user['lastname'] = $_POST['lastname'];
+            $user['email'] = $_POST['email'];
+            $user['address'] = $_POST['address'];
+            $user['password'] = $_POST['password'];
+            $user['is_admin'] = $_POST['is_admin'];
 
             $userManager->update($user);
         }
@@ -121,57 +92,35 @@ class UserController extends AbstractController
      */
     public function add()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            
             $userManager = new UserManager();
-            $errors=[];
+            $errors = [];
+            $user = [];
 
-            if (!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email'])
-            && !empty($_POST['address']) && !empty($_POST['password'])) {
+            if (
+                !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email'])
+                && !empty($_POST['address']) && !empty($_POST['password'])
+            ) {
                 $firstname = trim($_POST['firstname']);
                 $lastname = trim($_POST['lastname']);
                 $email = trim($_POST['email']);
                 $address = trim($_POST['address']);
                 $password = trim($_POST['password']);
-                $is_admin = false;
-            }
-
-            if (empty($_POST['firstname']) && empty($_POST['lastname']) && empty($_POST['email']) && empty($_POST['address']) && empty($_POST['password'])) {
+                $isAdmin = false;
+                $user = [
+                    'firstname' => $firstname,
+                    'lastname' => $lastname,
+                    'email' => $email,
+                    'address' => $address,
+                    'password' => $password,
+                    'is_admin' => $isAdmin,
+                ];
+            } else {
                 $errors[] = "All fields are required.";
             }
 
-            if (empty($_POST['firstname'])) {
-                $errors[] = "Firstname is required.";
-            }
-
-            if (empty($_POST['lastname'])) {
-                $errors[] = "Lastname is required.";
-            }
-
-            if (empty($_POST['email'])) {
-                $errors[] = "Email is required.";
-            }
-
-            if (empty($_POST['address'])) {
-                $errors[] = "Address is required.";
-            }
-
-            if (empty($_POST['password'])) {
-                $errors[] = "Password is required.";
-            }
-
-            $user = [
-                'firstname' => $firstname,
-                'lastname' => $lastname,
-                'email' => $email,
-                'address' => $address,
-                'password' => $password,
-                'is_admin' => $is_admin,
-            ];
-
             $id = $userManager->insert($user);
-            header('Location:/Admin/user/' . $id);
+            header('Location:/User/index/' . $id);
         }
 
         return $this->twig->render('User/add.html.twig');

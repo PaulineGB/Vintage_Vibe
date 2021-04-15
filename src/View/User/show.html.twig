@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
+    <h1>USER {{ user.firstname }}</h1>
     <p>{{ user.id }}. {{ user.firstname }}. {{ user.lastname }}. {{ user.address }}. {{ user.email }}</p>
-    <a href="/User/edit/{{ user.id }}">Edit</a>
-    <a href="/User/delete/{{ user.id }}">Supprimer</a>
+    <a href="/User/edit/{{ user.id }}">EDIT</a>
+    <a href="/User/delete/{{ user.id }}">DELETE</a>
     <a href="/User/index.html.twig">Back</a>
 {% endblock %}

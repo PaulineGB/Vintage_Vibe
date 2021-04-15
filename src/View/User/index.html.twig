@@ -1,13 +1,33 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Users</h1>
-    <a href="/User/add/">Add a new user</a>
-    <ul>
-        {% for user in users %}
-            <li><a href="/User/show/{{ user.id }}">{{ user.id }}. {{ user.firstname }}. {{ user.lastname }}. {{ user.address }}. {{ user.email }}</a></li>
-        {% else %}
-            <li>No one has registered on the site. Nothing to display</li>
-        {% endfor %}
-    </ul>
+        <div class="text-center">
+            <h1>USERS</h1>
+            <div><a href="/User/add/" class="btn btn-secondary">ADD A NEW USER</a><div>
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">firstname</th>
+                        <th scope="col">lastname</th>
+                        <th scope="col">address</th>
+                        <th scope="col">email</th>
+                        <th scope="col">action</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <th scope="row">{{ user.id }}</th><td>{{ user.firstname }}</td><td>{{ user.lastname }}</td>
+                        <td>{{ user.address }}</td><td>{{ user.email }}</td><td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></tr>
+                    {% else %}
+                        <p>No one has registered on the site. Nothing to display</p>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 {% endblock %}

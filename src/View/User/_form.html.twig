@@ -1,28 +1,28 @@
-<div container>
+<div class="userform">
     <form method="POST">
         <div class="form-group form-style">
             <label for="email">EMAIL</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
         </div>
         <br>
         <div class="form-group form-style">
             <label for="firstname">FIRSTNAME</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" required>
+            <input type="text" class="form-control" id="firstname" name="firstname" value="{{ user.firstname }}" required>
         </div>
         <br>
         <div class="form-group form-style">
             <label for="lastname">LASTNAME</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" required>
+            <input type="text" class="form-control" id="lastname" name="lastname" value="{{ user.lastname }}" required>
         </div>
         <br>
         <div class="form-group form-style">
             <label for="address">ADDRESS</label>
-            <input type="text" class="form-control" id="address" name="address" required>
+            <input type="text" class="form-control" id="address" name="address" value="{{ user.address }}" required>
         </div>
         <br>                 
         <div class="form-group form-style">
             <label for="password">PASSWORD</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" value="{{ user.password }}" required>
         </div>
         <br>
             <button type="submit" class="btn btn-secondary" name="register">Submit</button>
