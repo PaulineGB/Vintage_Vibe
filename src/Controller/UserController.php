@@ -68,12 +68,25 @@ class UserController extends AbstractController
         $user = $userManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $user['firstname'] = $_POST['firstname'];
-            $user['lastname'] = $_POST['lastname'];
-            $user['email'] = $_POST['email'];
-            $user['address'] = $_POST['address'];
-            $user['password'] = $_POST['password'];
-            $user['is_admin'] = $_POST['is_admin'];
+            $userManager = new UserManager();
+
+            if (empty($_POST['is_admin'])) {
+                $_POST['is_admin'] = false;
+
+                $user['firstname'] = $_POST['firstname'];
+                $user['lastname'] = $_POST['lastname'];
+                $user['email'] = $_POST['email'];
+                $user['address'] = $_POST['address'];
+                $user['password'] = $_POST['password'];
+                $user['is_admin'] = $_POST['is_admin'];
+            } else {
+                $user['firstname'] = $_POST['firstname'];
+                $user['lastname'] = $_POST['lastname'];
+                $user['email'] = $_POST['email'];
+                $user['address'] = $_POST['address'];
+                $user['password'] = $_POST['password'];
+                $user['is_admin'] = $_POST['is_admin'];
+            }
 
             $userManager->update($user);
         }
@@ -106,20 +119,30 @@ class UserController extends AbstractController
                 $email = trim($_POST['email']);
                 $address = trim($_POST['address']);
                 $password = trim($_POST['password']);
-                // $isAdmin = false;
-                $isAdmin = $_POST['is_admin'];
-                $user = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'email' => $email,
-                    'address' => $address,
-                    'password' => $password,
-                    'is_admin' => $isAdmin,
-                ];
+
+                if (empty($_POST['is_admin'])) {
+                    $_POST['is_admin'] = false;
+                    $user = [
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'email' => $email,
+                        'address' => $address,
+                        'password' => $password,
+                        'is_admin' => $_POST['is_admin']
+                    ];
+                } else {
+                    $user = [
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'email' => $email,
+                        'address' => $address,
+                        'password' => $password,
+                        'is_admin' => $_POST['is_admin']
+                    ];
+                }
             } else {
                 $errors[] = "All fields are required.";
             }
-
             $userManager->insert($user);
             header('Location:/User/index/');
         }
