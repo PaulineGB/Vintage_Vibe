@@ -66,32 +66,40 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
 
-            if (empty($_POST['is_admin'])) {
-                $_POST['is_admin'] = false;
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
+                if (empty($_POST['is_admin'])) {
+                    $_POST['is_admin'] = false;
 
-                $user['firstname'] = $_POST['firstname'];
-                $user['lastname'] = $_POST['lastname'];
-                $user['email'] = $_POST['email'];
-                $user['address'] = $_POST['address'];
-                $user['password'] = $_POST['password'];
-                $user['is_admin'] = $_POST['is_admin'];
+                    $user['firstname'] = $_POST['firstname'];
+                    $user['lastname'] = $_POST['lastname'];
+                    $user['email'] = $_POST['email'];
+                    $user['address'] = $_POST['address'];
+                    $user['password'] = $_POST['password'];
+                    $user['is_admin'] = $_POST['is_admin'];
+                } else {
+                    $user['firstname'] = $_POST['firstname'];
+                    $user['lastname'] = $_POST['lastname'];
+                    $user['email'] = $_POST['email'];
+                    $user['address'] = $_POST['address'];
+                    $user['password'] = $_POST['password'];
+                    $user['is_admin'] = $_POST['is_admin'];
+                }
             } else {
-                $user['firstname'] = $_POST['firstname'];
-                $user['lastname'] = $_POST['lastname'];
-                $user['email'] = $_POST['email'];
-                $user['address'] = $_POST['address'];
-                $user['password'] = $_POST['password'];
-                $user['is_admin'] = $_POST['is_admin'];
+                $errors[] = "Password must contain between 6 and 12 characters";
             }
 
             $userManager->update($user);
         }
 
-        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
+        return $this->twig->render('User/edit.html.twig', [
+            'user' => $user,
+            'errors' => $errors
+        ]);
     }
 
 
