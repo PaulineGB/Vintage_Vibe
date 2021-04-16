@@ -136,7 +136,7 @@ CREATE TABLE `user` (
   `lastname` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `address` text NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `is_admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
