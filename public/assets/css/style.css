@@ -1,3 +1,12 @@
 body {
   font-family: "Abel", sans-serif;
 }
+
+.headeradmin {
+  display: flex;
+  justify-content: center;
+}
+
+.logoutadmin {
+  align-self: center;
+}
