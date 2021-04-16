@@ -2,11 +2,14 @@ body {
   font-family: "Abel", sans-serif;
 }
 
-.headeradmin {
-  display: flex;
-  justify-content: center;
-}
-
-.logoutadmin {
-  align-self: center;
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-bottom: 50px;
 }

@@ -2,8 +2,9 @@
 
 {% block title %} Home Admin {% endblock %}
 
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-{% include 'Admin/_adminnavbar.html.twig' %}
     <div class="text-center">
         <section class="adminmenu">
             <p class="fs-3 lh-1"><a href="/product/index/" class="text-reset">PRODUCTS</a><br>▼▼</p>
