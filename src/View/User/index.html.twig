@@ -7,7 +7,7 @@
 {% block content %}
         <div class="text-center">
             <h1>USERS</h1>
-            <div><a href="/User/add/" class="btn btn-secondary">ADD A NEW USER</a><div>
+            <div><a href="/User/add/" class="btn btn-secondary">ADD NEW USER</a></div>
         </div>
         <br>
         <div>
@@ -27,8 +27,10 @@
                     {% for user in users %}
                         <tr>
                             <th scope="row">{{ user.id }}</th>
-                            <td>{{ user.firstname }}</td><td>{{ user.lastname }}</td>
-                            <td>{{ user.address }}</td><td>{{ user.email }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.address }}</td>
+                            <td>{{ user.email }}</td>
                             <td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
                             <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></td>
                         </tr>
@@ -37,3 +39,5 @@
             </table>
         </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

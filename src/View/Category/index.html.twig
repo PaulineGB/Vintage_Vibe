@@ -19,6 +19,7 @@
                     <th scope="col">action</th>
                     <th scope="col"></th>
                 </tr> 
+            </thead>
             <tbody>
                 {% for category in categories %}
                     <tr>
@@ -28,7 +29,9 @@
                         <td><a href="/category/delete/{{ category.id }}" class="btn btn-outline-dark">DELETE</a></td>
                     </tr>
                 {% endfor %}
-            <tbody>
+            </tbody>
         </table>
     </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
