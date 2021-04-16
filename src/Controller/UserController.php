@@ -127,7 +127,7 @@ class UserController extends AbstractController
                         'lastname' => $lastname,
                         'email' => $email,
                         'address' => $address,
-                        'password' => $password,
+                        'password' => md5($password),
                         'is_admin' => $_POST['is_admin']
                     ];
                 } else {
@@ -136,7 +136,7 @@ class UserController extends AbstractController
                         'lastname' => $lastname,
                         'email' => $email,
                         'address' => $address,
-                        'password' => $password,
+                        'password' => md5($password),
                         'is_admin' => $_POST['is_admin']
                     ];
                 }
