@@ -10,6 +10,21 @@ class ProductManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
+        /**
+     * Get all row from database.
+     *
+     * @return array
+     */
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT
+        title, artist, description, picture, price, quantity,
+        category_id, category.name AS category_name,
+        size_id, size.name AS size_name
+        FROM product, category, size
+        WHERE category.id = product.category_id AND size.id = product.size_id
+        ')->fetchAll();
+    }
 
     /**
      * @param array $product
