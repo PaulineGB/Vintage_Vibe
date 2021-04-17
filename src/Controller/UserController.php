@@ -71,22 +71,28 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
 
-            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                $donnees = htmlspecialchars($donnees);
+                return $donnees;
+            };
+
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 40) {
                 if (empty($_POST['is_admin'])) {
                     $_POST['is_admin'] = false;
 
-                    $user['firstname'] = $_POST['firstname'];
-                    $user['lastname'] = $_POST['lastname'];
-                    $user['email'] = $_POST['email'];
-                    $user['address'] = $_POST['address'];
-                    $user['password'] = $_POST['password'];
+                    $user['firstname'] = $securityForm($_POST['firstname']);
+                    $user['lastname'] = $securityForm($_POST['lastname']);
+                    $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
+                    $user['address'] = $securityForm($_POST['address']);
+                    $user['password'] = $securityForm(md5($_POST['password']));
                     $user['is_admin'] = $_POST['is_admin'];
                 } else {
-                    $user['firstname'] = $_POST['firstname'];
-                    $user['lastname'] = $_POST['lastname'];
-                    $user['email'] = $_POST['email'];
-                    $user['address'] = $_POST['address'];
-                    $user['password'] = $_POST['password'];
+                    $user['firstname'] = $securityForm($_POST['firstname']);
+                    $user['lastname'] = $securityForm($_POST['lastname']);
+                    $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
+                    $user['address'] = $securityForm($_POST['address']);
+                    $user['password'] = $securityForm(md5($_POST['password']));
                     $user['is_admin'] = $_POST['is_admin'];
                 }
             } else {
@@ -113,49 +119,49 @@ class UserController extends AbstractController
      */
     public function add()
     {
+        $userManager = new UserManager();
+        $errors = [];
+        $user = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $userManager = new UserManager();
-            $errors = [];
-            $user = [];
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                $donnees = htmlspecialchars($donnees);
+                return $donnees;
+            };
 
-            if (
-                !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email'])
-                && !empty($_POST['address']) && !empty($_POST['password'])
-            ) {
-                $firstname = trim($_POST['firstname']);
-                $lastname = trim($_POST['lastname']);
-                $email = trim($_POST['email']);
-                $address = trim($_POST['address']);
-                $password = trim($_POST['password']);
-
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
                 if (empty($_POST['is_admin'])) {
                     $_POST['is_admin'] = false;
                     $user = [
-                        'firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'email' => $email,
-                        'address' => $address,
-                        'password' => md5($password),
+                        'firstname' => $securityForm($_POST['firstname']),
+                        'lastname' => $securityForm($_POST['lastname']),
+                        'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
+                        'address' => $securityForm($_POST['address']),
+                        'password' => $securityForm(md5($_POST['password'])),
                         'is_admin' => $_POST['is_admin']
                     ];
                 } else {
                     $user = [
-                        'firstname' => $firstname,
-                        'lastname' => $lastname,
-                        'email' => $email,
-                        'address' => $address,
-                        'password' => md5($password),
+                        'firstname' => $securityForm($_POST['firstname']),
+                        'lastname' => $securityForm($_POST['lastname']),
+                        'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
+                        'address' => $securityForm($_POST['address']),
+                        'password' => $securityForm(md5($_POST['password'])),
                         'is_admin' => $_POST['is_admin']
                     ];
                 }
             } else {
-                $errors[] = "All fields are required.";
+                $errors[] = "Password must contain between 6 and 12 characters";
             }
+
             $userManager->insert($user);
             header('Location:/User/index/');
         }
 
-        return $this->twig->render('User/add.html.twig');
+        return $this->twig->render('User/add.html.twig', [
+            'errors' => $errors
+        ]);
     }
 
 
