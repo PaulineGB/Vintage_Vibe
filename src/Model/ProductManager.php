@@ -35,7 +35,7 @@ class ProductManager extends AbstractManager
      */
     public function selectOneById(int $id)
     {
-        $statement = $this->pdo->prepare("SELECT 
+        $statement = $this->pdo->prepare("SELECT
         product.id, title, artist, description, picture, price, quantity, category_id, size_id,
         category.name AS category_name, size.name AS size_name
         FROM product
