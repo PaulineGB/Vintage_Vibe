@@ -102,6 +102,7 @@ class ProductController extends AbstractController
             $product['price'] = $_POST['price'];
             $product['quantity'] = $_POST['quantity'];
             $productManager->update($product);
+            header('Location:/user/index');
         }
 
         return $this->twig->render('Product/edit.html.twig', [

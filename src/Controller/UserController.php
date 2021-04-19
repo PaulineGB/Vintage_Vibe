@@ -100,6 +100,7 @@ class UserController extends AbstractController
             }
 
             $userManager->update($user);
+            header('Location:/user/index');
         }
 
         return $this->twig->render('User/edit.html.twig', [
