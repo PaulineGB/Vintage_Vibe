@@ -72,6 +72,7 @@ class BlogController extends AbstractController
             $blog['description'] = $_POST['description'];
             $blog['picture'] = $_POST['picture'];
             $blogManager->update($blog);
+            header('Location:/blog/index/');
         }
 
         return $this->twig->render('Blog/edit.html.twig', ['blog' => $blog]);

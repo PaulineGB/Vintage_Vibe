@@ -62,6 +62,7 @@ class SizeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $size['name'] = $_POST['name'];
             $sizeManager->update($size);
+            header('Location:/size/index/');
         }
 
         return $this->twig->render('Size/edit.html.twig', ['size' => $size]);

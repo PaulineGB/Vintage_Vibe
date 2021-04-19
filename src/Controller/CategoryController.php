@@ -70,6 +70,7 @@ class CategoryController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $category['name'] = $_POST['name'];
             $categoryManager->update($category);
+            header('Location:/category/index/');
         }
 
         return $this->twig->render('Category/edit.html.twig', ['category' => $category]);

@@ -5,13 +5,15 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
+    <div class="col-1 back">
+        <a href="/blog/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
     <div class="text-center">
         <h1>EDIT ARTICLE</h1>
         <br>
         <br>
         {% include 'Blog/_form.html.twig' %}
         <br>
-        <a href="/blog/index/{{ blog.id }}">Back</a>
     </div>
 {% endblock %}
 

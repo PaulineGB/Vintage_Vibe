@@ -3,11 +3,13 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
+    <div class="col-1 back">
+        <a href="/category/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
     <div class="text-center">
         <h1>EDIT CATEGORY</h1>
         <br>
         {% include 'Category/_form.html.twig' %}
-        <a href="/category/index/{{ category.id }}">Back</a>
     </div>
 {% endblock %}
 

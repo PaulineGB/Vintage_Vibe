@@ -5,6 +5,9 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
+        <div class="col-1 back">
+            <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+        </div>
         <div class="text-center">
             <h1>USERS</h1>
             <div><a href="/User/add/" class="btn btn-secondary">ADD NEW USER</a></div>

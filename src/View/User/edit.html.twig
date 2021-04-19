@@ -5,6 +5,9 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
+    <div class="col-1 back">
+        <a href="/user/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
     <div class="container text-center">
         <h1>EDIT A USER</h1>
         <div class="form-check form-check-inline">
@@ -17,7 +20,6 @@
         {% include 'User/_form.html.twig' %}
         </div>
         <br>
-        <a href="/User/index">Back</a>
     </div>
 {% endblock %}
 
