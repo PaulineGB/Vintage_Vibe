@@ -1,9 +1,0 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1>Category "{{ category.name }}"</h1>
-    <p>{{ category.name }}</p>
-    <a href="/category/edit/{{ category.id }}">Edit</a>
-    <a href="/category/delete/{{category.id}}">Supprimer</a>
-    <a href="/category/index">Back</a>
-{% endblock %}

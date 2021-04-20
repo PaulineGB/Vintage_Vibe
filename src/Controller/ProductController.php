@@ -57,7 +57,6 @@ class ProductController extends AbstractController
 
             $securityForm = function ($donnees) {
                 $donnees = trim($donnees);
-                $donnees = htmlspecialchars($donnees);
                 return $donnees;
             };
 
@@ -104,7 +103,6 @@ class ProductController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $securityForm = function ($donnees) {
                 $donnees = trim($donnees);
-                $donnees = htmlspecialchars($donnees);
                 return $donnees;
             };
 
