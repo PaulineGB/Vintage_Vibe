@@ -28,11 +28,9 @@
             {% else %}
             <option selected>--</option>
             {% endif %}
-            {% if product.category_id == '1' %}
             {% for size in sizes %}
             <option value={{ size.id }}>{{ size.name }}</option>
             {% endfor %}
-            {% endif %}
         </select>
     </div>
     <div class="mb-3">
