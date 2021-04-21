@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} All products{% endblock %}
+
+{% block content %}
+<section id="products">
+    <h1>PRODUCTS</h1>
+    <a href="/product/add">Ajouter</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">picture</th>
+            <th scope="col">title</th>
+            <th scope="col">artist</th>
+            <th scope="col">category</th>
+            <th scope="col">size</th>
+            <th scope="col">price</th>
+            <th scope="col">quantity</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+          <tr>
+            <th scope="row">{{ product.id }}</th>
+            <td><img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture"></td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.artist }}</td>
+            <td>{{ product.category_name }}</td>
+            <td>{{ product.size_name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>
+                <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
+                <a href="/product/show/{{ product.id }}" class="btn btn-outline-secondary">SHOW</a>
+            </td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</section>
+
+{% endblock %}
