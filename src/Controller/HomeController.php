@@ -11,7 +11,6 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 
-
 class HomeController extends AbstractController
 {
     /**
@@ -33,6 +32,5 @@ class HomeController extends AbstractController
         $product = $productManager->selectOneById($id);
 
         return $this->twig->render('Home/product.html.twig', ['product' => $product]);
-
     }
 }
