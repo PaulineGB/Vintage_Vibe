@@ -1,0 +1,31 @@
+:root {
+  --greyvibe: rgb(238 236 236);
+}
+
+body {
+  font-family: "Abel", sans-serif;
+}
+
+.homeheader {
+  overflow: hidden;
+}
+
+.headerimg {
+  width: 100%;
+}
+
+.homeabout {
+  background-color: var(--greyvibe);
+}
+
+.hometriangle img {
+  max-width: 80px;
+}
+
+.hometeam {
+  background-color: var(--greyvibe);
+}
+
+.hometeam img {
+  max-width: 40%;
+}
