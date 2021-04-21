@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Hello Patron!</h1>
+        <a href="/contact/add">Back</a> 
+    
+          {{ dump(contacts) }}
+    
+    {% for  contact in contacts %}
+     <h1>contact</h1>
+    <h1>Tout ceux qui m'ont contacté. {{ contact.firstname }} {{ contact.lastname }}</h1>
+    <p>{{ contact.id }}. {{ contact.email}}</p>
+    <p> {{ contact.message }}</p>
+    <a href="/contact/edit/{{ contacts.id }}">Edit</a>
+    <a href="/contact/delete/{{contacts.id}}">Supprimer</a>
+    <a href="/contact/add">Back</a>
+     {% endfor %}       
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<form class="formuContact" method="post" >
+	<div class="">
+		
+			{% if not empty errors %}
+				{% for error in errors %}
+					<p>{{ error }}</p>
+				{% endfor %}
+			{% else %}
+				<p>{{ sentence }}</p>
+			{% endif %}
+		
+	</div>
+	<input type="hidden" value="{{ contact.id }}" name="id">
+	<label for="firstname">Firstname:</label><br>
+	<input type="text" id="firstname" value="{{ contact.firstname }}" name="firstname"></br>
+
+<label for="lastname">Lastname:</label><br>
+<input type="text" id="lastname" value="{{ contact.lastname }}" name="lastname"></br><label for="email">Email:</label><br><input type="text" id="email" value="{{ contact.email }}" name="email"></br><label for="message">Message:</label><br><TEXTAREA type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA></br><input type="submit" value="Valider"></br></form>
