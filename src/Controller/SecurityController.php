@@ -38,9 +38,9 @@ class SecurityController extends AbstractController
                             $_POST['is_admin'] = false;
                             $user = [
                                 'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
-                                'firstname' => $_POST['firstname'],
-                                'lastname' => $_POST['lastname'],
-                                'address' => $_POST['address'],
+                                'firstname' => trim($_POST['firstname']),
+                                'lastname' => trim($_POST['lastname']),
+                                'address' => trim($_POST['address']),
                                 'password' => md5($_POST['password']),
                                 'is_admin' => $_POST['is_admin']
                             ];

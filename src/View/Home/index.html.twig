@@ -2,8 +2,6 @@
 {% block content %}
 <h1>Home</h1>
 
-{{dump(session)}}
-
 <div class="container">
     {% if session.user is not defined %}
     <li class="nav-item">
