@@ -66,19 +66,41 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($id);
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $user['firstname'] = $_POST['firstname'];
-            $user['lastname'] = $_POST['lastname'];
-            $user['email'] = $_POST['email'];
-            $user['address'] = $_POST['address'];
-            $user['password'] = $_POST['password'];
-            $user['is_admin'] = $_POST['is_admin'];
+            $userManager = new UserManager();
+
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 40) {
+                if (empty($_POST['is_admin'])) {
+                    $_POST['is_admin'] = false;
+
+                    $user['firstname'] = trim($_POST['firstname']);
+                    $user['lastname'] = trim($_POST['lastname']);
+                    $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
+                    $user['address'] = trim($_POST['address']);
+                    $user['password'] = trim(md5($_POST['password']));
+                    $user['is_admin'] = $_POST['is_admin'];
+                } else {
+                    $user['firstname'] = trim($_POST['firstname']);
+                    $user['lastname'] = trim($_POST['lastname']);
+                    $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
+                    $user['address'] = trim($_POST['address']);
+                    $user['password'] = trim(md5($_POST['password']));
+                    $user['is_admin'] = $_POST['is_admin'];
+                }
+            } else {
+                $errors[] = "Password must contain between 6 and 12 characters";
+            }
 
             $userManager->update($user);
+            header('Location:/user/index');
         }
 
-        return $this->twig->render('User/edit.html.twig', ['user' => $user]);
+        return $this->twig->render('User/edit.html.twig', [
+            'user' => $user,
+            'errors' => $errors
+        ]);
     }
 
 
@@ -92,38 +114,42 @@ class UserController extends AbstractController
      */
     public function add()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $userManager = new UserManager();
-            $errors = [];
-            $user = [];
+        $userManager = new UserManager();
+        $errors = [];
+        $user = [];
 
-            if (
-                !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email'])
-                && !empty($_POST['address']) && !empty($_POST['password'])
-            ) {
-                $firstname = trim($_POST['firstname']);
-                $lastname = trim($_POST['lastname']);
-                $email = trim($_POST['email']);
-                $address = trim($_POST['address']);
-                $password = trim($_POST['password']);
-                $isAdmin = false;
-                $user = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'email' => $email,
-                    'address' => $address,
-                    'password' => $password,
-                    'is_admin' => $isAdmin,
-                ];
+            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
+                if (empty($_POST['is_admin'])) {
+                    $_POST['is_admin'] = false;
+                    $user = [
+                        'firstname' => trim($_POST['firstname']),
+                        'lastname' => trim($_POST['lastname']),
+                        'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
+                        'address' => trim($_POST['address']),
+                        'password' => trim(md5($_POST['password'])),
+                        'is_admin' => $_POST['is_admin']
+                    ];
+                } else {
+                    $user = [
+                        'firstname' => trim($_POST['firstname']),
+                        'lastname' => trim($_POST['lastname']),
+                        'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
+                        'address' => trim($_POST['address']),
+                        'password' => trim(md5($_POST['password'])),
+                        'is_admin' => $_POST['is_admin']
+                    ];
+                }
             } else {
-                $errors[] = "All fields are required.";
+                $errors[] = "Password must contain between 6 and 12 characters";
             }
 
-            $id = $userManager->insert($user);
-            header('Location:/User/index/' . $id);
+            $userManager->insert($user);
+            header('Location:/User/index/');
         }
 
-        return $this->twig->render('User/add.html.twig');
+        return $this->twig->render('User/add.html.twig', [
+            'errors' => $errors
+        ]);
     }
 
 
