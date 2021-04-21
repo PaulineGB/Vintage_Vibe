@@ -1,4 +1,28 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
 <h1>Home</h1>
+
+{{dump(session)}}
+
+<div class="container">
+    {% if session.user is not defined %}
+    <li class="nav-item">
+        <a class="nav-link" href="/security/login">Login</a>
+    </li>
+    {% endif %}
+    {% if session.user is defined %}
+    <li class="nav-item">
+        <a class="nav-link" href="/user/account">Account</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/security/logout">Logout</a>
+    </li>
+    {% if session.user.role_id == 1 %}
+    <li class="nav-item">
+        <a class="nav-link" href="/admin/index">Admin</a>
+    </li>
+    {% endif %}
+    {% endif %}
+</div>
+
 {% endblock %}
