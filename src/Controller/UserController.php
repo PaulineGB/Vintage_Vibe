@@ -71,22 +71,27 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $userManager = new UserManager();
 
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                return $donnees;
+            };
+
             if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 40) {
                 if (empty($_POST['is_admin'])) {
                     $_POST['is_admin'] = false;
 
-                    $user['firstname'] = trim($_POST['firstname']);
-                    $user['lastname'] = trim($_POST['lastname']);
+                    $user['firstname'] = $securityForm($_POST['firstname']);
+                    $user['lastname'] = $securityForm($_POST['lastname']);
                     $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
-                    $user['address'] = trim($_POST['address']);
-                    $user['password'] = trim(md5($_POST['password']));
+                    $user['address'] = $securityForm($_POST['address']);
+                    $user['password'] = $securityForm(md5($_POST['password']));
                     $user['is_admin'] = $_POST['is_admin'];
                 } else {
-                    $user['firstname'] = trim($_POST['firstname']);
-                    $user['lastname'] = trim($_POST['lastname']);
+                    $user['firstname'] = $securityForm($_POST['firstname']);
+                    $user['lastname'] = $securityForm($_POST['lastname']);
                     $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
-                    $user['address'] = trim($_POST['address']);
-                    $user['password'] = trim(md5($_POST['password']));
+                    $user['address'] = $securityForm($_POST['address']);
+                    $user['password'] = $securityForm(md5($_POST['password']));
                     $user['is_admin'] = $_POST['is_admin'];
                 }
             } else {
@@ -118,24 +123,30 @@ class UserController extends AbstractController
         $errors = [];
         $user = [];
 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                return $donnees;
+            };
+
             if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
                 if (empty($_POST['is_admin'])) {
                     $_POST['is_admin'] = false;
                     $user = [
-                        'firstname' => trim($_POST['firstname']),
-                        'lastname' => trim($_POST['lastname']),
+                        'firstname' => $securityForm($_POST['firstname']),
+                        'lastname' => $securityForm($_POST['lastname']),
                         'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
-                        'address' => trim($_POST['address']),
-                        'password' => trim(md5($_POST['password'])),
+                        'address' => $securityForm($_POST['address']),
+                        'password' => $securityForm(md5($_POST['password'])),
                         'is_admin' => $_POST['is_admin']
                     ];
                 } else {
                     $user = [
-                        'firstname' => trim($_POST['firstname']),
-                        'lastname' => trim($_POST['lastname']),
+                        'firstname' => $securityForm($_POST['firstname']),
+                        'lastname' => $securityForm($_POST['lastname']),
                         'email' => filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL),
-                        'address' => trim($_POST['address']),
-                        'password' => trim(md5($_POST['password'])),
+                        'address' => $securityForm($_POST['address']),
+                        'password' => $securityForm(md5($_POST['password'])),
                         'is_admin' => $_POST['is_admin']
                     ];
                 }
