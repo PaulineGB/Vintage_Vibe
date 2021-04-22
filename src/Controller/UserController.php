@@ -128,6 +128,7 @@ class UserController extends AbstractController
                 $donnees = trim($donnees);
                 return $donnees;
             };
+
             if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 12) {
                 if (empty($_POST['is_admin'])) {
                     $_POST['is_admin'] = false;
