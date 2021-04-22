@@ -1,16 +1,22 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} Edit your product{% endblock %}
+
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
     <div class="col-1 back">
-        <a href="/size/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+        <a href="/product/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
     </div>
     <div class="text-center">
-        <h1>EDIT SIZE</h1>
+        <h1>EDIT PRODUCT</h1>
         <br>
-        {% include 'Size/_form.html.twig' %}
+        <br>
+        {% include 'Product/_form.html.twig' %}
+        <br>
     </div>
+    <br>
 {% endblock %}
 
 {% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
+
