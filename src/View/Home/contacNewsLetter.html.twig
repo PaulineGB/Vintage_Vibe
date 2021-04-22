@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Hello Admin !</h1>
+
+      <h1>NewsLetter {{ newsletter.email }}</h1>
+    <p>{{ newsletter.id }}. {{ newsletter.email }}</p>
+    <a href="/Home/newsLetter">Back</a>
+{% endblock %}
