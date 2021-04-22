@@ -7,11 +7,6 @@
   padding: 0;
 }
 
-body,
-html {
-  height: 100%;
-}
-
 body {
   font-family: "Abel", sans-serif;
   display: flex;
@@ -25,9 +20,6 @@ header {
   width: 100%;
   background-color: white;
   border-bottom: 1px solid black;
-  padding-bottom: 20px;
-  padding-top: 20px;
-  margin-bottom: 20px;
 }
 
 .back {
@@ -65,3 +57,4 @@ footer {
 
 .hometeam img {
   max-width: 40%;
+}
