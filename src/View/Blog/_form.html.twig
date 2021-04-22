@@ -1,0 +1,19 @@
+<form method="post">
+    <input type="hidden" value="{{ blog.id }}" name="id">
+    <div class="form-group form-style">
+        <label for="title">TITLE</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ blog.title }}" required>
+    </div>
+    <br>
+    <div class="form-group form-style">
+        <label for="description">CONTENT</label>
+        <textarea type="text" class="form-control" id="description" name="description" required>{{ blog.description }}</textarea>
+    </div>
+    <br>
+    <div class="form-group form-style">
+        <label for="picture">PICTURE</label>
+        <input type="text" class="form-control" id="picture" name="picture" value="{{ blog.picture }}" required>   
+    </div>
+    <br>
+        <button type="submit" class="btn btn-secondary" name="submit">VALIDATE</button>
+</form>

@@ -9,9 +9,7 @@
 
 namespace App\Controller;
 
-use App\Model\ProductManager;
-
-class HomeController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
      * Display home page
@@ -23,10 +21,6 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Home/index.html.twig', [
-            'products' => $products
-        ]);
+        return $this->twig->render('Admin/index.html.twig');
     }
 }
