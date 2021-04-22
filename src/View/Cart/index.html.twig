@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	{{dump(session.cart)}}
+	<h1>Hello {{session.user.username}}	!</h1>
+
+	{% for product in products %}
+		<div class="">
+			<h2>{{product.title}}</h2>
+			<a href="/home/addToCart/{{product.id}}">Add To Cart</a>
+		</div>
+	{% endfor %}
+
+{% endblock %}
