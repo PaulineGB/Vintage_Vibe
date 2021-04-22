@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<a herf="%">
+    <span>
+    arrow_back
+    </span>
+</a>
+<center>
+
+    <h1> {{product.title}} </h1>
+    <div class="productpicture">
+        <img src="{{ product.picture }} " class="img-fluid">
+    </div>
+    <div>
+        <p></p>
+
+    </div>
+    <div>
+        <p>
+            <font size="+2">About ▼▼ {{ product.description }}</font>
+        </p>
+    </div>
+    <div>
+        <p>
+            <font size="+2">Categorie ▼▼ {{ product.categorie}}</font>
+        </p>
+    </div>
+    <div>
+        <p>
+            <font size="+2">Size ▼▼ {{ product.size }}</font>
+        </p>
+    </div>
+    <div>
+        <p>
+            <font size="+2">Price ▼▼ {{ product.price }}$</font>
+        </p>
+    </div>
+    <button type="submit" class="btn btn-secondary" name="submit">I want id to cart <span class="material-icons">
+        shopping_cart
+        </span></button>
+
+
+</center>
+{% endblock %}
