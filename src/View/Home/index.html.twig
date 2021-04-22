@@ -48,56 +48,6 @@
 {% endblock %}
 
 {% block content %}
-<<<<<<< HEAD
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">VINTAGE VIBE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/article/index">Formations</a>
-                </li>
-                {% if session.user is not defined %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/security/login">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/security/register">Register</a>
-                </li>
-                {% endif %}
-
-                {% if session.user is defined %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/account">Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/security/logout">Logout</a>
-                </li>
-                {% if session.user.role_id == 1 %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/index">Admin</a>
-                </li>
-                {% endif %}
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/cart">Cart</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<h1>Home</h1>
-{% endblock %}
-=======
     <section class="homeheader">
         <div class="row">
             <img src="https://cdn.pixabay.com/photo/2016/06/27/07/30/elvis-presley-1482026_1280.jpg" alt="homepicture" class="headerimg">
@@ -129,5 +79,4 @@
     </section>
 {% endblock %}
 
-{% block footer %} Footer arrive très vite {% endblock %}
->>>>>>> 8c68ba9b4ce3b12b43e7da5d78dd783b2a5638f0
+{% block footer %} And soon here a footer {% endblock %}
