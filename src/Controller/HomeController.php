@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\BlogManager;
+
 class HomeController extends AbstractController
 {
     /**
@@ -22,5 +24,14 @@ class HomeController extends AbstractController
     public function index()
     {
         return $this->twig->render('Home/index.html.twig');
+    }
+
+    public function blog()
+    {
+        $blogManager = new BlogManager();
+        $blogs = $blogManager->selectAll();
+        return $this->twig->render('Home/blog.html.twig', [
+            'blogs' => array_reverse($blogs)
+        ]);
     }
 }
