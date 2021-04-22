@@ -30,7 +30,6 @@ class HomeController extends AbstractController
         $productManager = new ProductManager();
 
         $product = $productManager->selectOneById($id);
-var_dump($product);
         return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
     }
 }
