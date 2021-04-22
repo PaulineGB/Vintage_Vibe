@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ product.category_name }} {{ product.artist }}</h1>
+    <img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture">
+    <p>{{ product.title }}</p>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }}</p>
+    <p>{{ product.quantity }}</p>
+    <a href="/product/edit/{{ product.id }}">EDIT</a>
+    <a href="/product/delete/{{ product.id }}">DELETE</a>
+    <a href="/product/index">Back</a>
+{% endblock %}

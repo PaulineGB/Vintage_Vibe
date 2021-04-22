@@ -1,5 +1,13 @@
 <form method="post">
-    <input type="hidden" value="{{ size.id }}" name="id">
-    <input type="text" value="{{ size.name }}" name="name">
-    <input type="submit" value="Valider">
+    <div class="form-group form-style">
+        <input type="hidden" value="{{ size.id }}" name="id">
+    </div>
+    <div class="form-group form-style">
+        <label for="name">NAME</label><br> 
+        <input type="text" value="{{ size.name }}" name="name">
+    </div>
+    <br>
+    <div class="form-group form-style">
+        <button type="submit" class="btn btn-secondary" name="submit">VALIDATE</button>
+    </div>
 </form>
