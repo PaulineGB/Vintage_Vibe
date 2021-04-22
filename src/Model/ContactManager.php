@@ -36,10 +36,10 @@ class ContactManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`firstname`,`lastname`, `email`, `message`)
          VALUES (:firstname, :lastname, :email, :message)");
-        $statement->bindValue(':firstname', $contact['firstname'], \PDO::PARAM_STR);
-        $statement->bindValue(':lastname', $contact['lastname'], \PDO::PARAM_STR);
-        $statement->bindValue(':email', $contact['email'], \PDO::PARAM_STR);
-        $statement->bindValue(':message', $contact['message'], \PDO::PARAM_STR);
+        $statement->bindValue('firstname', $contact['firstname'], \PDO::PARAM_STR);
+        $statement->bindValue('lastname', $contact['lastname'], \PDO::PARAM_STR);
+        $statement->bindValue('email', $contact['email'], \PDO::PARAM_STR);
+        $statement->bindValue('message', $contact['message'], \PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();

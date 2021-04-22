@@ -11,9 +11,7 @@
     <h1>Tout ceux qui m'ont contacté. {{ contact.firstname }} {{ contact.lastname }}</h1>
     <p>{{ contact.id }}. {{ contact.email}}</p>
     <p> {{ contact.message }}</p>
-    <a href="/contact/edit/{{ contacts.id }}">Edit</a>
     <a href="/contact/delete/{{contacts.id}}">Supprimer</a>
-    <a href="/contact/add">Back</a>
      {% endfor %}       
 
 {% endblock %}
