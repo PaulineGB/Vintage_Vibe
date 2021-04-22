@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} All categories {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div class="col-1 back">
+        <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="text-center">
+        <h1>CATEGORIES</h1>
+        <br>
+        <a href="/category/add" class="btn btn-secondary">ADD CATEGORY</a>
+        <br>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">action</th>
+                    <th scope="col"></th>
+                </tr> 
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <th scope="row">{{ category.id }}</th>
+                        <td>{{ category.name }}</td>
+                        <td><a href="/category/edit/{{ category.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/category/delete/{{ category.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

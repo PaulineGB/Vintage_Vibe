@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Add a new product{% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div class="col-1 back">
+        <a href="/product/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1>ADD A NEW PRODUCT</h1>
+        <br>
+        <br>
+        {% include 'Product/_form.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
+
