@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -25,8 +26,23 @@ class HomeController extends AbstractController
     {
         $productManager = new ProductManager();
         $products = $productManager->selectAll();
+
         return $this->twig->render('Home/index.html.twig', [
-            'products' => $products
+            'products' => $products,
         ]);
+    }
+
+
+    public function userAccount()
+    {
+        $id = $_SESSION['user']['id'];
+
+        if (isset($_SESSION['user']['id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($id);
+            return $this->twig->render('Home/account.html.twig', ['user' => $user]);
+        } else {
+            header('Location: /');
+        }
     }
 }

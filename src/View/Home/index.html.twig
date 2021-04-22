@@ -27,7 +27,7 @@
 
                     {% if session.user is defined %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/user/account">Account</a>
+                        <a class="nav-link" href="/home/userAccount/{{ user.id }}">Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/security/logout">Logout</a>
@@ -43,6 +43,7 @@
                     </li>
                 </ul>
             </div>
+            {{dump(session)}}
         </div>
     </nav>
 {% endblock %}
