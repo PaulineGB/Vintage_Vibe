@@ -30,7 +30,7 @@ class ProductController extends AbstractController
             'products' => $products,
             'categories' => $categories,
             'sizes' => $sizes
-            ]);
+        ]);
     }
 
     // page ADMIN add products
@@ -50,26 +50,34 @@ class ProductController extends AbstractController
         $categories = $categoryManager->selectAll();
         $sizes = $sizeManager->selectAll();
 
+        $product = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
 
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                return $donnees;
+            };
+
             $product = [
-                'title' => $_POST['title'],
-                'artist' => $_POST['artist'],
+                'title' => $securityForm($_POST['title']),
+                'artist' => $securityForm($_POST['artist']),
                 'category_id' => $_POST['category_id'],
                 'size_id' => $_POST['size_id'],
-                'description' => $_POST['description'],
-                'picture' => $_POST['picture'],
-                'price' => $_POST['price'],
-                'quantity' => $_POST['quantity']
+                'description' => $securityForm($_POST['description']),
+                'picture' => $securityForm($_POST['picture']),
+                'price' => $securityForm($_POST['price']),
+                'quantity' => $securityForm($_POST['quantity'])
             ];
+
             $productManager->insert($product);
             header('Location:/product/index');
         }
-            return $this->twig->render('Product/add.html.twig', [
-                'categories' => $categories,
-                'sizes' => $sizes
-            ]);
+        return $this->twig->render('Product/add.html.twig', [
+            'categories' => $categories,
+            'sizes' => $sizes
+        ]);
     }
 
     // page ADMIN edit products
@@ -93,27 +101,33 @@ class ProductController extends AbstractController
         $sizes = $sizeManager->selectAll();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $product['title'] = $_POST['title'];
-            $product['artist'] = $_POST['artist'];
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                return $donnees;
+            };
+
+            $product['title'] = $securityForm($_POST['title']);
+            $product['artist'] = $securityForm($_POST['artist']);
             $product['category_id'] = $_POST['category_id'];
             $product['size_id'] = $_POST['size_id'];
-            $product['description'] = $_POST['description'];
-            $product['picture'] = $_POST['picture'];
-            $product['price'] = $_POST['price'];
-            $product['quantity'] = $_POST['quantity'];
+            $product['description'] = $securityForm($_POST['description']);
+            $product['picture'] = $securityForm($_POST['picture']);
+            $product['price'] = $securityForm($_POST['price']);
+            $product['quantity'] = $securityForm($_POST['quantity']);
             $productManager->update($product);
+            header('Location:/product/index');
         }
 
         return $this->twig->render('Product/edit.html.twig', [
             'product' => $product,
             'categories' => $categories,
             'sizes' => $sizes
-            ]);
+        ]);
     }
 
     // page ADMIN delete products
 
-      /**
+    /**
      * Handle item deletion
      *
      * @param int $id
@@ -123,5 +137,22 @@ class ProductController extends AbstractController
         $productManager = new ProductManager();
         $productManager->delete($id);
         header('Location:/product/index');
+    }
+
+    /**
+     * Display user informations specified by $id
+     *
+     * @param int $id
+     * @return string
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
+     */
+    public function show(int $id)
+    {
+        $productManager = new ProductManager();
+        $product = $productManager->selectOneById($id);
+
+        return $this->twig->render('Product/show.html.twig', ['product' => $product]);
     }
 }

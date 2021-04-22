@@ -34,7 +34,6 @@ class BlogController extends AbstractController
         return $this->twig->render('Blog/index.html.twig', ['blogs' => $blogs]);
     }
 
-
     /**
      * Display blog informations specified by $id
      *
