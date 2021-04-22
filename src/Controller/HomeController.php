@@ -37,15 +37,25 @@ class HomeController extends AbstractController
             'totalCart' => $this->cartInfos()
             ]);
     }
-    
+
     public function addToCart(int $idProduct)
     {
         if (!empty($_SESSION['cart'][$idProduct])) {
             $_SESSION['cart'][$idProduct]++;
-        } else { 
+        } else {
             $_SESSION['cart'][$idProduct] = 1;
         }
         header('Location: /');
+    }
+
+    public function deleteFromCart(int $idProduct)
+    {
+        $cart=$_SESSION['cart'];
+        if (!empty($cart[$idProduct])) {
+            unset($cart[$idProduct]);
+        }
+        $_SESSION['cart'] = $cart;
+        header('Location: /home/cart');
     }
 
     public function cartInfos()
@@ -54,7 +64,7 @@ class HomeController extends AbstractController
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
             $cartInfos = [];
-            foreach ($cart as $id =>$quantity) {
+            foreach ($cart as $id => $quantity) {
                 $product = $productManager->selectOneById($id);
                 $product['quantity'] = $quantity;
                 $cartInfos[] = $product;
@@ -67,8 +77,8 @@ class HomeController extends AbstractController
     public function getTotalCart()
     {
         $total = 0;
-        if ($this->cartIfos != false) {
-            foreach($this->cartInfos() as $product) {
+        if ($this->cartInfos != false) {
+            foreach ($this->cartInfos() as $product) {
                 $total += $product['price'] * $product['quantity'];
             }
         }
