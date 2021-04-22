@@ -2,18 +2,10 @@
 
 {% block title %} All products{% endblock %}
 
-{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
-
 {% block content %}
-<div class="col-1 back">
-  <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
-</div>
-<section id="products" class="text-center">
+<section id="products">
     <h1>PRODUCTS</h1>
-    <br>
-    <a href="/product/add" class="btn btn-secondary">ADD A PRODUCT</a>
-    <br>
-    <br>
+    <a href="/product/add">Ajouter</a>
     <table class="table">
         <thead>
           <tr>
@@ -26,7 +18,6 @@
             <th scope="col">price</th>
             <th scope="col">quantity</th>
             <th scope="col">action</th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -52,5 +43,3 @@
 </section>
 
 {% endblock %}
-
-{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
