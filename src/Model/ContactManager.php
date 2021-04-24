@@ -56,4 +56,18 @@ class ContactManager extends AbstractManager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+       /**
+     * @param array $contact
+     * @return bool
+     */
+    public function update(array $contact): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `email` = :email WHERE id=:id");
+        $statement->bindValue('id', $contact['id'], \PDO::PARAM_INT);
+        $statement->bindValue('email', $contact['email'], \PDO::PARAM_STR);
+
+        return $statement->execute();
+    }
 }

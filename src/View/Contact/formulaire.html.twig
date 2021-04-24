@@ -1,12 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Add a new item</h1>
-    
-        {{ dump(errors) }}
+<div class"container">
+<h1>Contact Us</h1>
+</div>
+  
 
-    {% for error in errors %}
-        {{ errors }}
-    {% endfor %}
+
+    {% if errors is  empty  %}
+				<p>{{ sentence }}</p>
+			{% endif %}
     {% include 'Contact/_form.html.twig' %}
 {% endblock %}
