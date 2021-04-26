@@ -53,25 +53,33 @@ class HomeController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $userManager = new UserManager();
-
             $securityForm = function ($donnees) {
                 $donnees = trim($donnees);
                 return $donnees;
             };
 
-            if (strlen($_POST['password']) >= 6 && strlen($_POST['password']) <= 40) {
-                    $user['firstname'] = $securityForm($_POST['firstname']);
-                    $user['lastname'] = $securityForm($_POST['lastname']);
-                    $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
-                    $user['address'] = $securityForm($_POST['address']);
-                    $user['password'] = $securityForm(md5($_POST['password']));
-            } else {
-                $errors[] = "Password must contain between 6 and 12 characters";
-            }
+            if (
+                !empty($_POST['firstname']) && !empty($_POST['lastname'])
+                && !empty($_POST['email']) && !empty($_POST['address']) && !empty($_POST['check_password'])
+            ) {
+                if (strlen($_POST['check_password']) >= 6 && strlen($_POST['check_password']) <= 12) {
+                    if ($user['password'] === md5($_POST['check_password'])) {
+                            $user['firstname'] = $securityForm($_POST['firstname']);
+                            $user['lastname'] = $securityForm($_POST['lastname']);
+                            $user['email'] = filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL);
+                            $user['address'] = $securityForm($_POST['address']);
 
-            $userManager->update($user);
-            header('Location:/home/userAccount');
+                            $userManager->update($user);
+                            header('Location:/home/userAccount');
+                    } else {
+                        $errors[] = "Invalid password";
+                    }
+                } else {
+                    $errors[] = "Password must contain between 6 and 12 characters";
+                }
+            } else {
+                $errors[] = "All fields are required";
+            }
         }
 
         return $this->twig->render('Account/edit.html.twig', [
