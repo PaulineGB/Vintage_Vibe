@@ -11,10 +11,14 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 
+/**
+ * Class AdminController
+ *
+ */
 class AdminController extends AbstractController
 {
     /**
-     * Display home page
+     * Display admin page
      *
      * @return string
      * @throws \Twig\Error\LoaderError
@@ -23,10 +27,14 @@ class AdminController extends AbstractController
      */
     public function index()
     {
+        if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
+            header('Location: /');
+        }
+
         return $this->twig->render('Admin/index.html.twig');
     }
 
-    public function adminLog()
+    public function adminlog()
     {
         $userManager = new UserManager();
         $errors = [];
@@ -37,7 +45,11 @@ class AdminController extends AbstractController
                 if ($user) {
                     if ($user['password'] === md5($_POST['password'])) {
                         $_SESSION['user'] = $user;
-                        header('Location: /Admin/index.html.twig');
+                        if ($_SESSION['user']['is_admin']) {
+                            header('Location:/Admin/index/');
+                        } else {
+                            $errors[] = "You're not allowed to come in";
+                        }
                     } else {
                         $errors[] = "Invalid password";
                     }
@@ -48,7 +60,7 @@ class AdminController extends AbstractController
                 $errors[] = "All fields are required";
             }
         }
-        return $this->twig->render('Admin/adminlogin.html.twig', ['errors' => $errors]);
+        return $this->twig->render('Admin/adminlog.html.twig', ['errors' => $errors]);
     }
 
     public function logout()
