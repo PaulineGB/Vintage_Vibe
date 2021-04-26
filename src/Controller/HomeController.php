@@ -29,4 +29,13 @@ class HomeController extends AbstractController
             'products' => $products
         ]);
     }
+
+    public function shop()
+    {
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Home/shop.html.twig', [
+            'products' => $products
+        ]);
+    }
 }
