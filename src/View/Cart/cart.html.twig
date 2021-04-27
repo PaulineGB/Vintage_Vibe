@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div class='container'>
+	<h1>Your Cart!</h1>
+
+    <table class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">Product</th>
+				<th scope="col">Price</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Total</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in cart %}
+			<tr>
+                <td>{{product.title}}</td>
+				<td>{{product.price}}</td>
+				<td>{{product.quantity}}</td>
+				<td>{{product.quantity * product.price}}</td>
+				<td><a href="/cart/deleteFromCart/{{product.id}}">Delete from cart</a></td>
+            </tr> 
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	<h3> TOTAL :  {{totalCart}} € </h3>
+
+{% endblock %}

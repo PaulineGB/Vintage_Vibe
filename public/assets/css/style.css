@@ -8,6 +8,7 @@
 }
 
 body {
+<<<<<<< HEAD
     font-family: "Abel", sans-serif;
     display: flex;
     flex-direction: column;
@@ -33,6 +34,16 @@ footer {
     border-top: 1px solid black;
     margin-top: auto;
     padding-top: 10px;
+=======
+  font-family: "Abel", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+>>>>>>> ea395fedc40215a1c509be8c09c69be43eadc588
 }
 
 .homeheader {

@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Shop {% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+    <div class="container shop mt-5 mb-5">
+        <section class="text-center">
+            <h1><a href="/home/shop" class="text-reset text-decoration-none">OUR SHOP</a></h1>
+        </section>
+        <section class="container-fluid text-center mt-5">
+            <div class="row mt">
+                {% for i in 0..1 %}
+                    <div class="col-lg-4 fs-4 lh-1"><a href="/home/shop?sizename={{ size[i].id }}" class="text-reset text-uppercase">{{ size[i].name }}</a><br>▼▼</div>
+                {% endfor %}
+                {% for i in 1..1 %}
+                    <div class="col-lg-4 fs-4 lh-1"><a href="/home/shop?categoryname={{ category[i].id }}" class="text-reset text-uppercase">{{ category[i].name }}</a><br>▼▼</div>
+                {% endfor %}
+            </div>
+        </section>
+        <section id="products">
+            <div class="row row-cols-1 g-4 mt-5">
+                {% for product in products %}
+                    <div class="col col-lg-4 d-flex justify-content-center">
+                        <div class="card-group" style="width: 18rem;">
+                            <div class="card">
+                                <a href="/home/showproduct/{{ product.id }}"><img src="{{ product.picture }}" height="300px" class="card-img-top" alt="{{ product.title }}"></a>
+                                <div class="card-body m-0 p-0">
+                                    <div class="text-center">
+                                        <a href="/home/showproduct/{{ product.id }}" class="text-reset text-decoration-none"><h5 class="card-title lh-2 pt-3">{{ product.title }}<br>{{ product.artist }}</h5></a>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white border-white d-flex justify-content-between">
+                                    <div><a href="" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
+                                    <div><p class="fs-5 align-items-center">▼▼</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

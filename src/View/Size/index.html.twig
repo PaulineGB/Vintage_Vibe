@@ -5,16 +5,15 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-    <div class="col-1 back">
+    <div class="col-1 back m-3">
         <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
     </div>
-    <div class="text-center">
-        <h1>SIZES</h1>
-        <br>
+    <div class="container text-center">
+        <h1 class="mb-3">SIZES</h1>
         <a href="/size/add" class="btn btn-secondary">ADD SIZE</a>
-        <br>
-        <br>
-        <table class="table">
+    </div>
+    <div class="container">
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
