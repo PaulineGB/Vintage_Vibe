@@ -1,5 +1,9 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} {{ product.title }}}} {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
 {% block content %}
 <span class="material-icons"><a herf="%">arrow_back</a></span>
 <div class="text-center">

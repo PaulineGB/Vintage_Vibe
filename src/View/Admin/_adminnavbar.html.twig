@@ -5,7 +5,7 @@
             <div><a href="/home/index/" class="text-reset text-decoration-none fs-1">▼▼</a></div>
         </div>
         {% endif %}
-        {% if session.user is defined %}
+        {% if session.user is defined and session.user.is_admin == true %}
         <div class="container-fluid d-flex justify-content-start"></div>
         <div class="container-fluid d-flex justify-content-center">
                 <div><a href="/admin/index/" class="text-reset text-decoration-none fs-1">▼▼</a></div>
