@@ -73,6 +73,14 @@ class HomeController extends AbstractController
         ]);
     }
 
+    public function showproduct(int $id)
+    {
+        $productManager = new ProductManager();
+
+        $product = $productManager->selectOneById($id);
+        return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
+    }
+
     public function newsLetter()
     {
         $errors = [];

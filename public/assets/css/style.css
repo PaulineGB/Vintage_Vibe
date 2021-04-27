@@ -1,13 +1,40 @@
 :root {
-  --greyvibe: rgb(238 236 236);
+    --greyvibe: rgb(238 236 236);
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
+<<<<<<< HEAD
+    font-family: "Abel", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+.back {
+    margin-bottom: 30px;
+}
+
+footer {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid black;
+    margin-top: auto;
+    padding-top: 10px;
+=======
   font-family: "Abel", sans-serif;
   min-height: 100vh;
   display: flex;
@@ -16,28 +43,29 @@ body {
 
 .content {
   flex-grow: 1;
+>>>>>>> ea395fedc40215a1c509be8c09c69be43eadc588
 }
 
 .homeheader {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .headerimg {
-  width: 100%;
+    width: 100%;
 }
 
 .homeabout {
-  background-color: var(--greyvibe);
+    background-color: var(--greyvibe);
 }
 
 .hometriangle img {
-  max-width: 80px;
+    max-width: 80px;
 }
 
 .hometeam {
-  background-color: var(--greyvibe);
+    background-color: var(--greyvibe);
 }
 
 .hometeam img {
-  max-width: 40%;
+    max-width: 40%;
 }
