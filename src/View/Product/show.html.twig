@@ -1,13 +1,25 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} {{product.title}} {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-    <h1>{{ product.category_name }} {{ product.artist }}</h1>
+<div class="col-1 back m-3">
+        <a href="/product/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class="container">
+    <h1>{{ product.title }} - {{ product.artist }}</h1>
     <img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture">
-    <p>{{ product.title }}</p>
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }}</p>
-    <p>{{ product.quantity }}</p>
-    <a href="/product/edit/{{ product.id }}">EDIT</a>
-    <a href="/product/delete/{{ product.id }}">DELETE</a>
-    <a href="/product/index">Back</a>
+    <p><strong>CATEGORY</strong><br>{{ product.category_name }}</p>
+    <p><strong>DESCRIPTION</strong><br>{{ product.description }}</p>
+    <p><strong>PRICE</strong><br>{{ product.price }}</p>
+    <p><strong>QUANTITY</strong><br>{{ product.quantity }}</p>
+    <div>
+        <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+        <a href="/product/delete/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+    </div>
+</div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

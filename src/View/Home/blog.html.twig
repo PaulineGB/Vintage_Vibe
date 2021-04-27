@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<section>
+    <div class="mt-5 text-center">
+        <h1>BLOG </h1>
+    </div>
+</section>
+
+
+<section id="new" class="mt-5 p-5">
+    <div class="row mt-5">
+     {% for blog in blogs %}
+            <div class="card-deck col-lg-4">
+                <div class="text-right">
+                    <img src="{{blog.picture}}" height="200px" class="card-img-top"  alt="{{blog.title}}">
+                    <div class="card-body">
+
+                        <div class="text-center">
+                            <h5 class="card-title">{{blog.title}}</h5>
+                        </div>
+                            <p class="card-text">{{blog.description}}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %} 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
