@@ -14,6 +14,7 @@ use App\Model\ProductManager;
 use App\Model\SizeManager;
 use App\Model\CategoryManager;
 
+
 class HomeController extends AbstractController
 {
     /**
@@ -26,11 +27,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Home/index.html.twig', [
-            'products' => $products
-        ]);
+        return $this->twig->render('Home/index.html.twig');
     }
 
     public function shop()
@@ -64,6 +61,7 @@ class HomeController extends AbstractController
             'products' => $products,
             'size' => $size,
             'category' => $category
+    }
 
     public function blog()
     {
