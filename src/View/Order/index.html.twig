@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Orders {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+  <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class="container text-center">
+    <h1 class="mb-3">ORDERS</h1>
+    <div>
+        {% for order in orders %}
+        <div><a href="/order/show/{{ order.id }}">{{ order.id }}. {{order.title }}</a></div>
+        {% else %}
+        <p>Ooops, there's no order here. Try to sell something.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
