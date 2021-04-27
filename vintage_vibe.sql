@@ -33,6 +33,8 @@ CREATE TABLE `blog` (
   `picture` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `blog`
 --
@@ -42,6 +44,7 @@ INSERT INTO `blog` (`id`, `title`, `description`, `picture`) VALUES
 (2, 'VINTAGE REVIVAL', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.', 'https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80'),
 (3, 'WHO ARE WE? WHO, WHO?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80');
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -53,6 +56,8 @@ CREATE TABLE `category` (
   `name` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `category`
 --
@@ -61,6 +66,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Vinyl'),
 (2, 'Bazar');
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -75,6 +81,8 @@ CREATE TABLE `contact` (
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `contact`
 --
@@ -84,6 +92,7 @@ INSERT INTO `contact` (`id`, `email`, `firstname`, `lastname`, `message`) VALUES
 (2, 'jm_mafemme@yahoo.com', 'Jean-Michel', 'MaFemme', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.'),
 (3, 'poil_poil@caramail.', 'Poil', 'Poil', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.');
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -95,6 +104,8 @@ CREATE TABLE `newsletter` (
   `email` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `newsletter`
 --
@@ -109,6 +120,7 @@ INSERT INTO `newsletter` (`id`, `email`) VALUES
 (7, 'justinator_article@localhost.com'),
 (8, 'eddy_crud@8888.fr');
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -153,6 +165,8 @@ CREATE TABLE `product` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `product`
 --
@@ -168,6 +182,7 @@ INSERT INTO `product` (`id`, `title`, `artist`, `category_id`, `size_id`, `descr
 (8, 'PLATINE MK2', NULL, 2, 3, 'It is widely regarded as the most durable and strongest turntable ever produced, so much so that most units made in the 1970s are still widely used today. The material has not been produced since 2010. Production resumed in 2014 after many people came forward to Technics, which reportedly received over 20,000 letters of request to resume production. Only 20 handcrafted examples with great care leave the Technics factory located in Japan every day. ', 'https://images-ext-1.discordapp.net/external/zhxK9o1nfdCqDbdq40R2ufJzW5WLCyAldAWDofvHdq8/%3Fixlib%3Drb-1.2.1%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D1080%26fit%3Dmax/https/images.unsplash.com/photo-1505672984986-b7c468c7a134', 235, 5),
 (9, 'STRANGE NIGHTS - THE DOORS', '', 2, 3, 'Affiliated with the psychedelic rock scene, the group distinguished itself by a protean and rather peculiar music, borrowing at the same time from blues (Cars Hiss by My Window), from pop (Touch Me), from funk (Peace Frog), from jazz5 (Shaman\'s Blues) but also from flamenco (Spanish Caravan), and from opera (Alabama Song), and deeply influenced by art and poetry in particular6. All these characteristics have made the Doors a \"cult\" band that has inspired many artists.', 'https://i.pinimg.com/originals/a7/1e/3b/a71e3b667bffc9683e97a281fc555f0b.jpg', 20, 6);
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -179,6 +194,8 @@ CREATE TABLE `size` (
   `name` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD
+=======
 --
 -- Déchargement des données de la table `size`
 --
@@ -188,6 +205,7 @@ INSERT INTO `size` (`id`, `name`) VALUES
 (2, 'Vinyl 45'),
 (3, '--');
 
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- --------------------------------------------------------
 
 --
@@ -205,6 +223,8 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+<<<<<<< HEAD
+=======
 -- Déchargement des données de la table `user`
 --
 
@@ -218,6 +238,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `email`, `address`, `password
 (7, 'DISCO', 'Dance', 'disco.dance@lycoos.com', '2 rue du Potiron 80500 RONRON', '13c7b91dbd1e80166db7fdbb24840154', 1);
 
 --
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 -- Index pour les tables déchargées
 --
 
@@ -288,25 +309,41 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `blog`
 --
 ALTER TABLE `blog`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `contact`
 --
 ALTER TABLE `contact`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `newsletter`
 --
 ALTER TABLE `newsletter`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `order`
@@ -324,19 +361,31 @@ ALTER TABLE `order_product`
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `size`
 --
 ALTER TABLE `size`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
+<<<<<<< HEAD
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+>>>>>>> 11131e0111ad48745e3af6ab4df7fd356fefb48e
 
 --
 -- Contraintes pour les tables déchargées

@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>List of Visitors who have left a message!</h1>
+        <a href="/Home/index">Home Vibe</a>
+
+    <h2>Messages from contacts:</h2> 
+    {% for  contact in contacts %}
+     <h3>contact</h3>
+    <h4>{{ contact.firstname }} {{ contact.lastname }}</h4>
+    <p>{{ contact.id }}. {{ contact.email}}</p>
+    <p> {{ contact.message }}</p>
+    <label for="reponseEmail">Objet</label><br>
+	  <input type="text" id="reponseEmail" value="{{ contact.message }}" name="reponseEmail "></br>
+
+    <label for="w3review">Repondre au message</label>
+    <textarea id="w3review" name="w3review" rows="3" cols="50"></textarea>
+    <a href="/contact/show/{{ contact.id }}"class="btn btn-outline-secondary">EDIT</a>
+    <a href="/contact/delete/{{ contact.id }}" class="btn btn-outline-secondary">DELETE</a>
+     {% endfor %}       
+
+{% endblock %}
