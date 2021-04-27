@@ -5,16 +5,15 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-        <div class="col-1 back">
+        <div class="col-1 back m-3">
             <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
         </div>
-        <div class="text-center">
-            <h1>USERS</h1>
+        <div class="container text-center">
+            <h1 class="mb-3">USERS</h1>
             <div><a href="/User/add/" class="btn btn-secondary">ADD NEW USER</a></div>
         </div>
-        <br>
-        <div>
-            <table class="table">
+        <div class="container">
+            <table class="table mt-5">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -41,7 +40,7 @@
                                 {% endif %}
                             </td>
                             <td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                            <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></tr>
+                            <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
