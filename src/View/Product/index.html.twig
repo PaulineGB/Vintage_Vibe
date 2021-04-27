@@ -5,13 +5,15 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-<div class="col-1 back">
+<div class="col-1 back m-3">
   <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
 </div>
-<section id="products" class="text-center">
-    <h1>PRODUCTS</h1>
-    <a href="/product/add" class="btn btn-secondary">ADD A PRODUCT</a>
-    <table class="table">
+<section id="products" class="container">
+  <div class="container text-center">
+    <h1 class="mb-3">PRODUCTS</h1>
+    <a href="/product/add" class="btn btn-secondary mt-3 mb-5">ADD A PRODUCT</a>
+  </div>
+    <table class="table mt-5">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -23,7 +25,6 @@
             <th scope="col">price</th>
             <th scope="col">quantity</th>
             <th scope="col">action</th>
-            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -39,8 +40,8 @@
             <td>{{ product.quantity }}</td>
             <td>
                 <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
-                <a href="/product/show/{{ product.id }}" class="btn btn-outline-secondary">SHOW</a>
+                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+                <a href="/product/show/{{ product.id }}" class="btn btn-outline-success">SHOW</a>
             </td>
           </tr>
             {% endfor %}

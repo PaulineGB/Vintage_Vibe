@@ -106,4 +106,32 @@ class ProductManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function filtersize(string $sizename)
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT
+        product.id, title, artist, picture, size_id, size.name AS size_name
+        FROM " . self::TABLE .
+            " JOIN size ON size.id = product.size_id
+        WHERE product.size_id = :sizename"
+        );
+        $statement->bindValue('sizename', $sizename, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function filtercategory(string $categoryname)
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT
+        product.id, title, artist, picture, size_id, category.name AS category_name
+        FROM " . self::TABLE .
+            " JOIN category ON category.id = product.category_id
+        WHERE product.category_id = :categoryname"
+        );
+        $statement->bindValue('categoryname', $categoryname, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
 }
