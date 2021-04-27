@@ -11,6 +11,8 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use App\Model\UserManager;
+use App\Model\InvoiceManager;
+use App\Model\OrderManager;
 
 class HomeController extends AbstractController
 {
@@ -40,7 +42,14 @@ class HomeController extends AbstractController
         if (isset($_SESSION['user']['id'])) {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($id);
-            return $this->twig->render('Account/account.html.twig', ['user' => $user]);
+
+            $invoiceManager = new InvoiceManager();
+            $order = $invoiceManager->selectOneById($id);
+
+            return $this->twig->render('Account/account.html.twig', [
+                'user' => $user,
+                'order' => $order
+                ]);
         } else {
             header('Location: /');
         }

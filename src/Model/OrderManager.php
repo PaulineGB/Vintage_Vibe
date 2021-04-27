@@ -15,7 +15,7 @@ namespace App\Model;
  */
 class OrderManager extends AbstractManager
 {
-    public const TABLE = 'order';
+    public const TABLE = 'order_product';
 
     /**
      *  Initializes this class.
@@ -24,14 +24,4 @@ class OrderManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
-    public function selectAll(): array
-    {
-        return $this->pdo->query('SELECT * FROM `order`')->fetchAll();
-    }
-
-    /**
-     * @param array $item
-     * @return int
-     */
 }

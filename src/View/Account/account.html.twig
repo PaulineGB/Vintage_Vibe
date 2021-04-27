@@ -1,46 +1,57 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    {{ parent() }} My Account
+{{ parent() }} My Account
 {% endblock %}
 
 {% block navbar %}{% endblock %}
 
 {% block content %}
 <div class="container">
-        <div class="col-1 back">
-            <a href="/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
-        </div>
-        <div class="text-center">
-            <h1>MY ACCOUNT</h1>
-            <a class="mt-3 btn btn-secondary" href="/security/logout">LOGOUT</a>
+    <div class="col-1 back">
+        <a href="/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="text-center">
+        <h1>MY ACCOUNT</h1>
+        <a class="mt-3 btn btn-secondary" href="/security/logout">LOG OUT</a>
+    </div>
+    <div>
+        <div>
+            <h5>FIRSTNAME</h5>
+            <p>{{ user.firstname }}</p>
         </div>
         <div>
-            <div>
-                <h5>FIRSTNAME</h5>
-                <p>{{ user.firstname }}</p>
-            </div>
-            <div>
-                <h5>LASTNAME</h5>
-                <p>{{ user.lastname }}</p>
-            </div>
-            <div>
-                <h5>ADDRESS</h5>
-                <p>{{ user.address }}</p>
-            </div>
-            <div>
-                <h5>EMAIL</h5>
-                <p>{{ user.email }}</p>
-            </div>
-            <div>
-                <h5>PASSWORD</h5>
-            </div>
-            <a href="/Home/editAccount/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a>
+            <h5>LASTNAME</h5>
+            <p>{{ user.lastname }}</p>
         </div>
-        <div class="text-center">
-            <h1>MY ORDERS</h1>
+        <div>
+            <h5>ADDRESS</h5>
+            <p>{{ user.address }}</p>
         </div>
+        <div>
+            <h5>EMAIL</h5>
+            <p>{{ user.email }}</p>
+        </div>
+        <a href="/Home/editAccount/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a>
+    </div>
+    <div class="text-center">
+        <h1>MY ORDERS</h1>
+    </div>
+    <div class="card text-center" style="width: 50rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ order.created_at }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.user_firstname }} {{ order.user_lastname }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.user_address }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.user_email }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.op_quantity }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.p_picture }} {{ order.user_lastname }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.p_title }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">{{ order.p_price }}</h6>
+            <h5 class="card-title">{{ order.total }} €</h5>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
 
 {% block footer %}{% endblock %}
