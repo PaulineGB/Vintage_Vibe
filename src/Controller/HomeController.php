@@ -14,7 +14,6 @@ use App\Model\ProductManager;
 use App\Model\SizeManager;
 use App\Model\CategoryManager;
 
-
 class HomeController extends AbstractController
 {
     /**
@@ -61,6 +60,7 @@ class HomeController extends AbstractController
             'products' => $products,
             'size' => $size,
             'category' => $category
+        ]);
     }
 
     public function blog()
