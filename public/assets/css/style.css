@@ -9,30 +9,13 @@
 
 body {
   font-family: "Abel", sans-serif;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: white;
-  border-bottom: 1px solid black;
-}
-
-.back {
-  margin-bottom: 30px;
-}
-
-footer {
-  height: 50px;
-  width: 100%;
-  background-color: white;
-  border-top: 1px solid black;
-  margin-top: auto;
-  padding-top: 10px;
+.content {
+  flex-grow: 1;
 }
 
 .homeheader {
