@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="col-1 back m-3">
-        <a href="/product/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+        <a href="/admin/indexProduct" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
 </div>
 <div class="container">
     <h1>{{ product.title }} - {{ product.artist }}</h1>
@@ -16,8 +16,8 @@
     <p><strong>PRICE</strong><br>{{ product.price }}</p>
     <p><strong>QUANTITY</strong><br>{{ product.quantity }}</p>
     <div>
-        <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-        <a href="/product/delete/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+        <a href="/admin/editProduct/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+        <a href="/admin/deleteProduct/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
     </div>
 </div>
 {% endblock %}

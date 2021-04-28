@@ -10,7 +10,7 @@
     </div>
     <div class="container text-center">
         <h1 class="mb-5">BLOG ARTICLES</h1>
-        <a href="/blog/add" class="btn btn-secondary">ADD A NEW ARTICLE</a>
+        <a href="/admin/addBlog/" class="btn btn-secondary">ADD A NEW ARTICLE</a>
     </div>
     <div class="container">
         <table class="table mt-5">
@@ -29,8 +29,8 @@
                         <th scope="row">{{ blog.id }}</th>
                         <td><img src="{{ blog.picture }}" width="100px" height="70px" alt="Blog picture"></td>
                         <td>{{ blog.title }}</td>
-                        <td><a href="/blog/edit/{{ blog.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                        <td><a href="/blog/delete/{{ blog.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                        <td><a href="/admin/editBlog/{{ blog.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/admin/deleteBlog/{{ blog.id }}" class="btn btn-outline-dark">DELETE</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

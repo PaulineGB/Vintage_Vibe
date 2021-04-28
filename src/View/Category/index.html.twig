@@ -10,7 +10,7 @@
     </div>
     <div class="container text-center">
         <h1 class="mb-3">CATEGORIES</h1>
-        <a href="/category/add" class="btn btn-secondary">ADD CATEGORY</a>
+        <a href="/admin/addCategory" class="btn btn-secondary">ADD CATEGORY</a>
     </div>
     <div class="container">
         <table class="table mt-5">
@@ -27,8 +27,8 @@
                     <tr>
                         <th scope="row">{{ category.id }}</th>
                         <td>{{ category.name }}</td>
-                        <td><a href="/category/edit/{{ category.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                        <td><a href="/category/delete/{{ category.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                        <td><a href="/admin/editCategory/{{ category.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/admin/deleteCategory/{{ category.id }}" class="btn btn-outline-dark">DELETE</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -76,7 +76,7 @@ class HomeController extends AbstractController
             'blogs' => array_reverse($blogs)
         ]);
     }
-  
+
     public function terms()
     {
         return $this->twig->render('Home/terms.html.twig');
@@ -86,7 +86,7 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/faq.html.twig');
     }
-  
+
     public function showproduct(int $id)
     {
         $productManager = new ProductManager();
@@ -126,13 +126,5 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/newsLetter.html.twig', [
             'errors' => $errors
         ]);
-    }
-
-    public function contactNewsLetter()
-    {
-        $newsLetterManager = new NewsLetterManager();
-        $newsLetters = $newsLetterManager->selectAll();
-
-        return $this->twig->render('Newsletter/index.html.twig', ['newsLetters' => $newsLetters]);
     }
 }
