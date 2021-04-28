@@ -103,9 +103,8 @@ class ContactController extends AbstractController
             if (empty($errors)) {
                 $contactManager->insert($contact);
                 $sentence = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
-                    . ' ' . 'for contacting us about “ '
-                    . ($contact['message']) .
-                    ' " One of our advisors will contact you at: '
+                    . ' ' . 'for contacting us about you message. 
+                   One of our advisors will contact you at: '
                     . $contact['email'] .
                     ' as soon as possible to process your request.';
             }
