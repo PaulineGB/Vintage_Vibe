@@ -76,7 +76,12 @@ class HomeController extends AbstractController
             'blogs' => array_reverse($blogs)
         ]);
     }
-
+  
+    public function terms()
+    {
+        return $this->twig->render('Home/terms.html.twig');
+    }
+  
     public function showproduct(int $id)
     {
         $productManager = new ProductManager();
