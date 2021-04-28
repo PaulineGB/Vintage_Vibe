@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 28 avr. 2021 à 09:32
+-- Généré le : mer. 28 avr. 2021 à 14:19
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.12
 
@@ -119,16 +119,8 @@ CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  `total` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `order`
---
-
-INSERT INTO `order` (`id`, `user_id`, `created_at`, `total`, `product_id`) VALUES
-(1, 8, '2021-04-26', 230, 7);
 
 -- --------------------------------------------------------
 
@@ -278,8 +270,7 @@ ALTER TABLE `newsletter`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_order_user` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `FK_order_user` (`user_id`);
 
 --
 -- Index pour la table `order_product`
@@ -389,7 +380,6 @@ ALTER TABLE `wishlist`
 -- Contraintes pour la table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `FK_order_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `FK_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
