@@ -118,12 +118,12 @@ class HomeController extends AbstractController
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                     . $newsletter['email'] . ', nous vous contactons bientôt.';
                 $newsletterManager->insert($newsletter);
-                return $this->twig->render('Home/newsLetter.html.twig', [
+                return $this->twig->render('Home/index.html.twig', [
                     'sentence' => $sentence
                 ]);
             }
         }
-        return $this->twig->render('Home/index/', [
+        return $this->twig->render('Home/index.html.twig', [
             'errors' => $errors
         ]);
     }
