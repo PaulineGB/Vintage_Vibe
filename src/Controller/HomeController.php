@@ -89,12 +89,13 @@ class HomeController extends AbstractController
             $userManager = new UserManager();
             $user = $userManager->selectOneById($id);
 
-            $orderManager = new OrderManager();
-            $order = $orderManager->selectOneById($id);
+            $invoiceManager = new InvoiceManager();
+            $invoice = $invoiceManager->getInvoiceByUser($id);
+
 
             return $this->twig->render('Account/account.html.twig', [
                 'user' => $user,
-                'order' => $order
+                'invoices' => $invoice,
                 ]);
         } else {
             header('Location: /');

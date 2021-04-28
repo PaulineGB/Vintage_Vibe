@@ -10,6 +10,8 @@
 
 namespace App\Model;
 
+use PDO;
+
 /**
  *
  */
@@ -25,37 +27,30 @@ class InvoiceManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    /**
-     * Get all row from database.
-     *
-     * @return array
-     */
-    public function selectAll(): array
-    {
-        return $this->pdo->query('SELECT 
-        o.id, o.user_id, o.created_at, o.total,
-        order_product.quantity AS op_quantity,
-        u.firstname AS user_firstname, u.lastname AS user_lastname, u.email AS user_email, u.address AS user_address,
-        p.picture AS p_picture, p.title AS p_title, p.price AS p_price, p.quantity AS p_quantity
-        FROM `order` AS o
-        JOIN order_product ON o.id = order_product.order_id
-        JOIN `user` AS u ON o.user_id = u.id
-        JOIN product AS p ON p.id = o.product_id
-        ')->fetchAll();
-    }
-
-
     public function insertOrder(array $order): int
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-        "(`user_id`, `product_id`, `created_at`, `total`)
-        VALUES (:user_id, :product_id, :created_at, :total)");
+        $statement = $this->pdo->prepare("INSERT INTO `order` (user_id, created_at, total)
+        VALUES (:user_id, :created_at, :total)");
         $statement->bindValue('user_id', $order['user_id'], \PDO::PARAM_INT);
-        $statement->bindValue('product_id', $order['product_id'], \PDO::PARAM_INT);
         $statement->bindValue('created_at', $order['created_at'], \PDO::PARAM_STR);
         $statement->bindValue('total', $order['total'], \PDO::PARAM_INT);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function getInvoiceByUser(int $idUser)
+    {
+        $statement = $this->pdo->prepare("SELECT
+        o.id, o.user_id, o.created_at, o.total,
+        u.firstname AS u_firstname, u.lastname AS u_lastname, u.address AS u_address
+        FROM `order` AS o
+        JOIN user AS u ON u.id = o.user_id
+        WHERE o.user_id = :user_id");
+        $statement->bindValue('user_id', $idUser, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

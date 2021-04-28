@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Model\ProductManager;
 use App\Model\UserManager;
 use App\Model\InvoiceManager;
+use App\Model\OrderManager;
 
 class CartController extends AbstractController
 {
@@ -108,34 +109,32 @@ class CartController extends AbstractController
     public function order()
     {
         $invoiceManager = new InvoiceManager();
-        // $orderArticleManager = new OrderArticleManager();
-        // $productManager = new ProductManager();
+        $orderManager = new OrderManager();
+        $productManager = new ProductManager();
 
-            // $order = [
-            //     'created_at' => date('y-m-d'),
-            //     'total' => $this->getTotalCart(),
-            //     'user_id' => $_SESSION['user']['id'],
-            //     'product_id' => $_SESSION['cart']['product_id'],
-            // ];
+        $order = [
+            'created_at' => date('y-m-d'),
+            'total' => $this->getTotalCart(),
+            'user_id' => $_SESSION['user']['id'],
+        ];
 
-            // $idOrder = $invoiceManager->insertOrder($order);
-            // var_dump($idOrder);
+        $idOrder = $invoiceManager->insertOrder($order);
 
-                // if ($idOrder) {
-                //     foreach($_SESSION['cart'] as $idArticle => $qty) {
-                //         // $article = $articleManager->selectOneById($idArticle);
-                //         // $newQty = $article['qty'] - $qty;
-                //         // $articleManager->updateQty($idArticle, $newQty);
-                //         $newLineInTickets = [
-                //             'order_id' => $idOrder,
-                //             'article_id' => $idArticle,
-                //             'qty' => $qty,
-                //         ];
-                //         $orderArticleManager->insert($newLineInTickets);
-                //     }
-                    // unset($_SESSION['cart']);
-                    // header('Location: /home/userAccount');
-                // }
+        if ($idOrder) {
+            foreach ($_SESSION['cart'] as $idProduct => $quantity) {
+                // $article = $articleManager->selectOneById($idArticle);
+                // $newQty = $article['qty'] - $qty;
+                // $articleManager->updateQty($idArticle, $newQty);
+                $invoiceTicket = [
+                    'order_id' => $idOrder,
+                    'product_id' => $idProduct,
+                    'quantity' => $quantity,
+                ];
+                $orderManager->insert($invoiceTicket);
+            }
+            unset($_SESSION['cart']);
+            header('Location: /home/userAccount');
+        }
 
         return $this->twig->render('Cart/order.html.twig', [
             'cart' => $this->cartInfos(),
