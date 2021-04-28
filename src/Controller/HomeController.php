@@ -95,7 +95,7 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
     }
 
-    public function addNewsletter()
+    public function newsletter()
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
