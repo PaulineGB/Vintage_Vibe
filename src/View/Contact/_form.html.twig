@@ -1,0 +1,36 @@
+<form class="formuContact" method="post">
+		
+	
+	<div class="container">
+	{% if errors.allFields is defined and  not empty %}
+		<p> {{errors.allFields}} </p>
+		{% endif %}
+		<input type="hidden" value="{{ contact.id }}" name="id"><br>
+		<label for="firstname">Firstname:</label><br>
+		<input type="text" id="firstname" value="{{ contact.firstname }}" name="firstname"></br>
+		{% if errors.firstname is defined and not empty %}
+		<p> {{errors.firstname}} </p>
+		{% endif %}
+		<label for="lastname">Lastname:</label><br>
+		<input type="text" id="lastname" value="{{ contact.lastname }}" name="lastname"><br>
+		{% if errors.lastname is defined and not empty %}
+		<p> {{errors.lastname}} </p>
+		{% endif %}
+		<label for="email">Email:</label><br>
+		<input type="text" id="email" value="{{ contact.email }}" name="email"><br>
+		{% if errors.email is defined and not empty %}
+		<p> {{errors.email}} </p>
+		{% endif %}
+		{% if errors.emailNotOk is defined and not empty %}
+		<p> {{errors.emailNotOk}} </p>
+		{% endif %}
+		<label for="message">Message:</label><br>
+		<TEXTAREA type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA></br>
+		{% if errors.message is defined and not empty %}
+		<p> {{errors.message}} </p>
+		{% endif %}
+	</div>
+	<div class="container">	
+		<input type="submit" value="Valider"><br>
+	</div>
+</form>
