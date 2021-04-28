@@ -7,7 +7,7 @@
 {% block content %}
 <div class='container text-center'>
 	<h1 class="mt-5">YOUR CART!</h1>
-    <table class="table table-bordered mt-5">
+	<table class="table table-bordered mt-5">
 		<thead>
 			<tr>
 				<th scope="col">Product</th>
@@ -20,17 +20,21 @@
 		<tbody>
 			{% for product in cart %}
 			<tr>
-                <td>{{product.title}}</td>
+				<td>{{product.title}}</td>
 				<td>{{product.price}}</td>
 				<td>{{product.quantity}}</td>
 				<td>{{product.quantity * product.price}}</td>
 				<td><a href="/cart/deleteFromCart/{{product.id}}">Delete from cart</a></td>
-            </tr>
+			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
-	<h3> TOTAL :  {{totalCart}} € </h3>
+	<h3 class="m-3"> TOTAL : {{totalCart}} € </h3>
 </div>
+{% if session.user is defined %}
+<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
+{% endif %}
+
 {% if session.user is not defined %}
 {% include 'Security/_logform.html.twig' %}
 {% endif %}

@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Model\ProductManager;
 use App\Model\UserManager;
+use App\Model\InvoiceManager;
 
 class CartController extends AbstractController
 {
@@ -101,5 +102,44 @@ class CartController extends AbstractController
             }
         }
         return $total;
+    }
+
+    //Order
+    public function order()
+    {
+        $invoiceManager = new InvoiceManager();
+        // $orderArticleManager = new OrderArticleManager();
+        // $productManager = new ProductManager();
+
+            // $order = [
+            //     'created_at' => date('y-m-d'),
+            //     'total' => $this->getTotalCart(),
+            //     'user_id' => $_SESSION['user']['id'],
+            //     'product_id' => $_SESSION['cart']['product_id'],
+            // ];
+
+            // $idOrder = $invoiceManager->insertOrder($order);
+            // var_dump($idOrder);
+
+                // if ($idOrder) {
+                //     foreach($_SESSION['cart'] as $idArticle => $qty) {
+                //         // $article = $articleManager->selectOneById($idArticle);
+                //         // $newQty = $article['qty'] - $qty;
+                //         // $articleManager->updateQty($idArticle, $newQty);
+                //         $newLineInTickets = [
+                //             'order_id' => $idOrder,
+                //             'article_id' => $idArticle,
+                //             'qty' => $qty,
+                //         ];
+                //         $orderArticleManager->insert($newLineInTickets);
+                //     }
+                    // unset($_SESSION['cart']);
+                    // header('Location: /home/userAccount');
+                // }
+
+        return $this->twig->render('Cart/order.html.twig', [
+            'cart' => $this->cartInfos(),
+            'totalCart' => $this->getTotalCart()
+        ]);
     }
 }
