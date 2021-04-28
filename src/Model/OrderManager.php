@@ -33,8 +33,8 @@ class OrderManager extends AbstractManager
         p.picture AS p_picture, p.title AS p_title, p.price AS p_price, p.quantity AS p_quantity
         FROM order_product AS op
         JOIN `order`AS o ON o.id = op.order_id
-        JOIN product AS p ON p.id = o.product_id
-        WHERE op.user_id=:id');
+        JOIN product AS p ON p.id = op.product_id
+        WHERE o.user_id = :id');
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
