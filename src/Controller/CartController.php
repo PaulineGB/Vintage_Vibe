@@ -21,14 +21,7 @@ class CartController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
-    {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Cart/index.html.twig', [
-            'products' => $products
-        ]);
-    }
+
 
     public function cart()
     {

@@ -36,6 +36,7 @@ class HomeController extends AbstractController
         ]);
     }
 
+    // SHOP all & detail
     public function shop()
     {
         $productManager = new ProductManager();
@@ -70,6 +71,15 @@ class HomeController extends AbstractController
         ]);
     }
 
+    public function showproduct(int $id)
+    {
+        $productManager = new ProductManager();
+
+        $product = $productManager->selectOneById($id);
+        return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
+    }
+
+    // User Account
     public function userAccount()
     {
         $id = $_SESSION['user']['id'];
@@ -133,6 +143,7 @@ class HomeController extends AbstractController
         ]);
     }
 
+    // Blog
     public function blog()
     {
         $blogManager = new BlogManager();
@@ -142,6 +153,7 @@ class HomeController extends AbstractController
         ]);
     }
 
+    // FAQ & Terms pages
     public function terms()
     {
         return $this->twig->render('Home/terms.html.twig');
@@ -152,14 +164,7 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/faq.html.twig');
     }
 
-    public function showproduct(int $id)
-    {
-        $productManager = new ProductManager();
-
-        $product = $productManager->selectOneById($id);
-        return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
-    }
-
+    // Newsletter
     public function newsLetter()
     {
         $errors = [];
@@ -183,12 +188,12 @@ class HomeController extends AbstractController
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                     . $newsletter['email'] . ', nous vous contactons bientôt.';
                 $newsletterManager->insert($newsletter);
-                return $this->twig->render('Home/newsLetter.html.twig', [
+                return $this->twig->render('Newsletter/index.html.twig', [
                     'sentence' => $sentence
                 ]);
             }
         }
-        return $this->twig->render('Home/newsLetter.html.twig', [
+        return $this->twig->render('Newsletter/index.html.twig', [
             'errors' => $errors
         ]);
     }

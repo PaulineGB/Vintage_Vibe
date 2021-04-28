@@ -4,15 +4,12 @@
 {{ parent() }} My Account
 {% endblock %}
 
-{% block navbar %}{% endblock %}
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
-<div class="col-1 back m-3">
-    <a href="/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
-  </div>
-  <section id="products" class="container">
+  <section id="products" class="p-5 container">
     <div class="container text-center">
-        <h1 class="mb-3">MY ACCOUNT</h1>
+        <h1 class="m-3">MY ACCOUNT</h1>
         <a class="btn btn-secondary mt-3 mb-5" href="/security/logout">LOG OUT</a>
     </div>
     <div>
@@ -48,6 +45,7 @@
         </div>
     </div>
 </div>
+</section>
 
 {% endblock %}
 
