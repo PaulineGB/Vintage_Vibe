@@ -142,6 +142,16 @@ class HomeController extends AbstractController
         ]);
     }
 
+    public function terms()
+    {
+        return $this->twig->render('Home/terms.html.twig');
+    }
+
+    public function faq()
+    {
+        return $this->twig->render('Home/faq.html.twig');
+    }
+
     public function showproduct(int $id)
     {
         $productManager = new ProductManager();

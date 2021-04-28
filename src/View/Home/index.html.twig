@@ -2,50 +2,7 @@
 
 {% block title %} Vintage Vibe {% endblock %}
 
-{% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">VINTAGE VIBE</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    {% if session.user is not defined %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/security/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/security/register">Register</a>
-                    </li>
-                    {% endif %}
-
-                    {% if session.user is defined %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home/userAccount/{{ user.id }}">Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/security/logout">Logout</a>
-                    </li>
-                    {% if session.user.role_id == 1 %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/index">Admin</a>
-                    </li>
-                    {% endif %}
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cart/cart">Cart</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
     <section class="homeheader">
@@ -62,14 +19,14 @@
         <div><h1>OUR SHOP</h1></div>
         <div class="producthome row pt-3 pb-3">
                 {% for i in 0..2 %}
-                <div class="col">
+                <div class="col-lg-4">
                     <div><img src="{{ products[i].picture }}" width="50%" alt="product picture"></div>
                     <div>{{ products[i].title }}</div>
                     <div>{{ products[i].artist }}</div>
                 </div>
                 {% endfor %}
         </div>
-        <button href="/shop.html.twig" type="submit" class="btn btn-secondary mt-3 mb-4">SHOP ALL</button>
+        <a href="/home/shop/" class="text-reset text-decoration-none"><button class="btn btn-secondary mt-3 mb-4">SHOP ALL</button></a>
     </section>
     <section class="hometeam text-center pb-3 pt-4">
         <div><h1>THE DREAM TEAM</h1></div>

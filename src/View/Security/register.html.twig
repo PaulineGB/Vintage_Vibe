@@ -1,13 +1,12 @@
-
 {% extends 'layout.html.twig' %}
+
 {% block title %} USER REGISTER {% endblock %}
 
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
 {% block content %}
- <div class="col-1 back m-3">
-    <a href="/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
-</div>
 <div class="container text-center">
-	<div class="register">
+	<div class="register mt-5 pb-5">
 		<h1 class="">REGISTER</h1>
         <div class="formregister">
             <form method="POST">
