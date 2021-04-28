@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class"container">
+<h1>Contact Us</h1>
+</div>
+  
+
+
+    {% if errors is  empty  %}
+				<p>{{ sentence }}</p>
+			{% endif %}
+    {% include 'Contact/_form.html.twig' %}
+{% endblock %}

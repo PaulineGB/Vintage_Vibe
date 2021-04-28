@@ -1,0 +1,21 @@
+<section id="contactNewsletter">
+	{% if errors is not empty %}
+		{% for error in errors %}
+			<p>{{error}}</p>
+
+
+		{% endfor %}
+	{% else %}
+		<p>{{ sentence}}</p>
+	{% endif %}
+
+
+	<form method="post" classe="container">
+		<div class="mb-3">
+			<input type="hidden" value="{{ newsletter.id }}" name="id">
+			<label for="email">NewsLetter</label>
+			<input type="text" value="{{ newsletter.email }}" name="email">
+			<input type="submit" value="Valider">
+		</div>
+	</form>
+</section>
