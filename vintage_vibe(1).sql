@@ -154,6 +154,7 @@ BDD mise à jour avec des données avec items
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
+<<<<<<< HEAD:vintage_vibe.sql
 -- Généré le : mer. 21 avr. 2021 à 16:22
 
 Afficher plus
@@ -311,6 +312,9 @@ vintage_vibe.sql21 Ko
 --
 -- Hôte : localhost:8889
 -- Généré le : mar. 27 avr. 2021 à 19:50
+=======
+-- Généré le : mer. 28 avr. 2021 à 09:32
+>>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.12
 
@@ -539,6 +543,21 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `email`, `address`, `password
 (6, 'JEAN', 'Jean', 'jean.jean@outlook.com', '8 rue du Général Pas-de-Bol 96000 ABON', '52bd5c10122eb5bda98e7a774b207893', 0),
 (7, 'DISCO', 'Dance', 'disco.dance@lycoos.com', '2 rue du Potiron 80500 RONRON', '19b1898c952bc4ec9ee2b335431fb0cc', 1),
 (8, 'PLOP', 'Plop', 'plop@plop.com', '3 rue plop 35012 PLOPCITY-sur-PLOP', '4239d722d57a970d99664fcb3ba726b2', 0);
+<<<<<<< HEAD:vintage_vibe.sql
+=======
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+>>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
 
 --
 -- Index pour les tables déchargées
@@ -605,6 +624,14 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_user_wishlist` (`user_id`),
+  ADD KEY `FK_product_wishlist` (`product_id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -661,6 +688,15 @@ ALTER TABLE `size`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+<<<<<<< HEAD:vintage_vibe.sql
+=======
+
+--
+-- AUTO_INCREMENT pour la table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
 
 --
 -- Contraintes pour les tables déchargées
@@ -686,6 +722,13 @@ ALTER TABLE `order_product`
 ALTER TABLE `product`
   ADD CONSTRAINT `FK_product_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   ADD CONSTRAINT `FK_product_size` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`);
+
+--
+-- Contraintes pour la table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
