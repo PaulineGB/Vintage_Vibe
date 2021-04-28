@@ -29,10 +29,10 @@ class ContactController extends AbstractController
     public function data()
     {
 
-        $contactManager= new ContactManager();
-        $contacts= $contactManager->selectAll();
-        return $this->twig->render('Contact/data.html.twig',[
-            'contacts'=> $contacts
+        $contactManager = new ContactManager();
+        $contacts = $contactManager->selectAll();
+        return $this->twig->render('Contact/data.html.twig', [
+            'contacts' => $contacts
             ]);
     }
 
@@ -48,10 +48,10 @@ class ContactController extends AbstractController
      */
     public function show(int $id)
     {
-        $contactManager= new ContactManager();
-        $contact= $contactManager->selectOneById($id);
-        return $this->twig->render('Contact/show.html.twig',[
-            'contact'=> $contact
+        $contactManager = new ContactManager();
+        $contact = $contactManager->selectOneById($id);
+        return $this->twig->render('Contact/show.html.twig', [
+            'contact' => $contact
             ]);
     }
 
@@ -65,44 +65,44 @@ class ContactController extends AbstractController
      */
     public function formulaire()
     {
-        $errors= [];
-        $sentence= '';
-        if ($_SERVER['REQUEST_METHOD']=== 'POST'){
-            $contact = array_map("trim",$_POST);
-            $userMailOk= filter_var($contact['email'], FILTER_VALIDATE_EMAIL);
+        $errors = [];
+        $sentence = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $contact = array_map("trim", $_POST);
+            $userMailOk = filter_var($contact['email'], FILTER_VALIDATE_EMAIL);
             if (
                 empty($contact['lastname']) && empty($contact['firstname'])
                 && empty($contact['email']) && empty($contact['message'])
             ) {
-                $errors['allFields']= "* Please fill in all the fields.";
+                $errors['allFields'] = "* Please fill in all the fields.";
             } else {
                 if (empty($contact['lastname'])) {
-                    $errors['lastname']= "* Please enter your lastname.";
+                    $errors['lastname'] = "* Please enter your lastname.";
                 }
                 if (empty($contact['firstname'])) {
-                    $errors['firstname']= "* Please enter your firstname.";
+                    $errors['firstname'] = "* Please enter your firstname.";
                 }
                 if (empty($contact['email'])) {
-                    $errors['email']= "* Please enter your email.";
+                    $errors['email'] = "* Please enter your email.";
                 }
                 if (empty($contact['message'])) {
-                    $errors['message']= "* Please enter your message.";
+                    $errors['message'] = "* Please enter your message.";
                 }
                 if (!$userMailOk) {
-                    $errors['emailNotOk']= '*Please enter a valid email address!';
+                    $errors['emailNotOk'] = '*Please enter a valid email address!';
                 }
             }
 
-            $contactManager= new ContactManager();
-            $contact= [
+            $contactManager = new ContactManager();
+            $contact = [
                 'firstname' => $_POST['firstname'],
                 'lastname' => $_POST['lastname'],
                 'email' => $_POST['email'],
                 'message' => $_POST['message']
             ];
-            if (empty($errors)){
+            if (empty($errors)) {
                 $contactManager->insert($contact);
-                $sentence= 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
+                $sentence = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
                     . ' ' . 'for contacting us about “ '
                     . ($contact['message']) .
                     ' " One of our advisors will contact you at: '
@@ -110,7 +110,7 @@ class ContactController extends AbstractController
                     ' as soon as possible to process your request :' . $contact['message'] . '.';
             }
         }
-        return $this->twig->render('Contact/formulaire.html.twig',[
+        return $this->twig->render('Contact/formulaire.html.twig', [
             'errors' => $errors,
             'sentence' => $sentence
         ]);
@@ -123,8 +123,8 @@ class ContactController extends AbstractController
      */
     public function delete(int $id)
     {
-        $contactManager= new ContactManager();
+        $contactManager = new ContactManager();
         $contactManager->delete($id);
-        header('Location:/Contact/data/'.$id);
+        header('Location:/Contact/data/' . $id);
     }
 }
