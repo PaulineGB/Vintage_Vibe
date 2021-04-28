@@ -122,9 +122,9 @@ class CartController extends AbstractController
 
         if ($idOrder) {
             foreach ($_SESSION['cart'] as $idProduct => $quantity) {
-                // $article = $articleManager->selectOneById($idArticle);
-                // $newQty = $article['qty'] - $qty;
-                // $articleManager->updateQty($idArticle, $newQty);
+                $product = $productManager->selectOneById($idProduct);
+                $newQty = $product['quantity'] - $quantity;
+                $productManager->updateQuantity($idProduct, $newQty);
                 $invoiceTicket = [
                     'order_id' => $idOrder,
                     'product_id' => $idProduct,
@@ -133,12 +133,17 @@ class CartController extends AbstractController
                 $orderManager->insert($invoiceTicket);
             }
             unset($_SESSION['cart']);
-            header('Location: /home/userAccount');
+            header('Location: /cart/success');
         }
 
         return $this->twig->render('Cart/order.html.twig', [
             'cart' => $this->cartInfos(),
             'totalCart' => $this->getTotalCart()
         ]);
+    }
+
+    public function success()
+    {
+        return $this->twig->render('Account/success.html.twig');
     }
 }
