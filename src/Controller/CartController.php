@@ -10,6 +10,7 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\UserManager;
 
 class CartController extends AbstractController
 {
@@ -25,10 +26,34 @@ class CartController extends AbstractController
 
     public function cart()
     {
+        $userManager = new UserManager();
+        $errors = [];
+
+        if (!isset($_SESSION['user'])) {
+            if ($_SERVER['REQUEST_METHOD'] === "POST") {
+                if (!empty($_POST['email']) && !empty($_POST['password'])) {
+                    $user = $userManager->searchUser($_POST['email']);
+                    if ($user) {
+                        if ($user['password'] === md5($_POST['password'])) {
+                            $_SESSION['user'] = $user;
+                            header('Location: /cart/cart');
+                        } else {
+                            $errors[] = "Invalid password";
+                        }
+                    } else {
+                        $errors[] = "This email does not exist";
+                    }
+                } else {
+                    $errors[] = "All fields are required";
+                }
+            }
+        }
+
         return $this->twig->render('Cart/cart.html.twig', [
             'cart' => $this->cartInfos(),
-            'totalCart' => $this->getTotalCart()
-            ]);
+            'totalCart' => $this->getTotalCart(),
+            'errors' => $errors
+        ]);
     }
 
     public function addToCart(int $idProduct)

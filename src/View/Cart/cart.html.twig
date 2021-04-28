@@ -31,4 +31,7 @@
 	</table>
 	<h3> TOTAL :  {{totalCart}} € </h3>
 </div>
+{% if session.user is not defined %}
+{% include 'Security/_logform.html.twig' %}
+{% endif %}
 {% endblock %}
