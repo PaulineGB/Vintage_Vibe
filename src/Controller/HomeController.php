@@ -123,7 +123,7 @@ class HomeController extends AbstractController
                 ]);
             }
         }
-        return $this->twig->render('Home/newsLetter.html.twig', [
+        return $this->twig->render('Home/index/', [
             'errors' => $errors
         ]);
     }
