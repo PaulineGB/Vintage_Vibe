@@ -1,0 +1,18 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Account {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Hello {{session.user.lastname}}<h2>
+        <h3>Wishlist</h3>
+        {{dump(Wishlist)}}
+        <ul>
+            <li>wish</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
