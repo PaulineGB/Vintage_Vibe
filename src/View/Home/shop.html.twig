@@ -2,7 +2,7 @@
 
 {% block title %} Shop {% endblock %}
 
-{% block navbar %}{% endblock %}
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
     <div class="container shop mt-5 mb-5">
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer bg-white border-white d-flex justify-content-between">
-                                    <div><a href="" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
+                                    <div><a href="/Cart/addToCart/{{ product.id }}" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
                                     <div><p class="fs-5 align-items-center">▼▼</p></div>
                                 </div>
                             </div>

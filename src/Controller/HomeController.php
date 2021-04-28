@@ -27,7 +27,11 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Home/index.html.twig', [
+            'products' => $products
+        ]);
     }
 
     public function shop()
@@ -113,6 +117,7 @@ class HomeController extends AbstractController
             'errors' => $errors
         ]);
     }
+
     public function contactNewsLetter()
     {
         $newsLetterManager = new NewsLetterManager();
