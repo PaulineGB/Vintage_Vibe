@@ -34,12 +34,15 @@ class WishlistController extends AbstractController
     public function like(int $idProduct)
     {
         $wishManager = new WishlistManager();
-        $isLiked = $wishManager->isLikedByUser($idProduct, $_SESSION['user']['id']);
-        $wish = [
+        //$isLiked = $wishManager->isLikedByUser($idProduct, $_SESSION['user']['id']);
+        //var_dump($isLiked); die;
+        //if(!$isLiked) {
+            $wish = [
             'user_id' => $_SESSION['user']['id'],
             'product_id' => $idProduct
-        ];
-        $wishManager->insert($wish);
+            ];
+            $wishManager->insert($wish);
+        //}
         header('Location: /home/shop');
     }
 
