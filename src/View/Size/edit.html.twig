@@ -3,12 +3,11 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-    <div class="col-1 back">
+    <div class="col-1 back m-3">
         <a href="/size/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
     </div>
-    <div class="text-center">
-        <h1>EDIT SIZE</h1>
-        <br>
+    <div class="container text-center">
+        <h1 class="mb-5">EDIT SIZE</h1>
         {% include 'Size/_form.html.twig' %}
     </div>
 {% endblock %}

@@ -5,23 +5,22 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-    <div class="col-1 back">
+    <div class="col-1 back m-3">
         <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
     </div>
-    <div class="text-center">
-        <h1>BLOG ARTICLES</h1>
-        <br>
+    <div class="container text-center">
+        <h1 class="mb-5">BLOG ARTICLES</h1>
         <a href="/blog/add" class="btn btn-secondary">ADD A NEW ARTICLE</a>
-        <br>
-        <br>
-        <table class="table">
+    </div>
+    <div class="container">
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">picture</th>
                     <th scope="col">title</th>
                     <th scope="col">action</th>
-                    <th scope="col"></th> 
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
