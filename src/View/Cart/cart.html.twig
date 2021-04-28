@@ -1,10 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
-	<div class='container'>
-	<h1>Your Cart!</h1>
+{% block title %} Cart {% endblock %}
 
-    <table class="table table-bordered">
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class='container text-center'>
+	<h1 class="mt-5">YOUR CART!</h1>
+    <table class="table table-bordered mt-5">
 		<thead>
 			<tr>
 				<th scope="col">Product</th>
@@ -22,11 +25,10 @@
 				<td>{{product.quantity}}</td>
 				<td>{{product.quantity * product.price}}</td>
 				<td><a href="/cart/deleteFromCart/{{product.id}}">Delete from cart</a></td>
-            </tr> 
+            </tr>
 			{% endfor %}
 		</tbody>
 	</table>
-	</div>
 	<h3> TOTAL :  {{totalCart}} € </h3>
-
+</div>
 {% endblock %}

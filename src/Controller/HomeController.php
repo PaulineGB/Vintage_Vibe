@@ -27,7 +27,11 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $productManager = new ProductManager();
+        $products = $productManager->selectAll();
+        return $this->twig->render('Home/index.html.twig', [
+            'products' => $products
+        ]);
     }
 
     public function shop()
@@ -73,6 +77,16 @@ class HomeController extends AbstractController
         ]);
     }
 
+    public function terms()
+    {
+        return $this->twig->render('Home/terms.html.twig');
+    }
+
+    public function faq()
+    {
+        return $this->twig->render('Home/faq.html.twig');
+    }
+
     public function showproduct(int $id)
     {
         $productManager = new ProductManager();
@@ -104,15 +118,16 @@ class HomeController extends AbstractController
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                     . $newsletter['email'] . ', nous vous contactons bientôt.';
                 $newsletterManager->insert($newsletter);
-                return $this->twig->render('Home/newsLetter.html.twig', [
+                return $this->twig->render('Home/index.html.twig', [
                     'sentence' => $sentence
                 ]);
             }
         }
-        return $this->twig->render('Home/newsLetter.html.twig', [
+        return $this->twig->render('Home/index.html.twig', [
             'errors' => $errors
         ]);
     }
+
     public function contactNewsLetter()
     {
         $newsLetterManager = new NewsLetterManager();
