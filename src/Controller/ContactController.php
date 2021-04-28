@@ -74,22 +74,22 @@ class ContactController extends AbstractController
                 empty($contact['lastname']) && empty($contact['firstname'])
                 && empty($contact['email']) && empty($contact['message'])
             ) {
-                $errors['allFields'] = "* Please fill in all the fields.";
+                $errors['allFields'] = "Please, complete all fields!";
             } else {
                 if (empty($contact['lastname'])) {
-                    $errors['lastname'] = "* Please enter your lastname.";
+                    $errors['lastname'] = "Please, enter your lastname!";
                 }
                 if (empty($contact['firstname'])) {
-                    $errors['firstname'] = "* Please enter your firstname.";
+                    $errors['firstname'] = "Please, enter your firstname!";
                 }
                 if (empty($contact['email'])) {
-                    $errors['email'] = "* Please enter your email.";
+                    $errors['email'] = "Please, enter your e-mail address!";
                 }
                 if (empty($contact['message'])) {
-                    $errors['message'] = "* Please enter your message.";
+                    $errors['message'] = "Please, indicate your message!";
                 }
                 if (!$userMailOk) {
-                    $errors['emailNotOk'] = '*Please enter a valid email address!';
+                    $errors['emailNotOk'] = 'Please, enter a valid e-mail!';
                 }
             }
 
@@ -103,11 +103,10 @@ class ContactController extends AbstractController
             if (empty($errors)) {
                 $contactManager->insert($contact);
                 $sentence = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
-                    . ' ' . 'for contacting us about “ '
-                    . ($contact['message']) .
-                    ' " One of our advisors will contact you at: '
+                    . ' ' . 'for contacting us about you message. 
+                   One of our advisors will contact you at: '
                     . $contact['email'] .
-                    ' as soon as possible to process your request :' . $contact['message'] . '.';
+                    ' as soon as possible to process your request.';
             }
         }
         return $this->twig->render('Contact/formulaire.html.twig', [

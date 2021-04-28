@@ -1,22 +1,46 @@
 {% extends 'layout.html.twig' %}
-
+{% block title %} Data {% endblock %}
 {% block content %}
-    <h1>List of Visitors who have left a message!</h1>
-        <a href="/Home/index">Home Vibe</a>
-
-    <h2>Messages from contacts:</h2> 
-    {% for  contact in contacts %}
-     <h3>contact</h3>
-    <h4>{{ contact.firstname }} {{ contact.lastname }}</h4>
-    <p>{{ contact.id }}. {{ contact.email}}</p>
-    <p> {{ contact.message }}</p>
-    <label for="reponseEmail">Objet</label><br>
-	  <input type="text" id="reponseEmail" value="{{ contact.message }}" name="reponseEmail "></br>
-
-    <label for="w3review">Repondre au message</label>
-    <textarea id="w3review" name="w3review" rows="3" cols="50"></textarea>
-    <a href="/contact/show/{{ contact.id }}"class="btn btn-outline-secondary">EDIT</a>
-    <a href="/contact/delete/{{ contact.id }}" class="btn btn-outline-secondary">DELETE</a>
-     {% endfor %}       
+  
+<div class="col-1 back m-3">
+            <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+        </div>
+        <div class="container text-center">
+            <h1 class="mb-3">MESSAGES FROM CONTACTS</h1>
+    
+        </div>
+        <div class="container">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">firstname</th>
+                        <th scope="col">lastname</th>
+                        <th scope="col">email</th>
+                        <th scope="col">message</th>
+                        <th scope="col">action</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                        <tr>
+                            <th scope="row">{{ contact.id }}</th>
+                            <td>{{ contact.firstname }}</td>
+                            <td>{{ contact.lastname }}</td>
+                            <td>{{ contact.message }}</td>
+                            <td>{{ contact.email }}</td>
+                            <td>
+                            {% if contact.is_admin == "1" %}
+                            <p>&#x2714;</p>
+                                {% endif %}
+                            </td>
+                            <td><a href="/contact/show/{{ contact.id }}" class="btn btn-outline-dark">Answer</a></td>
+                            <td><a href="/contact/delete/{{ contact.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 {% endblock %}

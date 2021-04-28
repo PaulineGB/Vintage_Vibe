@@ -1,15 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} FAQ {% endblock %}
 
-{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
-    
-<section>
-        <div class="mt-5 p-5 text-center">
-            <h1> FAQ </h1>
-        </div>
+<section class="text-center mt-5 mb-5">
+    <h1 class="text-reset text-decoration-none">FAQ</h1>
 </section>
+<div class="container d-flex justify-content-center">
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
@@ -85,8 +85,9 @@
   </div>
 </div>
 </div>
+</div>
 
 
 {% endblock %}
 
-{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}
