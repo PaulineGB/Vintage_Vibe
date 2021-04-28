@@ -5,29 +5,34 @@
 {% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 
 {% block content %}
-    <div class="col-1 back">
-        <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
-    </div>
-    <div class="text-center">
-        <h1>Listing Newsletter</h1>
-       
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">E-mail</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for newsletter in newsLetters %}
+ 
+
+     <div class="col-1 back m-3">
+            <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+        </div>
+        <div class="container text-center">
+            <h1 class="mb-3">Listing Newsletter</h1>
+        <div class="container">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                
+                        <th scope="col">Contacts E-mail</th>
+                     
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {% for newsletter in newsLetters %}
                     <tr>
                         <th scope="row">{{ newsletter.id }}</th>
                         <td>{{ newsletter.email }}</td>
                     </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 {% endblock %}
 
 {% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
