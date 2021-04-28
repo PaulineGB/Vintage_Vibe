@@ -1,36 +1,116 @@
 <form class="formuContact" method="post">
+
+
+<div class="container-flex">
+		<div class="row">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">			
+				{% if errors.allFields is defined and  not empty %}
+					<p>
+						{{errors.allFields}}
+					</p>
+				{% endif %}
+			</div>
+		</div>
 		
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+				<input type="hidden" value="{{ contact.id }}" name="id">
+				<label for="firstname">Firstname:</label>
+			</div>
+		</div>
+
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+		<input class="col-10 col-sm-10 col-md-10 col-lg-10" type="text" id="firstname" value="{{ contact.firstname }}" name="firstname"></br>
 	
-	<div class="container">
-	{% if errors.allFields is defined and  not empty %}
-		<p> {{errors.allFields}} </p>
-		{% endif %}
-		<input type="hidden" value="{{ contact.id }}" name="id"><br>
-		<label for="firstname">Firstname:</label><br>
-		<input type="text" id="firstname" value="{{ contact.firstname }}" name="firstname"></br>
-		{% if errors.firstname is defined and not empty %}
-		<p> {{errors.firstname}} </p>
-		{% endif %}
-		<label for="lastname">Lastname:</label><br>
-		<input type="text" id="lastname" value="{{ contact.lastname }}" name="lastname"><br>
-		{% if errors.lastname is defined and not empty %}
-		<p> {{errors.lastname}} </p>
-		{% endif %}
-		<label for="email">Email:</label><br>
-		<input type="text" id="email" value="{{ contact.email }}" name="email"><br>
-		{% if errors.email is defined and not empty %}
-		<p> {{errors.email}} </p>
-		{% endif %}
-		{% if errors.emailNotOk is defined and not empty %}
-		<p> {{errors.emailNotOk}} </p>
-		{% endif %}
-		<label for="message">Message:</label><br>
-		<TEXTAREA type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA></br>
-		{% if errors.message is defined and not empty %}
-		<p> {{errors.message}} </p>
-		{% endif %}
+		</div>
 	</div>
-	<div class="container">	
-		<input type="submit" value="Valider"><br>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+	{% if errors.firstname is defined and not empty %}
+		<p>
+		{{errors.firstname}}
+		</p>
+	{% endif %}
+		</div>
 	</div>
+
+	<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+				<label for="lastname">Lastname:</label><br>
+			</div>
+		</div>
+
+	<div class="row my-2">
+		<div class="col-12 p-2 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			<input class="col-10 col-sm-10 col-md-10 col-lg-10" type="text" id="lastname" value="{{ contact.lastname }}" name="lastname"><br>
+		</div>
+	</div>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			{% if errors.lastname is defined and not empty %}
+				<p>
+				{{errors.lastname}}
+				</p>
+			{% endif %}
+		</div>
+	</div>
+
+
+	<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			<label for="email">Email:</label><br>
+			</div>
+		</div>
+
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+	<input class="col-10 col-sm-10 col-md-10 col-lg-10" type="text" id="email" value="{{ contact.email }}" name="email"><br>
+		</div>
+	</div>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+	{% if errors.email is defined and not empty %}
+		<p>
+			{{errors.email}}
+		</p>
+	{% endif %}
+		</div>
+	</div>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+	{% if errors.emailNotOk is defined and not empty %}
+		<p>
+			{{errors.emailNotOk}}
+		</p>
+	{% endif %}
+		</div>
+	</div>
+	
+	<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			<label for="message">Message:</label>
+			</div>
+		</div>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
+	
+		<TEXTAREA class="col-10 col-sm-10 col-md-10 col-lg-10" type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA>
+		</div>
+	</div>
+	<div class="row my-2">
+		<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
+	{% if errors.message is defined and not empty %}
+		<p>
+			{{errors.message}}
+		</p>
+	{% endif %}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="my-4 col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+			<input  type="submit" value="Valider">
+		</div>
+	</div>
+</div>	
 </form>

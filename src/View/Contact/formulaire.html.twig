@@ -1,14 +1,42 @@
 {% extends 'layout.html.twig' %}
-
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
 {% block content %}
-<div class"container">
-<h1>Contact Us</h1>
-</div>
-  
+	<div class"container-fluid">
+		<div class="row">
+		
+			<div class="col-12 col-sm-12 p-4 col-md-12 col-lg-12 d-flex justify-content-center">
+				<h1>Contact Us</h1>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			
+			<div class="col-10 col-sm-6 col-md-6 col-lg-6 d-flex ">
+				<img class="col d-flex image-fluid" src="../assets/images/ContactUs.jpg"  width="200px" height="200px" alt="Image Contact Us">
+			</div>
+			
+			<div class="p-3 col-12 col-sm-4 col-md-4 col-lg-4">
+				<ul class="row">
+				<li class="row d-flex justify-content-center">VINTAGE VIBE</li>
+				<li class="row p-2 justify-content-center">75011 Paris</li>
+				<li class="row p-2 justify-content-center">135 rue de la motte rouge</li>
+				<li class="row p-2 justify-content-center">(+33)1 75 45 68 77</li>
+				<li class="row p-1 justify-content-center">Vibe@gmail.com</li>
 
+				</ul>
+			</div>
+			
+		</div>
 
-    {% if errors is  empty  %}
-				<p>{{ sentence }}</p>
-			{% endif %}
-    {% include 'Contact/_form.html.twig' %}
+		<div class="row-12 col-sm-12 col-md-12 col-lg-12">
+			
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
+				{% if errors is  empty  %}
+					<p>{{ sentence }}</p>
+				{% endif %}
+			</div>
+		</div>
+		{% include 'Contact/_form.html.twig' %}
+
+    </div>
 {% endblock %}
+{% block footer %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
