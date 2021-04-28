@@ -1,14 +1,15 @@
 {% extends 'layout.html.twig' %}
-{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+{% block title %} Contact {% endblock %}
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 {% block content %}
 	<div class"container-fluid">
 		<div class="row">
 		
 			<div class="col-12 col-sm-12 p-4 col-md-12 col-lg-12 d-flex justify-content-center">
-				<h1>Contact Us</h1>
+				<h1>CONTACT</h1>
 			</div>
 		</div>
-		<div class="row justify-content-center">
+		<div class="row justify-content-center ">
 			
 			<div class="col-10 col-sm-6 col-md-6 col-lg-6 d-flex ">
 				<img class="col d-flex image-fluid" src="../assets/images/ContactUs.jpg"  width="200px" height="200px" alt="Image Contact Us">
@@ -38,5 +39,6 @@
 		{% include 'Contact/_form.html.twig' %}
 
     </div>
+	
 {% endblock %}
-{% block footer %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+{% block footer %}{% endblock %}

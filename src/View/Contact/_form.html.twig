@@ -5,7 +5,7 @@
 		<div class="row">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">			
 				{% if errors.allFields is defined and  not empty %}
-					<p>
+					<p class="p-2 bg-warning" >
 						{{errors.allFields}}
 					</p>
 				{% endif %}
@@ -14,7 +14,7 @@
 		
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
 				<input type="hidden" value="{{ contact.id }}" name="id">
-				<label for="firstname">Firstname:</label>
+				<label for="firstname">FIRSTNAME:</label>
 			</div>
 		</div>
 
@@ -27,7 +27,7 @@
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
 	{% if errors.firstname is defined and not empty %}
-		<p>
+		<p class="p-2 bg-warning">
 		{{errors.firstname}}
 		</p>
 	{% endif %}
@@ -36,7 +36,7 @@
 
 	<div class="row">
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-				<label for="lastname">Lastname:</label><br>
+				<label for="lastname">LASTNAME:</label><br>
 			</div>
 		</div>
 
@@ -48,7 +48,7 @@
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
 			{% if errors.lastname is defined and not empty %}
-				<p>
+				<p class="p-2 bg-warning">
 				{{errors.lastname}}
 				</p>
 			{% endif %}
@@ -58,7 +58,7 @@
 
 	<div class="row">
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-			<label for="email">Email:</label><br>
+			<label for="email">E-MAIL:</label><br>
 			</div>
 		</div>
 
@@ -70,7 +70,7 @@
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
 	{% if errors.email is defined and not empty %}
-		<p>
+		<p class="p-2 bg-warning">
 			{{errors.email}}
 		</p>
 	{% endif %}
@@ -79,7 +79,7 @@
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
 	{% if errors.emailNotOk is defined and not empty %}
-		<p>
+		<p class="p-2 bg-warning">
 			{{errors.emailNotOk}}
 		</p>
 	{% endif %}
@@ -88,19 +88,19 @@
 	
 	<div class="row">
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-			<label for="message">Message:</label>
+			<label for="message">MESSAGE:</label>
 			</div>
 		</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
 	
-		<TEXTAREA class="col-10 col-sm-10 col-md-10 col-lg-10" type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA>
+		<TEXTAREA class="col-10 col-sm-10 col-md-10 col-lg-10 p-5" type="text" id="message" value="{{ contact.message }}" name="message"></TEXTAREA>
 		</div>
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
 	{% if errors.message is defined and not empty %}
-		<p>
+		<p class="p-2 bg-warning">
 			{{errors.message}}
 		</p>
 	{% endif %}
@@ -109,7 +109,7 @@
 
 	<div class="row">
 		<div class="my-4 col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-			<input  type="submit" value="Valider">
+			<input  type="submit" value="VALIDATE">
 		</div>
 	</div>
 </div>	
