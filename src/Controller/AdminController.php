@@ -37,7 +37,7 @@ class AdminController extends AbstractController
 
     // LOGIN & LOGOUT ADMIN
 
-    public function logadminVV()
+    public function pouletdiscodance()
     {
         $userManager = new UserManager();
         $errors = [];
@@ -215,10 +215,10 @@ class AdminController extends AbstractController
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
         }
-        $newsLetterManager = new NewsletterManager();
-        $newsLetters = $newsLetterManager->selectAll();
+        $newsletterManager = new NewsletterManager();
+        $newsletters = $newsletterManager->selectAll();
 
-        return $this->twig->render('Newsletter/index.html.twig', ['newsLetters' => $newsLetters]);
+        return $this->twig->render('Newsletter/index.html.twig', ['newsletters' => $newsletters]);
     }
 
     // ORDER SECTION

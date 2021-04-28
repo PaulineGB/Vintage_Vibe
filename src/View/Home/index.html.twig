@@ -5,10 +5,9 @@
 {% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
-    <section class="homeheader">
-        <div class="row">
-            <img src="https://cdn.pixabay.com/photo/2016/06/27/07/30/elvis-presley-1482026_1280.jpg" alt="homepicture" class="headerimg">
-        </div>
+<section class="homeheader">
+    <section class="homepage picture">
+        <img src="https://cdn.pixabay.com/photo/2016/06/27/07/30/elvis-presley-1482026_1280.jpg" alt="homepicture" class="headerimg">
     </section>
     <section class="homeabout text-center pb-3">
         <div class="hometriangle pb-3"><img src="/assets/images/LogoCOURT.png" alt="imagetriangle" class="headerimage"></div>
@@ -34,6 +33,7 @@
         <div class="fs-5 mt-3">Always present, passionate professionals, we will be happy to welcome you. Come and meet us!</div>
         <div><p>Dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt.<br>Vestibulum a massa ligula. Aliquam feugiat congue velit.</p></div>
     </section>
+</section>
 {% endblock %}
 
-{% block footer %} And soon here a footer {% endblock %}
+{% block footer %} {% include 'Home/_form.html.twig' %} And soon here a footer {% endblock %}

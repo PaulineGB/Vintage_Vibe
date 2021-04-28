@@ -2,8 +2,6 @@
 	{% if errors is not empty %}
 		{% for error in errors %}
 			<p>{{error}}</p>
-
-
 		{% endfor %}
 	{% else %}
 		<p>{{ sentence}}</p>
@@ -12,13 +10,12 @@
 
 	<form method="post" classe="container">
 		<div class="mb-3">
-			<div class="row">
-				<input type="hidden" value="{{ newsletter.id }}" name="id">
-				<label class="col" for="email">Newsletter</label>
-			</div>
 			<div class="row-2">
-				<input class="col-1 justify-content-center" type="text" value="{{ newsletter.email }}" name="email">
-				<a href="/Home/newsLetter/{{ newsletter.id }}" class="text-reset"><span class="col-1 justify-content-center material-icons"> send</span></a>
+				<label for="email">NEWSLETTER</label>
+				<div>
+					<input class="col-1 justify-content-center" type="email" value="{{ newsletter.email }}" name="email">
+					<button class="btn btn-small"><span class="col-1 justify-content-center material-icons">send</span></button>
+				</div>
 			</div>
 		</div>
 	</form>

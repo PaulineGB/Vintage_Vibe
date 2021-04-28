@@ -95,7 +95,7 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/showproduct.html.twig', ['product' => $product]);
     }
 
-    public function newsLetter()
+    public function addNewsletter()
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -114,10 +114,11 @@ class HomeController extends AbstractController
                 $newsletter = [
                     'email' => $_POST['email'],
                 ];
+                $newsletterManager->insert($newsletter);
+                header('Location:/');
 
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                     . $newsletter['email'] . ', nous vous contactons bientôt.';
-                $newsletterManager->insert($newsletter);
                 return $this->twig->render('Home/index.html.twig', [
                     'sentence' => $sentence
                 ]);
