@@ -61,6 +61,13 @@ class HomeController extends AbstractController
                 'category' => $category
                 ]);
         }
+
+        $products = $productManager->selectAll();
+        return $this->twig->render('Home/shop.html.twig', [
+            'products' => $products,
+            'size' => $size,
+            'category' => $category
+        ]);
     }
 
     public function userAccount()
