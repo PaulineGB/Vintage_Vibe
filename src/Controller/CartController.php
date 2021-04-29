@@ -10,6 +10,9 @@
 namespace App\Controller;
 
 use App\Model\ProductManager;
+use App\Model\UserManager;
+use App\Model\InvoiceManager;
+use App\Model\OrderManager;
 
 class CartController extends AbstractController
 {
@@ -21,21 +24,38 @@ class CartController extends AbstractController
      * @throws \Twig\Error\RuntimeError
      * @throws \Twig\Error\SyntaxError
      */
-    public function index()
-    {
-        $productManager = new ProductManager();
-        $products = $productManager->selectAll();
-        return $this->twig->render('Cart/index.html.twig', [
-            'products' => $products
-        ]);
-    }
+
 
     public function cart()
     {
+        $userManager = new UserManager();
+        $errors = [];
+
+        if (!isset($_SESSION['user'])) {
+            if ($_SERVER['REQUEST_METHOD'] === "POST") {
+                if (!empty($_POST['email']) && !empty($_POST['password'])) {
+                    $user = $userManager->searchUser($_POST['email']);
+                    if ($user) {
+                        if ($user['password'] === md5($_POST['password'])) {
+                            $_SESSION['user'] = $user;
+                            header('Location: /cart/cart');
+                        } else {
+                            $errors[] = "Invalid password";
+                        }
+                    } else {
+                        $errors[] = "This email does not exist";
+                    }
+                } else {
+                    $errors[] = "All fields are required";
+                }
+            }
+        }
+
         return $this->twig->render('Cart/cart.html.twig', [
             'cart' => $this->cartInfos(),
-            'totalCart' => $this->getTotalCart()
-            ]);
+            'totalCart' => $this->getTotalCart(),
+            'errors' => $errors
+        ]);
     }
 
     public function addToCart(int $idProduct)
@@ -83,5 +103,47 @@ class CartController extends AbstractController
             }
         }
         return $total;
+    }
+
+    //Order
+    public function order()
+    {
+        $invoiceManager = new InvoiceManager();
+        $orderManager = new OrderManager();
+        $productManager = new ProductManager();
+
+        $order = [
+            'created_at' => date('y-m-d'),
+            'total' => $this->getTotalCart(),
+            'user_id' => $_SESSION['user']['id'],
+        ];
+
+        $idOrder = $invoiceManager->insertOrder($order);
+
+        if ($idOrder) {
+            foreach ($_SESSION['cart'] as $idProduct => $quantity) {
+                $product = $productManager->selectOneById($idProduct);
+                $newQty = $product['quantity'] - $quantity;
+                $productManager->updateQuantity($idProduct, $newQty);
+                $invoiceTicket = [
+                    'order_id' => $idOrder,
+                    'product_id' => $idProduct,
+                    'quantity' => $quantity,
+                ];
+                $orderManager->insert($invoiceTicket);
+            }
+            unset($_SESSION['cart']);
+            header('Location: /cart/success');
+        }
+
+        return $this->twig->render('Cart/order.html.twig', [
+            'cart' => $this->cartInfos(),
+            'totalCart' => $this->getTotalCart()
+        ]);
+    }
+
+    public function success()
+    {
+        return $this->twig->render('Account/success.html.twig');
     }
 }

@@ -33,16 +33,15 @@
                                 </div>
                                 <div class="card-footer bg-white border-white d-flex justify-content-between">
                                     <div><a href="/Cart/addToCart/{{ product.id }}" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
-                                    <div><a href="/Wishlist/like/{{ product.id }}" class="fs-5 align-items-center">▼▼</a></div>
+                                    <div><a href="/Wishlist/like/{{ product.id }}" class="fs-5 align-items-center text-reset"><span class="material-icons fs-3">▼▼</span></a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-                <div><a href="/user/account" class="fs-5 align-items-center">My all ▼▼ishes</a></div>
             </div>
         </section>
     </div>
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
