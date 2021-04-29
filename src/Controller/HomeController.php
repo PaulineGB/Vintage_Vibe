@@ -208,4 +208,9 @@ class HomeController extends AbstractController
 
         return $this->twig->render('Newsletter/index.html.twig', ['newsLetters' => $newsLetters]);
     }
+
+    public function team()
+    {
+        return $this->twig->render('Home/team.html.twig');
+    }
 }
