@@ -15,7 +15,12 @@
                         <div class="d-block d-sm-block d-md-none"><a href="/home/index/" class="text-reset text-decoration-none fs-1">▼▼</a></div>
                 </div>
                 <div class="container-fluid d-flex justify-content-end pt-3">
-                    <div class="pe-3"><a href="" class="text-reset"><span class="material-icons fs-3">search</span></a></div>
+                    <div class="search pe-3">
+                        <a class="text-reset" href="#" role="button" data-bs-toggle="dropdown"><span class="material-icons fs-3">search</span></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><form class="d-flex"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-small"><span class="material-icons fs-3">search</span></button></form></li>
+                        </ul>
+                    </div>
                     {% if session.user is not defined %}
                     <div class="pe-3"><a href="/../Security/login" class="text-reset"><span class="material-icons fs-3">person_outline</span></a></div>
                     {% endif %}
