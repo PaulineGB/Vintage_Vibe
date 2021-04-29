@@ -11,6 +11,8 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
+use App\Model\WishlistManager;
+use App\Model\ProductManager;
 
 /**
  * Class UserController
@@ -174,5 +176,22 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $userManager->delete($id);
         header('Location:/User/index');
+    }
+
+    public function account()
+    {
+        if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            $wishManager = new WishlistManager();
+            $productManager = new ProductManager();
+
+            $wishlist = $wishManager->getWishlistByUser($_SESSION['user']['id']);
+            $result = [];
+            foreach ($wishlist as $wish) {
+                $product = $productManager->selectOneById($wish['product_id']);
+                $result[] = ["wish_id" => $wish['id'], "product" => $product];
+            }
+            return $this->twig->render('User/account.html.twig', ['wishlist' => $result]);
+        }
+        header('Location: /security/login');
     }
 }
