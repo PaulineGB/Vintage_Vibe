@@ -43,13 +43,13 @@ class WishlistController extends AbstractController
             ];
             $wishManager->insert($wish);
         //}
-            header('Location: /home/shop');
+            header('Location: /home/userAccount');
     }
 
     public function dislike(int $idWish)
     {
         $wishManager = new WishlistManager();
         $wishManager->delete($idWish);
-        header('Location: /user/account');
+        header('Location: /home/userAccount');
     }
 }
