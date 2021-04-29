@@ -16,6 +16,7 @@ use App\Model\UserManager;
 use App\Model\SizeManager;
 use App\Model\CategoryManager;
 use App\Model\InvoiceManager;
+use App\Model\WishlistManager;
 use App\Model\OrderManager;
 
 class HomeController extends AbstractController
@@ -85,17 +86,27 @@ class HomeController extends AbstractController
     {
         $id = $_SESSION['user']['id'];
 
-        if (isset($_SESSION['user']['id'])) {
+        if (isset($_SESSION['user']['id']) && !empty($_SESSION['user'])) {
             $userManager = new UserManager();
             $user = $userManager->selectOneById($id);
 
             $invoiceManager = new InvoiceManager();
             $invoice = $invoiceManager->getInvoiceByUser($id);
 
+            $wishManager = new WishlistManager();
+            $productManager = new ProductManager();
+
+            $wishlist = $wishManager->getWishlistByUser($_SESSION['user']['id']);
+            $result = [];
+            foreach ($wishlist as $wish) {
+                $product = $productManager->selectOneById($wish['product_id']);
+                $result[] = ["wish_id" => $wish['id'], "product" => $product];
+            }
 
             return $this->twig->render('Account/account.html.twig', [
                 'user' => $user,
                 'invoices' => $invoice,
+                'wishlist' => $result
                 ]);
         } else {
             header('Location: /');

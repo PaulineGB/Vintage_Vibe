@@ -10,6 +10,7 @@
 <section id="products" class="p-5 container">
     <div class="container text-center">
         <h1 class="m-3">MY ACCOUNT</h1>
+        <h1 class="m-1">{{session.user.lastname}} {{session.user.firstname}}</h1>
         <a class="btn btn-secondary mt-3 mb-5" href="/security/logout">LOG OUT</a>
     </div>
     <div>
@@ -34,6 +35,35 @@
         </div>
     </div>
     <div class="mb-3 text-center">
+        <h1>MY WISHLIST</h1>
+    </div>
+    <div class="p-3">
+        <div class="border border-secondary w-100 p-3">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for wish in wishlist %}
+                    <tr>
+                        <td><img src="{{ wish.product.picture }}" width="100px" height="100px" alt="Album picture"></td>
+                        <td>{{wish.product.title}}</td>
+                        <td>{{wish.product.price}}</td>
+                        <td>{{wish.product.quantity}}</td>
+                        <td><a href="/wishlist/dislike/{{wish.wish_id}}" class="btn btn-outline-dark">DELETE</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mb-3 text-center">
         <h1>MY ORDERS</h1>
     </div>
     <div class="d-flex p-3">
@@ -45,15 +75,6 @@
                 <h6 class="card-subtitle mb-2 text-muted">{{ invoice.u_address }}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">{{ invoice.u_email }}</h6>
             </div>
-            {# {% for item in orders %}
-            <div class="d-flex border-bottom border-secondary mb-3">
-                <h6 class="d-flex justify-content-around align-items-center mr-4"><img src="{{ item.p_picture }}"
-                        width="80px" height="80px" alt="Album picture"></h6>
-                <h6 class="row d-flex justify-content-around align-items-center m-4">{{ item.p_title }}</h6>
-                <h6 class="row d-flex justify-content-around align-items-center m-4">{{ item.p_price }} €</h6>
-                <h6 class="row d-flex justify-content-around align-items-center m-4">QUANTITY {{ item.quantity }}</h6>
-            </div>
-            {% endfor %} #}
             <h5 class="mb-1">TOTAL {{ invoice.total }} €</h5>
             <a
              class="d-flex justify-content-end border-bottom border-secondary">DOWNLOAD YOUR INVOICE</a>
@@ -63,4 +84,4 @@
 </section>
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
