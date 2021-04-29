@@ -11,7 +11,7 @@
     <div class="container text-center">
         <h1 class="m-3">MY ACCOUNT</h1>
         <h1 class="m-1">{{session.user.lastname}} {{session.user.firstname}}</h1>
-        <a class="btn btn-secondary mt-3 mb-5" href="/security/logout">LOG OUT</a>
+        <a class="btn btn-secondary mt-5 mb-5" href="/security/logout">LOG OUT</a>
     </div>
     <div>
         <div class="mt-3 border-bottom border-secondary">
@@ -42,11 +42,11 @@
             <table class="table mt-5">
                 <thead>
                     <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">PRODUITS</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+                        <th scope="col">DELETE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,7 +56,7 @@
                         <td>{{wish.product.title}}</td>
                         <td>{{wish.product.price}}</td>
                         <td>{{wish.product.quantity}}</td>
-                        <td><a href="/wishlist/dislike/{{wish.wish_id}}" class="btn btn-outline-dark">DELETE</a></td>
+                        <td><a href=""/wishlist/dislike/{{wish.wish_id}}" class="text-reset"><span class="material-icons">delete_forever</span></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
