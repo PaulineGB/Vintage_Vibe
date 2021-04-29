@@ -134,4 +134,14 @@ class ProductManager extends AbstractManager
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function updateQuantity(int $idProduct, int $newQty)
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET `quantity` = :quantity WHERE id=:id");
+        $statement->bindValue('id', $idProduct, \PDO::PARAM_INT);
+        $statement->bindValue('quantity', $newQty, \PDO::PARAM_INT);
+
+        return $statement->execute();
+    }
 }

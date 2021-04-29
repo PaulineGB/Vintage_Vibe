@@ -56,7 +56,8 @@ class WishlistManager extends AbstractManager
     public function getWishlistByUser(int $idUser)
     {
 
-        $statement = $this->pdo->prepare("SELECT id, product_id FROM " . self::TABLE . " WHERE user_id = :user_id");
+        $statement = $this->pdo->prepare("SELECT id, product_id FROM " . self::TABLE .
+        " WHERE user_id = :user_id");
         $statement -> bindValue(':user_id', $idUser, \PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll();
@@ -64,8 +65,8 @@ class WishlistManager extends AbstractManager
 
     public function isLikedByUser(int $idProduct, int $idUser)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE 
-        product_id = :product_id AND user_id = :user_id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE .
+        " WHERE product_id = :product_id AND user_id = :user_id");
         $statement -> bindValue(':product_id', $idProduct, \PDO::PARAM_INT);
         $statement -> bindValue(':user_id', $idUser, \PDO::PARAM_INT);
         $statement->execute();

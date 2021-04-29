@@ -10,9 +10,6 @@
 
 namespace App\Model;
 
-/**
- *
- */
 class NewsletterManager extends AbstractManager
 {
     public const TABLE = 'newsletter';
