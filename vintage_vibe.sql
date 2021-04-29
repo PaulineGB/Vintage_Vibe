@@ -1,320 +1,9 @@
-{REM-FR}AntoiNe duriez
-#1244
-
-[REM-FR] Justine Giletta
- — 
-16/04/2021
-je fais juste une petite intro du coup
-[REM-FR] AnneG
- — 
-16/04/2021
-ouais voila...
-sinon on en parlé
-tant pis
-comme vous le sentez
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Bah juste une petite intro, moi je dis ça passe.
-[REM-FR] AnneG
- — 
-16/04/2021
-yes
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Je suis un peu en mode "j'ai besoin d'aller dormir", désolée   :sweat_smile:
-Donc je vais dire "ça passe" à ce que vous voulez, mdr.
-[REM-FR] AnneG
- — 
-16/04/2021
-:laughing:
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Et bah court comme ça, ça m'allait très très bien.  :joy:
-[REM-FR] Justine Giletta
- — 
-16/04/2021
-Déso j'ai clairement expédié le truc :rofl:
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Punaise je suis vraiment à récupérer à la petite cuillère moi en cette fin de semaine...
-[REM-FR] AnneG
- — 
-16/04/2021
-tkt cetait top
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Ah mais ne t'excuse pas, c'était très bien.
-[REM-FR] AnneG
- — 
-16/04/2021
-jaurai pas fait mieux :wink:
-[REM-FR] Justine Giletta
- — 
-16/04/2021
-pareil t'inquiète, je tiens parce qu'il faut mais après la veille techno je pense collapser
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Tu m'étonnes ! Tu verras quand on est débarrassé de ça, les vendredis après-midi c'est sieste.
-[REM-FR] Justine Giletta
- — 
-16/04/2021
-c'est clair ah ah
-ça me tarde
-:pray:
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Dans une petite demi-heure.
-[REM-FR]-Amine Haddad
- — 
-16/04/2021
-bravo justine j ai une solution pour contourné l ecriture inclusive lol
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-C'était une super présentation !
-[REM-FR]-Amine Haddad
- — 
-16/04/2021
-je te redis ça mais c est bateau mais bon sa marche lol
-[REM-FR]-Amine Haddad
- — 
-16/04/2021
-mdr je suis fatigué mais bon je ris de mes parole bali balo j ai vue un bateau
-:wink:
-[REM-FR]-Amine Haddad
- — 
-16/04/2021
-de l inclusion Justine c est pas simle haha
-tu as souhaité juste a "tous"
-tu as oublié toutes hihi
-[REM-FR] Pauline GB 👽
- — 
-16/04/2021
-Pendant la rétro, j'ai résolu le problème de centrage de la navbar Admin, elle est au top.
-[REM-FR]-Amine Haddad
- — 
-16/04/2021
-bien vue
-{REM-FR}AntoiNe duriez
- — 
-21/04/2021
-J'ai finit il manque juste a mettre les bons liens on fait le points quand vous voulez pour me dire ce que vous voulez que je fasse aprés
-[REM-FR] Pauline GB 👽
- — 
-21/04/2021
-Yes Antoine, on a eu des soucis sur git Justine et moi donc on appelé Jenny parce qu'il y avait vraiment un truc qu'on pigeait pas. Mais là c'est bon. On fait le point après déjeuner.
-Bon app. tout le monde !
-[REM-FR] Pauline GB 👽
- — 
-21/04/2021
-GIT GESTION CONFLITS
-
-Sur la branche devant être mergée :
-git pull origin dev 
-Affiche dans VS code les fichiers avec des conflits 
-les résoudre manuellement
-enregistrer 
-git add [les fichiers modifiés]
-git commit -m «resolve conflicts »
-git push (toujours sur la branche en cours)
-[REM-FR] Pauline GB 👽
- a épinglé 
-un message
- dans ce salon. 
-Voir tous les messages épinglés.
- — 
-21/04/2021
-[REM-FR] Justine Giletta
- — 
-21/04/2021
-CHEMIN pour views FRONT
-Mettre les fichiers view dans le dossier HOME 
-Passer par le HomeController
-[REM-FR] Pauline GB 👽
- a épinglé 
-un message
- dans ce salon. 
-Voir tous les messages épinglés.
- — 
-21/04/2021
-[REM-FR] Justine Giletta
- — 
-21/04/2021
-BDD mise à jour avec des données avec items
-
 -- phpMyAdmin SQL Dump
 -- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
-<<<<<<< HEAD:vintage_vibe.sql
--- Généré le : mer. 21 avr. 2021 à 16:22
-
-Afficher plus
-vintage_vibe.sql20 Ko
-[REM-FR]-Amine Haddad
- — 
-25/04/2021
-https://youtu.be/JZ6R1PaEpww
-YouTube
-Grafikart.fr
-Découverte du CSS (28/31) : Les frameworks CSS
-[REM-FR]-Amine Haddad
- — 
-25/04/2021
-https://discord.com/channels/809332730562478091/820193744598597653/835895063346544720
-[REM-FR] Pauline GB 👽
- — 
-Hier à 13:58
-Coucou tout le monde, vous allez bien ?
-[REM-FR] AnneG
- — 
-Hier à 13:59
-coucou oui et toi ?
-[REM-FR] Pauline GB 👽
- — 
-Hier à 13:59
-Oui ça va :slight_smile:
-Je ne suis pas passée vous faire de coucou ce matin car j'avais un blocage sur le site et besoin de Hugo... C'est résolu ! Je n'aurais pas trouvé seule. Mais nous avons bien une page layout shop qui display les articles et permet de les trier par size et category.
-[REM-FR] AnneG
- — 
-Hier à 14:00
-génial
-tu nous montreras...
-[REM-FR] Pauline GB 👽
- — 
-Hier à 14:00
-Yes je vous montrerai le fin mot de l'histoire.
-[REM-FR] AnneG
- — 
-Hier à 14:00
-top
-[REM-FR] Justine Giletta
- — 
-Aujourd’hui à 09:23
-
--- phpMyAdmin SQL Dump
--- version 4.9.7
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost:8889
--- Généré le : mar. 27 avr. 2021 à 19:50
--- Version du serveur :  5.7.32
--- Version de PHP : 7.4.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données : `vintage_vibe`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `blog`
---
-
-CREATE TABLE `blog` (
-  `id` int(11) NOT NULL,
-  `title` varchar(80) NOT NULL,
-  `description` text NOT NULL,
-  `picture` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `blog`
---
-
-INSERT INTO `blog` (`id`, `title`, `description`, `picture`) VALUES
-(1, 'BREAK THE SOUND', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.', 'https://images.unsplash.com/photo-1585838017777-5003198884b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2766&q=80'),
-(2, 'VINTAGE REVIVAL', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.', 'https://images.unsplash.com/photo-1494232410401-ad00d5433cfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80'),
-(3, 'WHO ARE WE? WHO, WHO?', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.', 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `category`
---
-
-CREATE TABLE `category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `category`
---
-
-INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'Vinyl'),
-(2, 'Bazar');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `contact`
---
-
-CREATE TABLE `contact` (
-  `id` int(11) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `firstname` varchar(80) NOT NULL,
-  `lastname` varchar(80) NOT NULL,
-  `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `contact`
---
-
-INSERT INTO `contact` (`id`, `email`, `firstname`, `lastname`, `message`) VALUES
-(1, 'jpp_localhost@caramail.fr', 'Jean-Pol', 'Plus', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.'),
-(2, 'jm_mafemme@yahoo.com', 'Jean-Michel', 'MaFemme', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.'),
-(3, 'poil_poil@caramail.', 'Poil', 'Poil', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel molestie justo. Mauris nec eros sit amet diam condimentum tincidunt. Vestibulum a massa ligula. Aliquam feugiat congue velit, a blandit enim sagittis sit amet. Phasellus luctus mauris eu purus dapibus, non bibendum purus eleifend. Suspendisse eu orci dolor. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper. Maecenas nec purus hendrerit, auctor lorem et, pretium ex. Nulla suscipit, orci quis blandit hendrerit, dolor purus fermentum magna, elementum porttitor neque lorem fermentum ipsum. Donec eget egestas nisl. Sed sagittis, felis elementum semper.');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `newsletter`
---
-
-CREATE TABLE `newsletter` (
-  `id` int(11) NOT NULL,
-  `email` varchar(80) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `newsletter`
---
-... (286 lignes restantes)
-
-Réduire
-vintage_vibe.sql21 Ko
-﻿
-
--- phpMyAdmin SQL Dump
--- version 4.9.7
--- https://www.phpmyadmin.net/
---
--- Hôte : localhost:8889
--- Généré le : mar. 27 avr. 2021 à 19:50
-=======
--- Généré le : mer. 28 avr. 2021 à 09:32
->>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
+-- Généré le : mer. 28 avr. 2021 à 14:19
 -- Version du serveur :  5.7.32
 -- Version de PHP : 7.4.12
 
@@ -430,16 +119,8 @@ CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  `total` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `order`
---
-
-INSERT INTO `order` (`id`, `user_id`, `created_at`, `total`, `product_id`) VALUES
-(1, 8, '2021-04-26', 230, 7);
 
 -- --------------------------------------------------------
 
@@ -543,8 +224,6 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `email`, `address`, `password
 (6, 'JEAN', 'Jean', 'jean.jean@outlook.com', '8 rue du Général Pas-de-Bol 96000 ABON', '52bd5c10122eb5bda98e7a774b207893', 0),
 (7, 'DISCO', 'Dance', 'disco.dance@lycoos.com', '2 rue du Potiron 80500 RONRON', '19b1898c952bc4ec9ee2b335431fb0cc', 1),
 (8, 'PLOP', 'Plop', 'plop@plop.com', '3 rue plop 35012 PLOPCITY-sur-PLOP', '4239d722d57a970d99664fcb3ba726b2', 0);
-<<<<<<< HEAD:vintage_vibe.sql
-=======
 
 -- --------------------------------------------------------
 
@@ -557,7 +236,6 @@ CREATE TABLE `wishlist` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
->>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
 
 --
 -- Index pour les tables déchargées
@@ -592,8 +270,7 @@ ALTER TABLE `newsletter`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_order_user` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `FK_order_user` (`user_id`);
 
 --
 -- Index pour la table `order_product`
@@ -688,15 +365,12 @@ ALTER TABLE `size`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-<<<<<<< HEAD:vintage_vibe.sql
-=======
 
 --
 -- AUTO_INCREMENT pour la table `wishlist`
 --
 ALTER TABLE `wishlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> feef6703227c7696ac6d82ee833a7626e4e7bc16:vintage_vibe(1).sql
 
 --
 -- Contraintes pour les tables déchargées
@@ -706,7 +380,6 @@ ALTER TABLE `wishlist`
 -- Contraintes pour la table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `FK_order_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
   ADD CONSTRAINT `FK_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
@@ -732,4 +405,3 @@ ALTER TABLE `wishlist`
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
