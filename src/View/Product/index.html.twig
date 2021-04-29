@@ -11,7 +11,7 @@
 <section id="products" class="container">
   <div class="container text-center">
     <h1 class="mb-3">PRODUCTS</h1>
-    <a href="/product/add" class="btn btn-secondary mt-3 mb-5">ADD A PRODUCT</a>
+    <a href="/admin/addProduct" class="btn btn-secondary mt-3 mb-5">ADD A PRODUCT</a>
   </div>
     <table class="table mt-5">
         <thead>
@@ -39,9 +39,9 @@
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
             <td>
-                <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
-                <a href="/product/show/{{ product.id }}" class="btn btn-outline-success">SHOW</a>
+                <a href="/admin/editProduct/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+                <a href="/admin/deleteProduct/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+                <a href="/admin/showProduct/{{ product.id }}" class="btn btn-outline-success">SHOW</a>
             </td>
           </tr>
             {% endfor %}

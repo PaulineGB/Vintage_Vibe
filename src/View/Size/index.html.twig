@@ -10,7 +10,7 @@
     </div>
     <div class="container text-center">
         <h1 class="mb-3">SIZES</h1>
-        <a href="/size/add" class="btn btn-secondary">ADD SIZE</a>
+        <a href="/admin/addSize/" class="btn btn-secondary">ADD SIZE</a>
     </div>
     <div class="container">
         <table class="table mt-5">
@@ -27,8 +27,8 @@
                     <tr>
                         <th scope="row">{{ size.id }}</th>
                         <td>{{ size.name }}</td>
-                        <td><a href="/size/edit/{{ size.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                        <td><a href="/size/delete/{{ size.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                        <td><a href="/admin/editSize/{{ size.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/admin/deleteSize/{{ size.id }}" class="btn btn-outline-dark">DELETE</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

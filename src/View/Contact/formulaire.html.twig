@@ -3,33 +3,17 @@
 {% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 {% block content %}
 	<div class"container-fluid">
-		<div class="row">
-		
-			<div class="col-12 col-sm-12 p-4 col-md-12 col-lg-12 d-flex justify-content-center">
-				<h1>CONTACT</h1>
-			</div>
+		<div class="d-flex justify-content-center mt-5">
+			<h1>CONTACT</h1>
 		</div>
-		<div class="row justify-content-center ">
-			
-			<div class="col-10 col-sm-6 col-md-6 col-lg-6 d-flex ">
-				<img class="col d-flex image-fluid" src="../assets/images/ContactUs.jpg"  width="200px" height="200px" alt="Image Contact Us">
+		<div class="lh-2">
+			<div class="col text-center"><p class="fs-1">▲</p></div>
+			<div class="col text-center">
+				<p class="fw-bold">VINTAGE VIBE<br>75011 Paris<br>135 rue de la motte rouge<br>(+33)1 75 45 68 77<br>Vibe@gmail.com</p>
 			</div>
-			
-			<div class="p-3 col-12 col-sm-4 col-md-4 col-lg-4">
-				<ul class="row">
-				<li class="row d-flex justify-content-center">VINTAGE VIBE</li>
-				<li class="row p-2 justify-content-center">75011 Paris</li>
-				<li class="row p-2 justify-content-center">135 rue de la motte rouge</li>
-				<li class="row p-2 justify-content-center">(+33)1 75 45 68 77</li>
-				<li class="row p-1 justify-content-center">Vibe@gmail.com</li>
-
-				</ul>
-			</div>
-			
+			<div class="col text-center"><p class="fs-1">▼</p></div>
 		</div>
-
 		<div class="row-12 col-sm-12 col-md-12 col-lg-12 p-2">
-			
 			<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
 				{% if errors is  empty  %}
 					<p class="bg-success" >{{ sentence }}</p>
@@ -37,8 +21,7 @@
 			</div>
 		</div>
 		{% include 'Contact/_form.html.twig' %}
-
     </div>
-	
 {% endblock %}
+
 {% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}

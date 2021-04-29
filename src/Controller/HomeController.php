@@ -178,8 +178,9 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/faq.html.twig');
     }
 
+
     // Newsletter
-    public function newsLetter()
+    public function newsletter()
     {
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -198,10 +199,11 @@ class HomeController extends AbstractController
                 $newsletter = [
                     'email' => $_POST['email'],
                 ];
+                $newsletterManager->insert($newsletter);
+                header('Location:/');
 
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                     . $newsletter['email'] . ', nous vous contactons bientôt.';
-                $newsletterManager->insert($newsletter);
                 return $this->twig->render('Home/index.html.twig', [
                     'sentence' => $sentence
                 ]);
@@ -210,14 +212,6 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig', [
             'errors' => $errors
         ]);
-    }
-
-    public function contactNewsLetter()
-    {
-        $newsLetterManager = new NewsLetterManager();
-        $newsLetters = $newsLetterManager->selectAll();
-
-        return $this->twig->render('Newsletter/index.html.twig', ['newsLetters' => $newsLetters]);
     }
 
     public function team()

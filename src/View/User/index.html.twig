@@ -10,7 +10,7 @@
         </div>
         <div class="container text-center">
             <h1 class="mb-3">USERS</h1>
-            <div><a href="/User/add/" class="btn btn-secondary">ADD NEW USER</a></div>
+            <div><a href="/admin/addUser/" class="btn btn-secondary">ADD NEW USER</a></div>
         </div>
         <div class="container">
             <table class="table mt-5">
@@ -39,8 +39,8 @@
                             <p>&#x2714;</p>
                                 {% endif %}
                             </td>
-                            <td><a href="/User/edit/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
-                            <td><a href="/User/delete/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                            <td><a href="/admin/editUser/{{ user.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                            <td><a href="/admin/deleteUser/{{ user.id }}" class="btn btn-outline-dark">DELETE</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

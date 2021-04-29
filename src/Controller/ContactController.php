@@ -19,25 +19,6 @@ use App\Model\ContactManager;
 class ContactController extends AbstractController
 {
     /**
-     * Display contact listing
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
-    public function data()
-    {
-
-        $contactManager = new ContactManager();
-        $contacts = $contactManager->selectAll();
-        return $this->twig->render('Contact/data.html.twig', [
-            'contacts' => $contacts
-            ]);
-    }
-
-
-    /**
      * Display contact informations specified by $id
      *
      * @param int $id
@@ -113,17 +94,5 @@ class ContactController extends AbstractController
             'errors' => $errors,
             'sentence' => $sentence
         ]);
-    }
-
-    /**
-     * Handle item deletion
-     *
-     * @param int $id
-     */
-    public function delete(int $id)
-    {
-        $contactManager = new ContactManager();
-        $contactManager->delete($id);
-        header('Location:/Contact/data/' . $id);
     }
 }

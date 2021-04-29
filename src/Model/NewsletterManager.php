@@ -40,7 +40,7 @@ class NewsletterManager extends AbstractManager
     /**
      * @param int $id
      */
-    public function delete(int $id): void
+    public function deleteNewsletter(int $id): void
     {
         // prepared request
         $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
