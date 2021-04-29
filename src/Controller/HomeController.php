@@ -128,4 +128,9 @@ class HomeController extends AbstractController
             'errors' => $errors
         ]);
     }
+
+    public function team()
+    {
+        return $this->twig->render('Home/team.html.twig');
+    }
 }

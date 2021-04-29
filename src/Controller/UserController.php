@@ -11,6 +11,8 @@
 namespace App\Controller;
 
 use App\Model\UserManager;
+use App\Model\WishlistManager;
+use App\Model\ProductManager;
 
 /**
  * Class UserController
