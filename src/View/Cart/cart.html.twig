@@ -25,7 +25,7 @@
 				<td>{{product.price}}</td>
 				<td>{{product.quantity}}</td>
 				<td>{{product.quantity * product.price}}</td>
-				<td><a href="/cart/deleteFromCart/{{product.id}}">Delete from cart</a></td>
+				<td><a href="/cart/deleteFromCart/{{product.id}}" class="text-reset"><span class="material-icons">delete_forever</span></a></td>
 			</tr>
 			{% endfor %}
 		</tbody>
