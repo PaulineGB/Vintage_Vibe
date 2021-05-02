@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Detail ORDER {{idInvoice}} {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+  <a href="/admin/indexOrder/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class="container text-center">
+    <h1 class="mb-3">Detail ORDER {{idInvoice}} </h1>
+    <h1 class="mb-3">DATE {{ order.o_created_at}}</h1>
+
+    {{dump(order)}}
+    <div>
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="col">order reference</th>
+              <th scope="col">date</th>
+              <th scope="col">user</th>
+              <th scope="col">address</th>
+              <th scope="col">total</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+                <tr>
+                  <td>{{idInvoice}}</td>
+                  <td>{{ order.u_firstname }} {{ order.u_lastname }}</td>
+                  <td>{{ order.u_address }}</td>
+                  <td>{{ order.o_created_at}}</td>
+                  <td>{{ order.o_total }} €</td>
+                </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

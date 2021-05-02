@@ -27,6 +27,16 @@ class InvoiceManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    public function selectAll(): array
+    {
+        return $this->pdo->query('SELECT
+        o.id, o.user_id, o.created_at, o.total,
+        u.firstname AS u_firstname, u.lastname AS u_lastname, u.address AS u_address
+        FROM `order` AS o
+        JOIN user AS u ON u.id = o.user_id
+        ')->fetchAll();
+    }
+
     public function insertOrder(array $order): int
     {
         $statement = $this->pdo->prepare("INSERT INTO `order` (user_id, created_at, total)
