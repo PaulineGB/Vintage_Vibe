@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} {{product.title}} {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+        <a href="/admin/indexProduct" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class="container">
+    <h1>{{ product.title }} - {{ product.artist }}</h1>
+    <img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture">
+    <p><strong>CATEGORY</strong><br>{{ product.category_name }}</p>
+    <p><strong>DESCRIPTION</strong><br>{{ product.description }}</p>
+    <p><strong>PRICE</strong><br>{{ product.price }}</p>
+    <p><strong>QUANTITY</strong><br>{{ product.quantity }}</p>
+    <div>
+        <a href="/admin/editProduct/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+        <a href="/admin/deleteProduct/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

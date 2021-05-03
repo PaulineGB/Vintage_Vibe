@@ -5,13 +5,13 @@
     </div>
     <div class="mb-3">
         <label for="artist" class="form-label">ARTIST</label>
-        <input type="text" class="form-control" id="artist" name="artist" value="{{ product.artist }}" required>
+        <input type="text" class="form-control" id="artist" name="artist" value="{{ product.artist }}">
     </div>
     <div class="mb-3">
         <label for="category" class="form-label">CATEGORY</label>
         <select class="form-select" name="category_id">
             {% if product is defined %}
-            <option value="{{product.category_id}}" required>{{ product.category_id }}</option>
+            <option value="{{ product.category_id }}" required>{{ product.category_name}}</option>
             {% else %}
             <option selected>--</option>
             {% endif %}
@@ -24,7 +24,7 @@
         <label for="size" class="form-label">SIZE</label>
         <select class="form-select" name="size_id">
             {% if product is defined %}
-            <option value="{{product.size_id}}">{{product.size_id}}</option>
+            <option value="{{ product.size_id }}">{{ product.size_name }}</option>
             {% else %}
             <option selected>--</option>
             {% endif %}
@@ -50,6 +50,6 @@
         <input type="text" class="form-control" id="quantity" name="quantity" value="{{ product.quantity }}" required>
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-outline-secondary">VALIDATE</button>
+        <button type="submit" class="btn btn-secondary">VALIDATE</button>
     </div>
 </form>

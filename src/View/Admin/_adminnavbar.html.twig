@@ -1,0 +1,19 @@
+<header class="sticky-top border-bottom border-dark">
+    <nav class="navbar navbar-expand bg-white">
+        {% if session.user is not defined %}
+        <div class="container-fluid d-flex justify-content-center">
+            <div><a href="/home/index/" class="text-reset text-decoration-none fs-1">▼▼</a></div>
+        </div>
+        {% endif %}
+        {% if session.user is defined and session.user.is_admin == true %}
+        <div class="container-fluid d-flex justify-content-start"></div>
+        <div class="container-fluid d-flex justify-content-center">
+                <div><a href="/admin/index/" class="text-reset text-decoration-none fs-1">▼▼</a></div>
+        </div>
+        <div class="container-fluid d-flex justify-content-end">
+                <div class="pe-3"><a href="/home/index/" class="text-reset align-items-center"><span class="material-icons fs-3">language</span></a></div>
+                <div class="pe-2"><a href="/admin/logout" class="text-reset align-items-center"><span class="material-icons fs-3">settings_power</span></a></div>
+        </div>
+        {% endif %}
+    </nav>
+</header>

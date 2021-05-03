@@ -1,0 +1,43 @@
+:root {
+  --greyvibe: rgb(238 236 236);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Abel", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.homeheader {
+  overflow: hidden;
+}
+
+.headerimg {
+  width: 100%;
+}
+
+.homeabout {
+  background-color: var(--greyvibe);
+}
+
+.hometriangle img {
+  max-width: 80px;
+}
+
+.hometeam {
+  background-color: var(--greyvibe);
+}
+
+.hometeam img {
+  max-width: 40%;
+}

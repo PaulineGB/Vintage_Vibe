@@ -1,3 +1,15 @@
-{% extends 'layout.html.twig' %} {% block content %}
-<h1>Add a new size</h1>
-{% include 'Size/_form.html.twig' %} {% endblock %}
+{% extends 'layout.html.twig' %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div class="col-1 back m-3">
+        <a href="/admin/indexSize/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1 class="mb-5">ADD A SIZE</h1>
+        {% include 'Size/_form.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

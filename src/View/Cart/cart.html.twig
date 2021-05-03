@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Cart {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class='container text-center'>
+	<h1 class="mt-5">YOUR CART</h1>
+	{% if totalCart > '0' %}
+	<table class="table table-bordered mt-5">
+		<thead>
+			<tr>
+				<th scope="col">Product</th>
+				<th scope="col">Price</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Total</th>
+				<th scope="col">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in cart %}
+			<tr>
+				<td>{{product.title}}</td>
+				<td>{{product.price}}</td>
+				<td>{{product.quantity}}</td>
+				<td>{{product.quantity * product.price}}</td>
+				<td><a href="/cart/deleteFromCart/{{product.id}}">Delete from cart</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h3 class="m-3"> TOTAL : {{totalCart}} € </h3>
+</div>
+	{% if session.user is defined %}
+	<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
+	{% endif %}
+{% else %}
+	<h2 class="m-5">is empty <br> why </h2>
+	<div class="mb-5"><img src="https://cdn140.picsart.com/295887417011211.png?type=webp&to=min&r=640" height="300px" width="400px" alt=""></div>
+{% endif %}
+
+{% if session.user is not defined and totalCart > '0' %}
+{% include 'Security/_logform.html.twig' %}
+{% endif %}
+{% endblock %}
+
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}

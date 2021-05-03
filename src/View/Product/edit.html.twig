@@ -2,8 +2,16 @@
 
 {% block title %} Edit your product{% endblock %}
 
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-    <h1>Edit {{ product.title }}</h1>
-    {% include 'Product/_form.html.twig' %}
-    <a href="/product/index">Back</a>
+    <div class="col-1 back m-3">
+        <a href="/admin/indexProduct" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1 class="mb-5">EDIT PRODUCT</h1>
+        {% include 'Product/_form.html.twig' %}
+    </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

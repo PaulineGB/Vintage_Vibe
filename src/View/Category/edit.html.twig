@@ -1,7 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-    <h1>Category "{{ category.name }}" edited </h1>
-    {% include 'Category/_form.html.twig' %}
-    <a href="/category/show/{{ category.id }}">Back</a>
+    <div class="col-1 back m-3">
+        <a href="/admin/indexCategory/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1 class="mb-5">EDIT CATEGORY</h1>
+        {% include 'Category/_form.html.twig' %}
+    </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

@@ -2,11 +2,18 @@
 
 {% block title %} All products{% endblock %}
 
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-<section id="products">
-    <h1>PRODUCTS</h1>
-    <a href="/product/add">Ajouter</a>
-    <table class="table">
+<div class="col-1 back m-3">
+  <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<section id="products" class="container">
+  <div class="container text-center">
+    <h1 class="mb-3">PRODUCTS</h1>
+    <a href="/admin/addProduct" class="btn btn-secondary mt-3 mb-5">ADD A PRODUCT</a>
+  </div>
+    <table class="table mt-5">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -27,13 +34,14 @@
             <td><img src="{{ product.picture }}" width="100px" height="100px" alt="Album picture"></td>
             <td>{{ product.title }}</td>
             <td>{{ product.artist }}</td>
-            <td>{{ product.category_id }}</td>
-            <td>{{ product.size_id }}</td>
+            <td>{{ product.category_name }}</td>
+            <td>{{ product.size_name }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.quantity }}</td>
             <td>
-                <a href="/product/edit/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
-                <a href="/product/delete/{{ product.id }}" class="btn btn-outline-secondary">DELETE</a>
+                <a href="/admin/editProduct/{{ product.id }}" class="btn btn-outline-secondary">EDIT</a>
+                <a href="/admin/deleteProduct/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+                <a href="/admin/showProduct/{{ product.id }}" class="btn btn-outline-success">SHOW</a>
             </td>
           </tr>
             {% endfor %}
@@ -42,3 +50,6 @@
 </section>
 
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
+

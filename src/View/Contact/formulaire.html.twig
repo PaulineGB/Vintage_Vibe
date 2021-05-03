@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Contact {% endblock %}
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+{% block content %}
+	<div class"container-fluid">
+		<div class="d-flex justify-content-center mt-5">
+			<h1>CONTACT</h1>
+		</div>
+		<div class="lh-2">
+			<div class="col text-center"><p class="fs-1">▲</p></div>
+			<div class="col text-center">
+				<p class="fw-bold">VINTAGE VIBE<br>75011 Paris<br>135 rue de la motte rouge<br>(+33)1 75 45 68 77<br>Vibe@gmail.com</p>
+			</div>
+			<div class="col text-center"><p class="fs-1">▼</p></div>
+		</div>
+		<div class="row-12 col-sm-12 col-md-12 col-lg-12 p-2">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
+				{% if errors is  empty  %}
+					<p class="bg-success" >{{ sentence }}</p>
+				{% endif %}
+			</div>
+		</div>
+		{% include 'Contact/_form.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}

@@ -1,13 +1,39 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} All categories {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-    <h1>The categories</h1>
-    <ul>
-        {% for category in categories %}
-            <li><a href="/category/show/{{ category.id }}">{{ category.name }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
-    <a href="/category/add">Ajouter</a>
+    <div class="col-1 back m-3">
+        <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1 class="mb-3">CATEGORIES</h1>
+        <a href="/admin/addCategory" class="btn btn-secondary">ADD CATEGORY</a>
+    </div>
+    <div class="container">
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">action</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <th scope="row">{{ category.id }}</th>
+                        <td>{{ category.name }}</td>
+                        <td><a href="/admin/editCategory/{{ category.id }}" class="btn btn-outline-secondary">EDIT</a></td>
+                        <td><a href="/admin/deleteCategory/{{ category.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

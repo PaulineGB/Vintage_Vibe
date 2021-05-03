@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Orders {% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+  <a href="/admin/index/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class="container text-center">
+    <h1 class="mb-3">ORDERS</h1>
+    <div>
+        <table class="table mt-5">
+          <thead>
+            <tr>
+              <th scope="col">order reference</th>
+              <th scope="col">user reference</th>
+              <th scope="col">date</th>
+              <th scope="col">product</th>
+              <th scope="col">total</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for order in orders %}
+                <tr>
+                  <th scope="row">{{ order.id }}</th>
+                  <td>{{ order.user_id }}</td>
+                  <td>{{ order.created_at }}</td>
+                  <td>{{ order.product_id }}</td>
+                  <td>{{ order.total }} $</td>
+                </tr>
+              {% else %}
+              <p>Ooops, there's no order here. Try to sell something.</p>
+              {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

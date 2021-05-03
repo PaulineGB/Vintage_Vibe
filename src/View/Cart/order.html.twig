@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} My Order {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+<div class="col-1 back m-3">
+    <a href="/cart/cart/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+</div>
+<div class='container text-center'>
+	<h1 class="mt-5">VALIDATE MY CART</h1>
+    <table class="table table-bordered mt-5">
+		<thead>
+			<tr>
+				<th scope="col">Product</th>
+				<th scope="col">Price</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Total</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for product in cart %}
+			<tr>
+                <td>{{product.title}}</td>
+				<td>{{product.price}}</td>
+				<td>{{product.quantity}}</td>
+				<td>{{product.quantity * product.price}}</td>
+            </tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h3 class="m-3"> TOTAL :  {{totalCart}} € </h3>
+</div>
+<div class="text-center"><button type="submit" class="btn btn-secondary">PAY</button></div>
+
+{% endblock %}

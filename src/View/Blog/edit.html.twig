@@ -1,7 +1,17 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %} Edit your blog article{% endblock %}
+
+{% block navbar %}{% include 'Admin/_adminnavbar.html.twig' %}{% endblock %}
+
 {% block content %}
-    <h1>Edit your Article {{ blog.title }}</h1>
-    {% include 'Blog/_form.html.twig' %}
-    <a href="/blog/show/{{ blog.id }}">Back</a>
+    <div class="col-1 back m-3">
+        <a href="/admin/indexBlog/" class="text-reset"><span class="material-icons">keyboard_backspace</span></a>
+    </div>
+    <div class="container text-center">
+        <h1 class="mb-5">EDIT ARTICLE</h1>
+        {% include 'Blog/_form.html.twig' %}
+    </div>
 {% endblock %}
+
+{% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}
