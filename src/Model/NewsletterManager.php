@@ -29,8 +29,8 @@ class NewsletterManager extends AbstractManager
     public function insert(array $newsletter): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`email`) VALUES (:emailnews)");
-        $statement->bindValue('emailnews', $newsletter['email'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`email`) VALUES (:email)");
+        $statement->bindValue('email', $newsletter['email'], \PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();

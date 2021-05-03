@@ -198,18 +198,18 @@ class HomeController extends AbstractController
             if (empty($errors)) {
                 $newsletterManager = new NewsletterManager();
                 $newsletter = [
-                    'email' => $_POST['emailnews'],
+                    'email' => $_POST['email'],
                 ];
                 $newsletterManager->insert($newsletter);
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
                 . $newsletter['email'];
                 header('Location:/');
-                return $this->twig->render('Home/newsletter.html.twig', [
+                return $this->twig->render('Home/_newsletter.html.twig', [
                     'sentence' => $sentence
                 ]);
             }
         }
-        return $this->twig->render('Home/newsletter.html.twig', [
+        return $this->twig->render('Home/_newsletter.html.twig', [
             'errors' => $errors
         ]);
     }
@@ -226,7 +226,7 @@ class HomeController extends AbstractController
     public function contact()
     {
         $errors = [];
-        $sentenceContact = '';
+        $sentence = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $contact = array_map("trim", $_POST);
             $userMailOk = filter_var($contact['email'], FILTER_VALIDATE_EMAIL);
@@ -262,16 +262,16 @@ class HomeController extends AbstractController
             ];
             if (empty($errors)) {
                 $contactManager->insert($contact);
-                // $sentenceContact = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
-                //     . ' ' . 'for contacting us about you message.
-                //    One of our advisors will contact you at: '
-                //     . $contact['email'] .
-                //     ' as soon as possible to process your request.';
+                $sentence = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
+                     . ' ' . 'for contacting us about you message.
+                    One of our advisors will contact you at: '
+                     . $contact['email'] .
+                     ' as soon as possible to process your request.';
             }
         }
         return $this->twig->render('Home/contact.html.twig', [
             'errors' => $errors,
-            'sentence' => $sentenceContact
+            'sentence' => $sentence
         ]);
     }
 }
