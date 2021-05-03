@@ -29,22 +29,10 @@ class NewsletterManager extends AbstractManager
     public function insert(array $newsletter): int
     {
         // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`email`) VALUES (:email)");
-        $statement->bindValue('email', $newsletter['email'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`email`) VALUES (:emailnews)");
+        $statement->bindValue('emailnews', $newsletter['email'], \PDO::PARAM_STR);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
-    }
-
-
-    /**
-     * @param int $id
-     */
-    public function deleteNewsletter(int $id): void
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
     }
 }

@@ -1,54 +1,41 @@
 <footer class="border-top border-dark pt-2 bg-white expand">
-    <div class="container d-flex justify-content-center">
-        <div class ="row g-o justify-content-center" >
+    <section class="newsletterfaq">
+        <div class="container px-3">
             <div class="row justify-content-between">
-                <div class="col-sm-4 ">
-                    {% include 'Home/_form.html.twig' %}
-                     <div class= "d-none d-lg-block">
-                        <div class="mt-3"><span class="material-icons">price_change  payments shop</span>
-                        </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="form">{% include 'Home/newsletter.html.twig' %}</div>
+                    <div class= "d-none d-sm-none d-lg-block mt-3">
+                        <span class="material-icons">payments</span>
+                        <span class="material-icons">payment</span>
+                        <span class="material-icons">local_atm</span>
+                        <span class="material-icons">price_change</span>
                     </div>
                 </div>
-                <div class ="col-sm-4 justify-content-center">
-                </div>
-                <div class="col-sm-4 justify-content-center">
-                    <div class= "d-none d-lg-block">
-                        <div class="mt-3">
-                            <div class ="d-flex justify-content-end"><a href="/Home/faq/" class="text-reset text-decoration-none"><p>FAQ</p></a>
-                                </div>
-                                <div class ="align-item-end">
-                                    <div class="d-flex justify-content-end"><a href="/Home/terms/" class="text-reset text-decoration-none"><p>Terms & Privacy Police</p></a>
-                                    </div>
-                                    <div class="d-flex justify-content-end"><a href="/Contact/formulaire/" class="text-reset text-decoration-none"><p>Contact US</p></a>
-                                    </div>
-                                </div>
-                            </div>
-                         </div>
-                         <div class ="d-block d-sm-none">
-                            <div class ="d-flex justify-content-center"><a href="/Home/faq/" class="text-reset text-decoration-none"><p>FAQ</p></a>
-                            </div>
-                            <div class ="align-item-center">
-                                <div class="d-flex justify-content-center"><a href="/Home/terms/" class="text-reset text-decoration-none"><p>Terms & Privacy Police</p></a>
-                                </div>
-                                 <div class="d-flex justify-content-center"><a href="/Contact/formulaire/" class="text-reset text-decoration-none"><p>Contact US</p></a>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="d-none d-sm-none d-lg-block mt-3">
+                        <div class ="d-flex justify-content-end"><a href="/Home/faq/" class="text-reset text-decoration-none"><p>FAQ</p></a></div>
+                        <div class="d-flex justify-content-end"><a href="/Home/terms/" class="text-reset text-decoration-none"><p>Terms & Privacy Police</p></a></div>
+                        <div class="d-flex justify-content-end"><a href="/Home/contact/" class="text-reset text-decoration-none"><p>Contact US</p></a></div>
                     </div>
-                    <div class ="row g-0 justify-content-center">
-                        <div class="d-flex justify-content-center"> <span class="material-icons">photo_camera</span>
-                        <span class="material-icons">facebook</span>
-                        <span class="material-icons">rss_feed</span>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="mt-3"><p class="lh-1p fs-4">© Vintage Vibe</p>
-                        </div>
+                    <div class ="d-block d-sm-block d-lg-none mt-3">
+                        <div class ="d-flex justify-content-center"><a href="/Home/faq/" class="text-reset text-decoration-none"><p>FAQ</p></a></div>
+                        <div class="d-flex justify-content-center"><a href="/Home/terms/" class="text-reset text-decoration-none"><p>Terms & Privacy Police</p></a></div>
+                        <div class="d-flex justify-content-center"><a href="/Home/contact/" class="text-reset text-decoration-none"><p>Contact US</p></a></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+    <section class="container copyright d-flex justify-content-center flex-column mt-3">
+        <div class="d-flex justify-content-center flex-column">
+            <div class="d-flex align-items-end justify-content-center">
+                <a href="https://instagram.com" target="_blank" class="text-reset px-1"><span class="material-icons">photo_camera</span></a>
+                <a href="https://facebook.com" target="_blank" class="text-reset px-1"><span class="material-icons">facebook</span></a>
+                <a href="https://spotify.com" target="_blank" class="text-reset px-1"><span class="material-icons">contactless</span></a>
+            </div>
+            <div class="d-flex align-items-end justify-content-center"><p class="fs-6">© Vintage Vibe</p></div>
+        </div>
+    </section>
 </footer>
 
 

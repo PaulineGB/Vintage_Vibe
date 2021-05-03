@@ -33,12 +33,29 @@
                             <td>{{ contact.message }}</td>
                             <td>{{ contact.email }}</td>
                             <td><a href=mailto:{{ contact.email }} class="btn btn-outline-secondary">ANSWER</a></td>
-                            <td><a href="/admin/deleteContact/{{ contact.id }}" class="btn btn-outline-dark">DELETE</a></td>
+                            <td><a type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#delete{{ contact.id }}">DELETE</a></td>
                         </tr>
+                        <div class="modal fade" id="delete{{ contact.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Are you sure you want to delete this?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">CANCEL</button>
+                                        <a href="/admin/deleteMessage/{{ contact.id }}" class="btn btn-dark">DELETE</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+
+
+{# <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#delete">DELETE</button> #}
 {% endblock %}
 
 {% block footer %}{% include 'Admin/_adminfooter.html.twig' %}{% endblock %}

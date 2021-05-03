@@ -418,7 +418,7 @@ class AdminController extends AbstractController
     // MESSAGES CONTACT SECTION
     // Display contact listing
 
-    public function contactData()
+    public function contactMessage()
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
@@ -426,14 +426,14 @@ class AdminController extends AbstractController
 
         $contactManager = new ContactManager();
         $contacts = $contactManager->selectAll();
-        return $this->twig->render('Contact/data.html.twig', [
+        return $this->twig->render('Contact/message.html.twig', [
             'contacts' => $contacts
         ]);
     }
 
     // Delete contact messages
 
-    public function deleteContact(int $id)
+    public function deleteMessage(int $id)
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
@@ -441,7 +441,7 @@ class AdminController extends AbstractController
 
         $contactManager = new ContactManager();
         $contactManager->delete($id);
-        header('Location:/admin/contactData/' . $id);
+        header('Location:/admin/contactMessage/');
     }
 
     // BLOG SECTION
