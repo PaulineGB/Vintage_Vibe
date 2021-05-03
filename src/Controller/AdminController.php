@@ -245,19 +245,20 @@ class AdminController extends AbstractController
             header('Location: /');
         }
             $orderManager = new OrderManager();
-            $productManager = new ProductManager();
+            $userManager = new UserManager();
 
             $order = $orderManager->selectOneOrder($idInvoice);
 
             $result = [];
         foreach ($order as $detail) {
-            $product = $productManager->selectOneById($detail['product_id']);
-            $detail['product_id'] = $product;
+            $user = $userManager->selectOneById($detail['o_user_id']);
+            $detail['o_user_id'] = $user;
 
             $result[] = $detail;
         }
             return $this->twig->render('Order/detail.html.twig', [
-                'order' => $result,
+                'order' => $order,
+                'user' => $result,
                 'idInvoice' => $idInvoice,
             ]);
     }

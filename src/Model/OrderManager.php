@@ -48,7 +48,7 @@ class OrderManager extends AbstractManager
         $statement = $this->pdo->prepare("SELECT
         op.id, op.order_id, op.product_id, op.quantity,
         o.user_id AS o_user_id, o.created_at AS o_created_at, o.total AS o_total,
-        p.picture AS p_picture, p.title AS p_title, p.price AS p_price, p.quantity AS p_quantity
+        p.picture AS p_picture, p.title AS p_title, p.price AS p_price
         FROM `order_product` AS op
         JOIN `order`AS o ON o.id = op.order_id
         JOIN product AS p ON p.id = op.product_id
