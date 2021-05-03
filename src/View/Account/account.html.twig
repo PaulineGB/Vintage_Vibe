@@ -76,8 +76,7 @@
                 <h6 class="card-subtitle mb-2 text-muted">{{ invoice.u_email }}</h6>
             </div>
             <h5 class="mb-1">TOTAL {{ invoice.total }} €</h5>
-            <a
-             class="d-flex justify-content-end border-bottom border-secondary">DOWNLOAD YOUR INVOICE</a>
+            <a href="/home/showInvoice/{{ invoice.id }}" class="btn btn-outline-secondary">INVOICE</a>
             {% endfor %}
         </div>
     </div>
