@@ -17,6 +17,7 @@ use App\Model\OrderManager;
 use App\Model\ProductManager;
 use App\Model\SizeManager;
 use App\Model\NewsletterManager;
+use App\Model\InvoiceManager;
 
 /**
  * Class AdminController
@@ -230,25 +231,38 @@ class AdminController extends AbstractController
             header('Location: /');
         }
 
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectAll();
+        $invoiceManager = new InvoiceManager();
+        $invoice = $invoiceManager->selectAll();
 
-        return $this->twig->render('Order/index.html.twig', ['orders' => $order]);
+        return $this->twig->render('Order/index.html.twig', ['invoices' => $invoice]);
     }
 
     // Display order informations specified by $id
 
-    public function showOrder(int $id)
+    public function showOrder(int $idInvoice)
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
         }
+            $orderManager = new OrderManager();
+            $userManager = new UserManager();
 
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectOneById($id);
+            $order = $orderManager->selectOneOrder($idInvoice);
 
-        return $this->twig->render('Order/show.html.twig', ['order' => $order]);
+            $result = [];
+        foreach ($order as $detail) {
+            $user = $userManager->selectOneById($detail['o_user_id']);
+            $detail['o_user_id'] = $user;
+
+            $result[] = $detail;
+        }
+            return $this->twig->render('Order/detail.html.twig', [
+                'order' => $order,
+                'user' => $result,
+                'idInvoice' => $idInvoice,
+            ]);
     }
+
 
     // CATEGORY SECTION
     // Display category listing

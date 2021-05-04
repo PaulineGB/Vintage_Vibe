@@ -15,20 +15,22 @@
           <thead>
             <tr>
               <th scope="col">order reference</th>
-              <th scope="col">user reference</th>
+              <th scope="col">user</th>
+              <th scope="col">adress</th>
               <th scope="col">date</th>
-              <th scope="col">product</th>
               <th scope="col">total</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-              {% for order in orders %}
+              {% for invoice in invoices %}
                 <tr>
-                  <th scope="row">{{ order.id }}</th>
-                  <td>{{ order.user_id }}</td>
-                  <td>{{ order.created_at }}</td>
-                  <td>{{ order.product_id }}</td>
-                  <td>{{ order.total }} $</td>
+                  <td>{{ invoice.id }}</td>
+                  <td>{{ invoice.u_firstname }} {{ invoice.u_lastname }}</td>
+                  <td>{{ invoice.u_address }}</td>
+                  <td>{{ invoice.created_at }}</td>
+                  <td>{{ invoice.total }} €</td>
+                  <td><a href="/admin/showOrder/{{ invoice.id }}" class="btn btn-outline-secondary">DETAIL</a></td>
                 </tr>
               {% else %}
               <p>Ooops, there's no order here. Try to sell something.</p>

@@ -55,7 +55,9 @@
                         {% endif %}
                     {% endif %}
                     <div class="pe-2"><a href="/../Cart/cart" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
-                </div>
+                    {% if session.cart is not empty and session.user is defined %}
+                    <div><h5>({{session.count}})</h5></div>
+                    {% endif %}
             </section>
             <section class="container-fluid d-flex justify-content-center">
                 <div class="fs-4 lh-1 pt-3 pb-2 px-4 d-none d-sm-none d-md-block"><a href="/home/shop" class="text-reset">SHOP</a></div>
