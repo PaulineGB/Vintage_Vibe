@@ -17,31 +17,7 @@
                 <div class="container-fluid d-flex justify-content-end pt-3">
                     <div class="search pe-3">
                         <a class="text-reset" role="button" data-bs-toggle="modal" data-bs-target="#searchmodal"><span class="material-icons fs-3">search</span></a>
-                        <div class="modal" id="searchmodal" tabindex="-1">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">What are you looking for?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="d-flex">
-                                                <label for="search" class="col-form-label"></label>
-                                                <input type="text" class="form-control" placeholder="Search" id="search" name="search">
-                                                <button class="btn btn-small"><span class="material-icons fs-3">search</span></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                        {# <a class="text-reset" href="#" role="button" data-bs-toggle="dropdown"><span class="material-icons fs-3">search</span></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><form class="d-flex"><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"><button class="btn btn-small"><span class="material-icons fs-3">search</span></button></form></li>
-                        </ul>
-                        </div>#}
                     {% if session.user is not defined %}
                     <div class="pe-3"><a href="/../Security/login" class="text-reset"><span class="material-icons fs-3">person_outline</span></a></div>
                     {% endif %}
@@ -67,3 +43,22 @@
         </div>
     </nav>
 </header>
+<div class="modal" id="searchmodal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">▼▼ What are you looking for? ▼▼</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="d-flex">
+                        <label for="search" class="col-form-label"></label>
+                        <input type="text" class="form-control" placeholder="Search" id="search" name="search">
+                        <button class="btn btn-small"><span class="material-icons fs-3">search</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

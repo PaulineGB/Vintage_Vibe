@@ -35,16 +35,4 @@ class NewsletterManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
-
-
-    /**
-     * @param int $id
-     */
-    public function deleteNewsletter(int $id): void
-    {
-        // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->execute();
-    }
 }

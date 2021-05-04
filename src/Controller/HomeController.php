@@ -18,6 +18,7 @@ use App\Model\CategoryManager;
 use App\Model\InvoiceManager;
 use App\Model\WishlistManager;
 use App\Model\OrderManager;
+use App\Model\ContactManager;
 
 class HomeController extends AbstractController
 {
@@ -224,22 +225,77 @@ class HomeController extends AbstractController
                     'email' => $_POST['email'],
                 ];
                 $newsletterManager->insert($newsletter);
-                header('Location:/');
-
                 $sentence = 'Merci de vous etre inscrit à notre Newsletter avec cette adresse e-mail: '
-                    . $newsletter['email'] . ', nous vous contactons bientôt.';
-                return $this->twig->render('Home/index.html.twig', [
+                . $newsletter['email'];
+                header('Location:/');
+                return $this->twig->render('Home/_newsletter.html.twig', [
                     'sentence' => $sentence
                 ]);
             }
         }
-        return $this->twig->render('Home/index.html.twig', [
+        return $this->twig->render('Home/_newsletter.html.twig', [
             'errors' => $errors
         ]);
     }
 
+
+    // Team page
     public function team()
     {
         return $this->twig->render('Home/team.html.twig');
+    }
+
+    // Contact page
+
+    public function contact()
+    {
+        $errors = [];
+        $sentence = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $contact = array_map("trim", $_POST);
+            $userMailOk = filter_var($contact['email'], FILTER_VALIDATE_EMAIL);
+            if (
+                empty($contact['lastname']) && empty($contact['firstname'])
+                && empty($contact['email']) && empty($contact['message'])
+            ) {
+                $errors['allFields'] = "Please, complete all fields!";
+            } else {
+                if (empty($contact['lastname'])) {
+                    $errors['lastname'] = "Please, enter your lastname!";
+                }
+                if (empty($contact['firstname'])) {
+                    $errors['firstname'] = "Please, enter your firstname!";
+                }
+                if (empty($contact['email'])) {
+                    $errors['email'] = "Please, enter your e-mail address!";
+                }
+                if (empty($contact['message'])) {
+                    $errors['message'] = "Please, indicate your message!";
+                }
+                if (!$userMailOk) {
+                    $errors['emailNotOk'] = 'Please, enter a valid e-mail!';
+                }
+            }
+
+            $contactManager = new ContactManager();
+            $contact = [
+                'firstname' => $_POST['firstname'],
+                'lastname' => $_POST['lastname'],
+                'email' => $_POST['email'],
+                'message' => $_POST['message']
+            ];
+            if (empty($errors)) {
+                $contactManager->insert($contact);
+                $sentence = 'Thank you ' . ' ' . $contact['firstname'] . ' ' . $contact['lastname']
+                     . ' ' . 'for contacting us about you message.
+                    One of our advisors will contact you at: '
+                     . $contact['email'] .
+                     ' as soon as possible to process your request.';
+            }
+        }
+        return $this->twig->render('Home/contact.html.twig', [
+            'errors' => $errors,
+            'sentence' => $sentence
+        ]);
     }
 }
