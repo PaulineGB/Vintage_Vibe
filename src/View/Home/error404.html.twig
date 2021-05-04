@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Oh noooo! {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+<section id="products" class="p-5 container">
+    <div><p class="text-center fs-1">▼</p></div>
+    <div class="container text-center">
+        <div class="ohno d-flex justify-content-center">
+            <h1 class="m-3 fs-1">▶</h1>
+            <h1 class="m-3 fs-1">OH NOOOOOOOOO!</h1>
+            <h1 class="m-3 fs-1">◀</h1>
+        </div>
+        <p class="fs-3">ERROR 404</p>
+        <div><p class="text-center fs-1 mb-3">▲</p></div>
+        <a href="/home/shop/" class="text-reset text-decoration-none mt-5 mb-5"><button class="btn btn-outline-dark mt-3 mb-4">BACK HOME</button></a>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
