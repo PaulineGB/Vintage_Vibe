@@ -148,13 +148,12 @@ class ProductManager extends AbstractManager
     public function searchFull(string $term): array
     {
         $statement = $this->pdo->prepare("SELECT
-        p.id, p.title, p.artist, p.description, p.picture, p.price, p.quantity, p.category_id, p.size_id,
+        p.id, p.title, p.artist, p.picture, p.price, p.quantity, p.category_id, p.size_id,
         category.name AS category_name, size.name AS size_name
         FROM product AS p
         JOIN category ON category.id = p.category_id
         JOIN size ON size.id = p.size_id
         WHERE p.title LIKE :search
-        OR p.description LIKE :search
         OR size.name LIKE :search
         OR category.name LIKE :search");
         $statement->bindValue('search', '%' . $term . '%', \PDO::PARAM_STR);
