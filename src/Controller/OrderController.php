@@ -11,6 +11,7 @@
 namespace App\Controller;
 
 use App\Model\OrderManager;
+use App\Model\ProductManager;
 
 /**
  * Class OrderController
@@ -18,4 +19,5 @@ use App\Model\OrderManager;
  */
 class OrderController extends AbstractController
 {
+
 }

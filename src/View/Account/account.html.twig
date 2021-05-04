@@ -54,9 +54,9 @@
                     {% for wish in wishlist %}
                     <tr>
                         <td><img src="{{ wish.product.picture }}" width="100px" height="100px" alt="Album picture"></td>
-                        <td>{{wish.product.title}}</td>
-                        <td>{{wish.product.price}} €</td>
-                        <td>{#{{wish.product.quantity}}#}</td>
+                        <td>{{ wish.product.title }}</td>
+                        <td>{{ wish.product.price }} €</td>
+                        <td></td>
                         <td><a type="button" class="btn btn-small" data-bs-toggle="modal" data-bs-target="#delete{{ wish.wish_id }}"><span class="material-icons">delete_forever</span></a></td>
                     </tr>
                     <div class="modal fade" id="delete{{ wish.wish_id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">

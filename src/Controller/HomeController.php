@@ -114,6 +114,30 @@ class HomeController extends AbstractController
         }
     }
 
+    public function showInvoice(int $idInvoice)
+    {
+        if (!isset($_SESSION['user']['id']) && !empty($_SESSION['user'])) {
+            header('Location: /');
+        }
+            $orderManager = new OrderManager();
+            $userManager = new UserManager();
+
+            $order = $orderManager->selectOneOrder($idInvoice);
+
+            $result = [];
+        foreach ($order as $detail) {
+            $user = $userManager->selectOneById($detail['o_user_id']);
+            $detail['o_user_id'] = $user;
+
+            $result[] = $detail;
+        }
+            return $this->twig->render('Account/detail.html.twig', [
+                'order' => $order,
+                'user' => $result,
+                'idInvoice' => $idInvoice,
+            ]);
+    }
+
     public function editAccount(int $id): string
     {
         $userManager = new UserManager();

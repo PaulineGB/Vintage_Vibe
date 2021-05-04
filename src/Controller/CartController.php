@@ -65,6 +65,7 @@ class CartController extends AbstractController
         } else {
             $_SESSION['cart'][$idProduct] = 1;
         }
+        $_SESSION['count'] = $this->countArticle();
         header('Location: /cart/cart');
     }
 
@@ -145,5 +146,18 @@ class CartController extends AbstractController
     public function success()
     {
         return $this->twig->render('Account/success.html.twig');
+    }
+
+    // Cart COUNT in navbar
+    public function countArticle()
+    {
+        $total = 0;
+        if ($this->cartInfos() != false) {
+            foreach ($this->cartInfos() as $item) {
+                $total += $item['quantity'];
+            }
+            return $total;
+        }
+        return $total;
     }
 }
