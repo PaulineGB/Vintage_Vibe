@@ -148,32 +148,17 @@ class ProductManager extends AbstractManager
     public function searchFull(string $term): array
     {
         $statement = $this->pdo->prepare("SELECT
-        product.id, title, artist, description, picture, price, quantity, category_id, size_id,
+        p.id, p.title, p.artist, p.description, p.picture, p.price, p.quantity, p.category_id, p.size_id,
         category.name AS category_name, size.name AS size_name
-        FROM product
-        JOIN category ON category.id = product.category_id
-        JOIN size ON size.id = product.size_id
-
-        WHERE product.name LIKE :search
-        OR product.description LIKE :search
-        OR artist.firstname LIKE :search
-        OR artist.lastname LIKE :search
-        OR size.format LIKE :search
+        FROM product AS p
+        JOIN category ON category.id = p.category_id
+        JOIN size ON size.id = p.size_id
+        WHERE p.title LIKE :search
+        OR p.description LIKE :search
+        OR size.name LIKE :search
         OR category.name LIKE :search");
         $statement->bindValue('search', '%' . $term . '%', \PDO::PARAM_STR);
         $statement->execute();
-        $products = $statement->fetchAll();
-
-        $result = [];
-        foreach ($products as $product) {
-            $statementImg = $this->pdo->prepare('SELECT url FROM img WHERE product_id=:product_id');
-            $statementImg->bindValue('product_id', $product['id'], \PDO::PARAM_INT);
-            $statementImg->execute();
-            $images = $statementImg->fetchAll();
-            $product['images'] = $images;
-            array_push($result, $product);
-        }
-
-        return $result;
+        return $statement->fetchAll();
     }
 }
