@@ -48,6 +48,8 @@
                         <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col">DELETE</th>
+                        <th scope="col"></th>
+                        <th scope="col">ADD TO CART</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +60,8 @@
                         <td>{{ wish.product.price }} €</td>
                         <td></td>
                         <td><a type="button" class="btn btn-small" data-bs-toggle="modal" data-bs-target="#delete{{ wish.wish_id }}"><span class="material-icons">delete_forever</span></a></td>
+                        <td></td>
+                        <td><a href="/Cart/addToCart/{{ wish.product.id }}" class="btn btn-small"><span class="material-icons fs-3">shopping_cart</span></a></td>
                     </tr>
                     <div class="modal fade" id="delete{{ wish.wish_id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
