@@ -111,7 +111,7 @@ class ProductManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "SELECT
-        product.id, title, artist, picture, size_id, size.name AS size_name
+        product.id, title, artist, picture, size_id, quantity, size.name AS size_name
         FROM " . self::TABLE .
             " JOIN size ON size.id = product.size_id
         WHERE product.size_id = :sizename"
@@ -125,7 +125,7 @@ class ProductManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "SELECT
-        product.id, title, artist, picture, size_id, category.name AS category_name
+        product.id, title, artist, picture, size_id, quantity, category.name AS category_name
         FROM " . self::TABLE .
             " JOIN category ON category.id = product.category_id
         WHERE product.category_id = :categoryname"
@@ -143,5 +143,37 @@ class ProductManager extends AbstractManager
         $statement->bindValue('quantity', $newQty, \PDO::PARAM_INT);
 
         return $statement->execute();
+    }
+
+    public function searchFull(string $term): array
+    {
+        $statement = $this->pdo->prepare("SELECT
+        product.id, title, artist, description, picture, price, quantity, category_id, size_id,
+        category.name AS category_name, size.name AS size_name
+        FROM product
+        JOIN category ON category.id = product.category_id
+        JOIN size ON size.id = product.size_id
+
+        WHERE product.name LIKE :search
+        OR product.description LIKE :search
+        OR artist.firstname LIKE :search
+        OR artist.lastname LIKE :search
+        OR size.format LIKE :search
+        OR category.name LIKE :search");
+        $statement->bindValue('search', '%' . $term . '%', \PDO::PARAM_STR);
+        $statement->execute();
+        $products = $statement->fetchAll();
+
+        $result = [];
+        foreach ($products as $product) {
+            $statementImg = $this->pdo->prepare('SELECT url FROM img WHERE product_id=:product_id');
+            $statementImg->bindValue('product_id', $product['id'], \PDO::PARAM_INT);
+            $statementImg->execute();
+            $images = $statementImg->fetchAll();
+            $product['images'] = $images;
+            array_push($result, $product);
+        }
+
+        return $result;
     }
 }
