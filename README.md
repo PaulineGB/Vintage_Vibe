@@ -25,6 +25,7 @@ If you develop on Windows, you should edit you git configuration to change your 
 ## URLs availables
 
 - ## URLs availables
+- Cart payment [localhost:8000/cart/payment](localhost:8000/cart/payment)
 - Home page at [localhost:8000/home/index](localhost:8000/home/index)
 - Home shop [localhost:8000/home/shop](localhost:8000/home/shop)
 - Home details [localhost:8000/home/showproduct/:id](localhost:8000/home/showproduct/2)
