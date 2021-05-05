@@ -18,7 +18,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">No, thanks</button>
-                    <button type="button" class="btn btn-outline-dark">Okay! 🍪</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Okay! 🍪</button>
                 </div>
             </div>
         </div>
@@ -59,6 +59,8 @@
 
 {% block javascript %}
 <script>
-    $('#cookies').modal('show')
+    $(document).ready(function(){
+        $('#cookies').modal('show')
+    });
 </script>
 {% endblock %}
