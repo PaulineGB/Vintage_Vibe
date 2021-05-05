@@ -191,6 +191,56 @@ class HomeController extends AbstractController
         ]);
     }
 
+    public function editPassword(int $id): string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($id);
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $securityForm = function ($donnees) {
+                $donnees = trim($donnees);
+                $donnees = md5($donnees);
+                return $donnees;
+            };
+
+            if (
+                !empty($_POST['check_password'])
+                && !empty($_POST['new_password'])
+                && !empty($_POST['check_new_password'])
+            ) {
+                if (
+                    strlen($_POST['check_password']) >= 6 && strlen($_POST['check_password']) <= 12
+                    && strlen($_POST['new_password']) >= 6 && strlen($_POST['new_password']) <= 12
+                    && strlen($_POST['check_new_password']) >= 6 && strlen($_POST['check_new_password']) <= 12
+                ) {
+                    if ($user['password'] === md5($_POST['check_password'])) {
+                        if ($_POST['check_new_password'] === $_POST['new_password']) {
+                            $user['password'] = $securityForm($_POST['new_password']);
+
+                            $userManager->update($user);
+                            header('Location:/home/userAccount');
+                        } else {
+                            $errors[] = "Passwords don't match !";
+                        }
+                    } else {
+                        $errors[] = "Invalid current password";
+                    }
+                } else {
+                    $errors[] = "Password must contain between 6 and 12 characters";
+                }
+            } else {
+                $errors[] = "All fields are required";
+            }
+        }
+
+        return $this->twig->render('Account/password.html.twig', [
+            'user' => $user,
+            'errors' => $errors
+
+        ]);
+    }
+
     // Blog
     public function blog()
     {
