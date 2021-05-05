@@ -37,4 +37,9 @@ abstract class AbstractController
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addExtension(new DebugExtension());
     }
+
+    public function error404()
+    {
+        return $this->twig->render('Home/error404.html.twig');
+    }
 }
