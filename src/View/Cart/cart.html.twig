@@ -25,34 +25,39 @@
 				<td>{{product.price}}</td>
 				<td>{{product.quantity}}</td>
 				<td>{{product.quantity * product.price}}</td>
-				<td><a type="button" class="btn btn-small" data-bs-toggle="modal" data-bs-target="#delete{{ product.id }}"><span class="material-icons">delete_forever</span></a></td>
+				<td><a type="button" class="btn btn-small" data-bs-toggle="modal"
+						data-bs-target="#delete{{ product.id }}"><span class="material-icons">delete_forever</span></a>
+				</td>
 			</tr>
-			<div class="modal fade" id="delete{{ product.id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">▼▼ Are you sure you want to delete this? ▼▼</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-footer">
-                        	<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">CANCEL</button>
-                            <a href="/cart/deleteFromCart/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+			<div class="modal fade" id="delete{{ product.id }}" tabindex="-1" aria-labelledby="delete"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">▼▼ Are you sure you want to delete this? ▼▼</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-secondary"
+								data-bs-dismiss="modal">CANCEL</button>
+							<a href="/cart/deleteFromCart/{{ product.id }}" class="btn btn-outline-dark">DELETE</a>
+						</div>
+					</div>
+				</div>
+			</div>
 			{% endfor %}
 		</tbody>
 	</table>
 	<h3 class="m-3"> TOTAL : {{totalCart}} € </h3>
-</div>
-	{% if session.user is defined %}
-	<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
-{% endif %}
+		{% if session.user is defined %}
+		<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
+		{% endif %}
 	{% else %}
 	<h2 class="m-5">is empty <br> why </h2>
-	<div class="mb-5"><img src="https://cdn140.picsart.com/295887417011211.png?type=webp&to=min&r=640" height="300px" width="400px" alt=""></div>
+	<div class="mb-5"><img src="https://cdn140.picsart.com/295887417011211.png?type=webp&to=min&r=640" height="300px"
+			width="400px" alt=""></div>
 	{% endif %}
+</div>
 
 {% if session.user is not defined and totalCart > '0' %}
 {% include 'Security/_logform.html.twig' %}
