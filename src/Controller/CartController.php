@@ -78,6 +78,7 @@ class CartController extends AbstractController
                 $wishlistManager->delete($wish['id']);
             }
         }
+
         $_SESSION['count'] = $this->countArticle();
         header('Location: /cart/cart');
     }
