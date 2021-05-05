@@ -45,14 +45,14 @@
 		</tbody>
 	</table>
 	<h3 class="m-3"> TOTAL : {{totalCart}} € </h3>
-</div>
-	{% if session.user is defined %}
-	<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
+		{% if session.user is defined %}
+			<div class="m-3 text-center"><a href="/cart/order" class="btn btn-secondary">VALIDATE MY ORDER</a></div>
+		{% endif %}
+	{% else %}
+		<h2 class="m-5">is empty <br> why </h2>
+		<div class="mb-5"><img src="https://cdn140.picsart.com/295887417011211.png?type=webp&to=min&r=640" height="300px" width="400px" alt=""></div>
 	{% endif %}
-{% else %}
-	<h2 class="m-5">is empty <br> why </h2>
-	<div class="mb-5"><img src="https://cdn140.picsart.com/295887417011211.png?type=webp&to=min&r=640" height="300px" width="400px" alt=""></div>
-{% endif %}
+</div>
 
 {% if session.user is not defined and totalCart > '0' %}
 {% include 'Security/_logform.html.twig' %}
