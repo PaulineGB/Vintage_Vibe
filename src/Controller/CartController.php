@@ -148,7 +148,7 @@ class CartController extends AbstractController
                 $orderManager->insert($invoiceTicket);
             }
             unset($_SESSION['cart']);
-            header('Location: /cart/success');
+            header('Location: /cart/payment');
         }
 
         return $this->twig->render('Cart/order.html.twig', [
