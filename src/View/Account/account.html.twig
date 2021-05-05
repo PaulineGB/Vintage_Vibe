@@ -30,8 +30,9 @@
             <h5>EMAIL</h5>
         </div>
         <p>{{ user.email }}</p>
-        <div class="container text-center">
-            <a class="btn btn-outline-secondary mt-3 mb-5" href="/Home/editAccount/{{ user.id }}">EDIT</a>
+        <div class="container text-center d-flex justify-content-end">
+            <a class="btn btn-outline-secondary m-3 mt-3 mb-5" href="/Home/editAccount/{{ user.id }}">EDIT</a>
+            <a class="btn btn-outline-secondary mt-3 mb-5" href="/Home/editPassword/{{ user.id }}">EDIT PASSWORD</a>
         </div>
     </div>
 <section id="container mb-3 wishlist">
@@ -61,7 +62,11 @@
                         <td></td>
                         <td><a type="button" class="btn btn-small" data-bs-toggle="modal" data-bs-target="#delete{{ wish.wish_id }}"><span class="material-icons">delete_forever</span></a></td>
                         <td></td>
+                        {% if wish.product.quantity == 0 %}
+                        <td><a class="text-reset text-decoration-none">Out of stock!</a></td>
+                        {% else %}
                         <td><a href="/Cart/addToCart/{{ wish.product.id }}" class="btn btn-small"><span class="material-icons fs-3">shopping_cart</span></a></td>
+                        {% endif %}
                     </tr>
                     <div class="modal fade" id="delete{{ wish.wish_id }}" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">

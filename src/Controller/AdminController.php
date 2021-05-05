@@ -111,6 +111,7 @@ class AdminController extends AbstractController
         $sizes = $sizeManager->selectAll();
 
         $product = [];
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
@@ -120,22 +121,27 @@ class AdminController extends AbstractController
                 return $donnees;
             };
 
-            $product = [
-                'title' => $securityForm($_POST['title']),
-                'artist' => $securityForm($_POST['artist']),
-                'category_id' => $_POST['category_id'],
-                'size_id' => $_POST['size_id'],
-                'description' => $securityForm($_POST['description']),
-                'picture' => $securityForm($_POST['picture']),
-                'price' => $securityForm($_POST['price']),
-                'quantity' => $securityForm($_POST['quantity'])
-            ];
+            if (empty($_POST['category_id']) && empty($_POST['size_id'])) {
+                $errors[] = "Choose a category and a size!";
+            } else {
+                $product = [
+                    'title' => $securityForm($_POST['title']),
+                    'artist' => $securityForm($_POST['artist']),
+                    'category_id' => $_POST['category_id'],
+                    'size_id' => $_POST['size_id'],
+                    'description' => $securityForm($_POST['description']),
+                    'picture' => $securityForm($_POST['picture']),
+                    'price' => $securityForm($_POST['price']),
+                    'quantity' => $securityForm($_POST['quantity'])
+                ];
 
-            $productManager->insert($product);
-            header('Location:/admin/indexProduct/');
+                $productManager->insert($product);
+                header('Location:/admin/indexProduct/');
+            }
         }
 
         return $this->twig->render('Product/add.html.twig', [
+            'errors' => $errors,
             'categories' => $categories,
             'sizes' => $sizes
         ]);
