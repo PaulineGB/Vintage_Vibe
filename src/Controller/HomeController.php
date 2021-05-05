@@ -267,16 +267,16 @@ class HomeController extends AbstractController
     // Newsletter
     public function newsletter()
     {
-        $errors = [];
+        $errornews = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newsletter = array_map('trim', $_POST);
 
             if (empty($newsletter['email'])) {
-                $errors[] = 'Indiquez votre adresse e-mail s\'il vous plait';
+                $errornews[] = 'Indiquez votre adresse e-mail s\'il vous plait';
             }
             $newsletterContact = filter_var($newsletter['email'], FILTER_VALIDATE_EMAIL);
             if ($newsletterContact === false) {
-                $errors[] = 'Veuillez renseigner une adresse mail valide!';
+                $errornews[] = 'Veuillez renseigner une adresse mail valide!';
             }
 
             if (empty($errors)) {
@@ -289,7 +289,7 @@ class HomeController extends AbstractController
             }
         }
         return $this->twig->render('Home/_newsletter.html.twig', [
-            'errors' => $errors
+            'errornews' => $errornews
         ]);
     }
 
@@ -303,7 +303,7 @@ class HomeController extends AbstractController
     // Contact page
     public function contact()
     {
-        $errors = [];
+        $error = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $contact = array_map("trim", $_POST);
             $userMailOk = filter_var($contact['email'], FILTER_VALIDATE_EMAIL);
@@ -311,22 +311,21 @@ class HomeController extends AbstractController
                 empty($contact['lastname']) && empty($contact['firstname'])
                 && empty($contact['email']) && empty($contact['message'])
             ) {
-                $errors['allFields'] = "Please, complete all fields!";
+                $error['allFields'] = "Please, complete all fields!";
             } else {
                 if (empty($contact['lastname'])) {
-                    $errors['lastname'] = "Please, enter your lastname!";
+                    $error['lastname'] = "Please, enter your lastname!";
                 }
                 if (empty($contact['firstname'])) {
-                    $errors['firstname'] = "Please, enter your firstname!";
+                    $error['firstname'] = "Please, enter your firstname!";
                 }
                 if (empty($contact['email'])) {
-                    $errors['email'] = "Please, enter your e-mail address!";
+                    $error['email'] = "Please, enter your e-mail address!";
+                } elseif (!$userMailOk) {
+                    $error['emailNotOk'] = 'Please, enter a valid e-mail!';
                 }
                 if (empty($contact['message'])) {
-                    $errors['message'] = "Please, indicate your message!";
-                }
-                if (!$userMailOk) {
-                    $errors['emailNotOk'] = 'Please, enter a valid e-mail!';
+                    $error['message'] = "Please, indicate your message!";
                 }
             }
 
@@ -337,13 +336,13 @@ class HomeController extends AbstractController
                 'email' => $_POST['email'],
                 'message' => $_POST['message']
             ];
-            if (empty($errors)) {
+            if (empty($error)) {
                 $contactManager->insert($contact);
                 return $this->twig->render('Home/successcontact.html.twig');
             }
         }
         return $this->twig->render('Home/contact.html.twig', [
-            'errors' => $errors
+            'error' => $error
         ]);
     }
 }

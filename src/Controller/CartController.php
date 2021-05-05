@@ -69,13 +69,15 @@ class CartController extends AbstractController
             $_SESSION['cart'][$idProduct] = 1;
         }
 
-        $userwishlist = $wishlistManager->getWishlistByUser($_SESSION['user']['id']);
-        $result = [];
-        foreach ($userwishlist as $wish) {
-            $result[] = ["wish_id" => $wish['id']];
+        if (isset($_SESSION['user'])) {
+            $userwishlist = $wishlistManager->getWishlistByUser($_SESSION['user']['id']);
+            $result = [];
+            foreach ($userwishlist as $wish) {
+                $result[] = ["wish_id" => $wish['id']];
 
-            if ($wish['product_id'] == $idProduct) {
-                $wishlistManager->delete($wish['id']);
+                if ($wish['product_id'] == $idProduct) {
+                    $wishlistManager->delete($wish['id']);
+                }
             }
         }
 
