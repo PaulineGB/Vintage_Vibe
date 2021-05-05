@@ -24,7 +24,7 @@ If you develop on Windows, you should edit you git configuration to change your 
 
 ## URLs availables
 
-- Home page at [localhost:8000/](localhost:8000/)
+- ## URLs availables
 - Home page at [localhost:8000/home/index](localhost:8000/home/index)
 - Home shop [localhost:8000/home/shop](localhost:8000/home/shop)
 - Home details [localhost:8000/home/showproduct/:id](localhost:8000/home/showproduct/2)

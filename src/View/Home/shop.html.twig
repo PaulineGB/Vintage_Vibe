@@ -32,7 +32,11 @@
                                     </div>
                                 </div>
                                 <div class="card-footer bg-white border-white d-flex justify-content-between">
+                                    {% if product.quantity == 0 %}
+                                    <div><a class="text-reset text-decoration-none">Out of stock!</a></div>
+                                    {% else %}
                                     <div><a href="/Cart/addToCart/{{ product.id }}" class="text-reset"><span class="material-icons fs-3">shopping_cart</span></a></div>
+                                    {% endif %}
                                     <div><a href="/Wishlist/like/{{ product.id }}" class="fs-5 align-items-center text-reset text-decoration-none">▼▼</a></div>
                                 </div>
                             </div>
