@@ -2,10 +2,8 @@
 
 {% block title %} Oh noooo! {% endblock %}
 
-{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
-
 {% block content %}
-<section id="products" class="p-5 container">
+<section id="products" class="p-5 container mt-5">
     <div><p class="text-center fs-1">▼</p></div>
     <div class="container text-center">
         <div class="ohno d-flex justify-content-center">
@@ -15,9 +13,7 @@
         </div>
         <p class="fs-3">ERROR 404</p>
         <div><p class="text-center fs-1 mb-3">▲</p></div>
-        <a href="/home/shop/" class="text-reset text-decoration-none mt-5 mb-5"><button class="btn btn-outline-dark mt-3 mb-4">BACK HOME</button></a>
+        <a href="/" class="text-reset text-decoration-none mt-5 mb-5"><button class="btn btn-outline-dark mt-3 mb-4">BACK HOME</button></a>
     </div>
 </section>
 {% endblock %}
-
-{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
