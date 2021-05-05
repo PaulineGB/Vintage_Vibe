@@ -13,6 +13,7 @@ use App\Model\ProductManager;
 use App\Model\UserManager;
 use App\Model\InvoiceManager;
 use App\Model\OrderManager;
+use App\Model\WishlistManager;
 
 class CartController extends AbstractController
 {
@@ -60,11 +61,24 @@ class CartController extends AbstractController
 
     public function addToCart(int $idProduct)
     {
+        $wishlistManager = new WishlistManager();
+
         if (!empty($_SESSION['cart'][$idProduct])) {
             $_SESSION['cart'][$idProduct]++;
         } else {
             $_SESSION['cart'][$idProduct] = 1;
         }
+
+        $userwishlist = $wishlistManager->getWishlistByUser($_SESSION['user']['id']);
+        $result = [];
+        foreach ($userwishlist as $wish) {
+            $result[] = ["wish_id" => $wish['id']];
+
+            if ($wish['product_id'] == $idProduct) {
+                $wishlistManager->delete($wish['id']);
+            }
+        }
+
         $_SESSION['count'] = $this->countArticle();
         header('Location: /cart/cart');
     }

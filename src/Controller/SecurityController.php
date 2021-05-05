@@ -76,7 +76,11 @@ class SecurityController extends AbstractController
                 if ($user) {
                     if ($user['password'] === md5($_POST['password'])) {
                         $_SESSION['user'] = $user;
-                        header('Location: /home/userAccount');
+                        if ($_SESSION['user']['is_admin']) {
+                            header('Location: /Admin/index/');
+                        } else {
+                            header('Location: /home/userAccount');
+                        }
                     } else {
                         $errors[] = "Invalid password";
                     }

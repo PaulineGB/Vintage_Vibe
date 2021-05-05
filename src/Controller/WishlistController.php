@@ -25,6 +25,8 @@ class WishlistController extends AbstractController
                 ];
                 $wishManager->insert($wish);
                 header('Location: /home/userAccount');
+            } else {
+                return $this->twig->render('Home/alreadylike.html.twig');
             }
         } else {
             header('Location: /security/login');
