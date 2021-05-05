@@ -160,4 +160,9 @@ class CartController extends AbstractController
         }
         return $total;
     }
+
+    public function payment()
+    {
+        return $this->twig->render('Cart/payment.html.twig');
+    }
 }
