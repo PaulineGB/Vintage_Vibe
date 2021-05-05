@@ -76,7 +76,7 @@ class HomeController extends AbstractController
                     'category' => $category
                 ]);
             } else {
-                header('Location: /');
+                return $this->twig->render('Home/resultsearch.html.twig');
             }
         }
 
