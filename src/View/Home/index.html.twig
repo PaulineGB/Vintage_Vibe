@@ -38,7 +38,7 @@
         <div class="producthome row pt-3 pb-3">
                 {% for i in 0..2 %}
                 <div class="col-lg-4">
-                    <div><img src="{{ products[i].picture }}" width="50%" alt="product picture"></div>
+                    <div><a href="/home/showproduct/{{ products[i].id }}"><img src="{{ products[i].picture }}" width="50%" alt="product picture"></a></div>
                     <div>{{ products[i].title }}</div>
                     <div>{{ products[i].artist }}</div>
                 </div>

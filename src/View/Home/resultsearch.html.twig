@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} OOOps! {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+<section id="success" class="p-5 container">
+    <div class="container text-center">
+        <h1 class="m-3">▼▼ OOOPSY ▼▼</h1>
+        <p>YOUR SEARCH IS UNSUCCESSFUL</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
+
+{% block javascript %}
+<script>
+    setTimeout(() => {
+    document.location.href = "/home/shop";
+    }, 1000);
+</script>
+{% endblock %}

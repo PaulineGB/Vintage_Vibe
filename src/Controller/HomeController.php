@@ -69,11 +69,15 @@ class HomeController extends AbstractController
         if (!empty($_POST['search'])) {
             $term = $_POST['search'];
             $products = $productManager->searchFull($term);
-            return $this->twig->render('Home/shop.html.twig', [
-                'products' => $products,
-                'size' => $size,
-                'category' => $category
+            if ($products) {
+                return $this->twig->render('Home/shop.html.twig', [
+                    'products' => $products,
+                    'size' => $size,
+                    'category' => $category
                 ]);
+            } else {
+                return $this->twig->render('Home/resultsearch.html.twig');
+            }
         }
 
         $products = $productManager->selectAll();
