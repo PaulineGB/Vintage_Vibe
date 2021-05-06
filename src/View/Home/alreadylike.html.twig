@@ -1,16 +1,14 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}
-{{ parent() }} Thanxxxx!
-{% endblock %}
+{% block title %} OOOps! {% endblock %}
 
 {% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
-<section id="successcart" class="p-5 container">
+<section id="success" class="p-5 container">
     <div class="container text-center">
-        <h1 class="m-3">▼▼ THANK YOU ▼▼</h1>
-        <p>FOR YOUR ORDER!</p>
+        <h1 class="m-3">▼▼ THIS PRODUCT ▼▼</h1>
+        <p>IS ALREADY IN YOUR WISHLIST!</p>
     </div>
 </section>
 {% endblock %}

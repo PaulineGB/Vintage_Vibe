@@ -17,6 +17,7 @@ use App\Model\OrderManager;
 use App\Model\ProductManager;
 use App\Model\SizeManager;
 use App\Model\NewsletterManager;
+use App\Model\InvoiceManager;
 
 /**
  * Class AdminController
@@ -110,6 +111,7 @@ class AdminController extends AbstractController
         $sizes = $sizeManager->selectAll();
 
         $product = [];
+        $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $productManager = new ProductManager();
@@ -119,22 +121,27 @@ class AdminController extends AbstractController
                 return $donnees;
             };
 
-            $product = [
-                'title' => $securityForm($_POST['title']),
-                'artist' => $securityForm($_POST['artist']),
-                'category_id' => $_POST['category_id'],
-                'size_id' => $_POST['size_id'],
-                'description' => $securityForm($_POST['description']),
-                'picture' => $securityForm($_POST['picture']),
-                'price' => $securityForm($_POST['price']),
-                'quantity' => $securityForm($_POST['quantity'])
-            ];
+            if (empty($_POST['category_id']) && empty($_POST['size_id'])) {
+                $errors[] = "Choose a category and a size!";
+            } else {
+                $product = [
+                    'title' => $securityForm($_POST['title']),
+                    'artist' => $securityForm($_POST['artist']),
+                    'category_id' => $_POST['category_id'],
+                    'size_id' => $_POST['size_id'],
+                    'description' => $securityForm($_POST['description']),
+                    'picture' => $securityForm($_POST['picture']),
+                    'price' => $securityForm($_POST['price']),
+                    'quantity' => $securityForm($_POST['quantity'])
+                ];
 
-            $productManager->insert($product);
-            header('Location:/admin/indexProduct/');
+                $productManager->insert($product);
+                header('Location:/admin/indexProduct/');
+            }
         }
 
         return $this->twig->render('Product/add.html.twig', [
+            'errors' => $errors,
             'categories' => $categories,
             'sizes' => $sizes
         ]);
@@ -230,25 +237,38 @@ class AdminController extends AbstractController
             header('Location: /');
         }
 
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectAll();
+        $invoiceManager = new InvoiceManager();
+        $invoice = $invoiceManager->selectAll();
 
-        return $this->twig->render('Order/index.html.twig', ['orders' => $order]);
+        return $this->twig->render('Order/index.html.twig', ['invoices' => $invoice]);
     }
 
     // Display order informations specified by $id
 
-    public function showOrder(int $id)
+    public function showOrder(int $idInvoice)
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
         }
+            $orderManager = new OrderManager();
+            $userManager = new UserManager();
 
-        $orderManager = new OrderManager();
-        $order = $orderManager->selectOneById($id);
+            $order = $orderManager->selectOneOrder($idInvoice);
 
-        return $this->twig->render('Order/show.html.twig', ['order' => $order]);
+            $result = [];
+        foreach ($order as $detail) {
+            $user = $userManager->selectOneById($detail['o_user_id']);
+            $detail['o_user_id'] = $user;
+
+            $result[] = $detail;
+        }
+            return $this->twig->render('Order/detail.html.twig', [
+                'order' => $order,
+                'user' => $result,
+                'idInvoice' => $idInvoice,
+            ]);
     }
+
 
     // CATEGORY SECTION
     // Display category listing
@@ -418,7 +438,7 @@ class AdminController extends AbstractController
     // MESSAGES CONTACT SECTION
     // Display contact listing
 
-    public function contactData()
+    public function contactMessage()
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
@@ -426,14 +446,14 @@ class AdminController extends AbstractController
 
         $contactManager = new ContactManager();
         $contacts = $contactManager->selectAll();
-        return $this->twig->render('Contact/data.html.twig', [
+        return $this->twig->render('Contact/message.html.twig', [
             'contacts' => $contacts
         ]);
     }
 
     // Delete contact messages
 
-    public function deleteContact(int $id)
+    public function deleteMessage(int $id)
     {
         if (isset($_SESSION['user']) && !$_SESSION['user']['is_admin'] || !isset($_SESSION['user'])) {
             header('Location: /');
@@ -441,7 +461,7 @@ class AdminController extends AbstractController
 
         $contactManager = new ContactManager();
         $contactManager->delete($id);
-        header('Location:/admin/contactData/' . $id);
+        header('Location:/admin/contactMessage/');
     }
 
     // BLOG SECTION

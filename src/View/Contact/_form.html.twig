@@ -1,12 +1,12 @@
-<form class="formuContact" method="post">
+<form class="formuContact" method="post" action="/home/contact/">
 
 
 <div class="container-flex">
 		<div class="row">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-				{% if errors.allFields is defined and  not empty %}
-					<p class="p-2 bg-warning" >
-						{{errors.allFields}}
+				{% if error.allFields is defined and  not empty %}
+					<p class="p-2 alert-secondary" >
+						{{error.allFields}}
 					</p>
 				{% endif %}
 			</div>
@@ -24,9 +24,9 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-	{% if errors.firstname is defined and not empty %}
-		<p class="p-2 bg-warning">
-		{{errors.firstname}}
+	{% if error.firstname is defined and not empty %}
+		<p class="p-2 alert-secondary">
+		{{error.firstname}}
 		</p>
 	{% endif %}
 		</div>
@@ -45,9 +45,9 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-			{% if errors.lastname is defined and not empty %}
-				<p class="p-2 bg-warning">
-				{{errors.lastname}}
+			{% if error.lastname is defined and not empty %}
+				<p class="p-2 alert-secondary">
+				{{error.lastname}}
 				</p>
 			{% endif %}
 		</div>
@@ -67,18 +67,18 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-	{% if errors.email is defined and not empty %}
-		<p class="p-2 bg-warning">
-			{{errors.email}}
+	{% if error.email is defined and not empty %}
+		<p class="p-2 alert-secondary">
+			{{error.email}}
 		</p>
 	{% endif %}
 		</div>
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-	{% if errors.emailNotOk is defined and not empty %}
-		<p class="p-2 bg-warning">
-			{{errors.emailNotOk}}
+	{% if error.emailNotOk is defined and not empty %}
+		<p class="p-2 alert-secondary">
+			{{error.emailNotOk}}
 		</p>
 	{% endif %}
 		</div>
@@ -95,15 +95,15 @@
 	</div>
 	<div class="row my-2">
 		<div class="col-12 col-sm-12 col-md-12 col-lg-12  d-flex justify-content-center">
-	{% if errors.message is defined and not empty %}
-		<p class="p-2 bg-warning">
-			{{errors.message}}
+	{% if error.message is defined and not empty %}
+		<p class="p-2 alert-secondary">
+			{{error.message}}
 		</p>
 	{% endif %}
 		</div>
 	</div>
 	<div class="my-4 col-12 col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center">
-		<button class="btn btn-secondary mt-3 mb-4">VALIDATE</button>
+		<button class="btn btn-secondary mt-3 mb-4" type="submit">VALIDATE</button>
 	</div>
 </div>
 </form>

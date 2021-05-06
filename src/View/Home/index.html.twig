@@ -5,6 +5,25 @@
 {% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
 
 {% block content %}
+<section class="cookiesbanner">
+    <div class="modal fade" id="cookies" data-bs-keyboard="false" tabindex="-1" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">▼▼ Oh oh, there are cookies. ▼▼</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>We care about your data, and we'd love to use cookies to make your experience smooth'n'silky.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">No, thanks</button>
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Okay! 🍪</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="homeheader">
     <section class="homepage picture">
         <img src="https://cdn.pixabay.com/photo/2016/06/27/07/30/elvis-presley-1482026_1280.jpg" alt="homepicture" class="headerimg">
@@ -19,7 +38,7 @@
         <div class="producthome row pt-3 pb-3">
                 {% for i in 0..2 %}
                 <div class="col-lg-4">
-                    <div><img src="{{ products[i].picture }}" width="50%" alt="product picture"></div>
+                    <div><a href="/home/showproduct/{{ products[i].id }}"><img src="{{ products[i].picture }}" width="50%" alt="product picture"></a></div>
                     <div>{{ products[i].title }}</div>
                     <div>{{ products[i].artist }}</div>
                 </div>
@@ -37,3 +56,11 @@
 {% endblock %}
 
 {% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function(){
+        $('#cookies').modal('show')
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Payment {% endblock %}
+
+{% block navbar %}{% include 'Layout/_navbarfront.html.twig' %}{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="row ">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <div class="panel-heading">
+                    <div class="row">
+                        <h1 class="text-center mt-3 mb-5">PAYMENT</h1>
+                        <img class="img-responsive cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                    </div>
+                </div>
+                <div class="panel-body ">
+                    <form role="form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group mt-2 fw-bold">
+                                    <label>CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input type="tel" class="form-control" placeholder="Valid Card Number" />
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group fw-bold mt-2">
+                                    <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <input type="tel" class="form-control" placeholder="MM / YY" />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group fw-bold mt-2">
+                                    <label>CV CODE</label>
+                                    <input type="tel" class="form-control" placeholder="CVC" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class ="col-4 mt-1 fw-bold"><label>CARD OWNER</label></div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class ="col-12 mt-1">
+                                <div class="input-group">
+                                    <input type="tel" class="form-control" placeholder="My name is" />
+                                    <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div class="row justify-content-center">
+                        <div class ="col-4 text-center mt-5 mb-5">
+                            <a href="/cart/success/" class="btn btn-dark btn-lg btn-block">VALIDATE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}{% include 'Layout/_footer.html.twig' %}{% endblock %}

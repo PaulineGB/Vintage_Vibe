@@ -13,6 +13,7 @@ use App\Model\ProductManager;
 use App\Model\UserManager;
 use App\Model\InvoiceManager;
 use App\Model\OrderManager;
+use App\Model\WishlistManager;
 
 class CartController extends AbstractController
 {
@@ -60,11 +61,27 @@ class CartController extends AbstractController
 
     public function addToCart(int $idProduct)
     {
+        $wishlistManager = new WishlistManager();
+
         if (!empty($_SESSION['cart'][$idProduct])) {
             $_SESSION['cart'][$idProduct]++;
         } else {
             $_SESSION['cart'][$idProduct] = 1;
         }
+
+        if (isset($_SESSION['user'])) {
+            $userwishlist = $wishlistManager->getWishlistByUser($_SESSION['user']['id']);
+            $result = [];
+            foreach ($userwishlist as $wish) {
+                $result[] = ["wish_id" => $wish['id']];
+
+                if ($wish['product_id'] == $idProduct) {
+                    $wishlistManager->delete($wish['id']);
+                }
+            }
+        }
+
+        $_SESSION['count'] = $this->countArticle();
         header('Location: /cart/cart');
     }
 
@@ -133,7 +150,7 @@ class CartController extends AbstractController
                 $orderManager->insert($invoiceTicket);
             }
             unset($_SESSION['cart']);
-            header('Location: /cart/success');
+            header('Location: /cart/payment');
         }
 
         return $this->twig->render('Cart/order.html.twig', [
@@ -145,5 +162,23 @@ class CartController extends AbstractController
     public function success()
     {
         return $this->twig->render('Account/success.html.twig');
+    }
+
+    // Cart COUNT in navbar
+    public function countArticle()
+    {
+        $total = 0;
+        if ($this->cartInfos() != false) {
+            foreach ($this->cartInfos() as $item) {
+                $total += $item['quantity'];
+            }
+            return $total;
+        }
+        return $total;
+    }
+
+    public function payment()
+    {
+        return $this->twig->render('Cart/payment.html.twig');
     }
 }
